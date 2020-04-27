@@ -1,0 +1,30 @@
+#include "Graphe.h"
+#include <iostream>
+
+Graphe::Graphe()
+{
+    //ctor
+}
+
+Graphe::~Graphe()
+{
+    //dtor
+}
+
+void Graphe::afficher() const///afficher les données d'un bloc pour debug
+{
+    std::cout<<m_ordre<<std::endl
+             <<m_orientation<<std::endl
+             << m_taille<<std::endl;
+
+}
+/// Surcharge de l'opérateur d'insertion vers un flot de sortie
+/// c'est la "méthode d'affichage" des objets de type Station
+friend std::ostream& Graphe:: operator<<(std::ostream& out, const Station& s)
+{
+    out << "id=" << std::setw(2) << s.m_id << "  x=" << s.m_x << "  y=" << s.m_y << "  freq=" << s.m_frequence << "  Adjacents=";
+    for (const auto a : s.m_adjacents)
+        out << a->m_id << " ";
+    out << std::endl;
+    return out;
+}

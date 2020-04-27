@@ -16,7 +16,7 @@ class Arete
 
     private:
         double m_poids;
-        std::pair<Sommet*,Sommet*> m_arete;
+        std::pair<Sommet*,Sommet*> m_arete;// extremites de laretes
 };
 
 #endif // ARETE_H
