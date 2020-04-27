@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-class Sommet
+class Sommet//dans chaque somme ya un tableaux darretes
 {
     public:
         Sommet();//constructeur
@@ -11,8 +11,7 @@ class Sommet
 
         Sommet(int idSommet, std::string nom, std::pair<int,int> coords);
         virtual void afficher() const;
-
-
+// dans graphe oriente : ext  le depart ext destination
     //protected:
 
     private:

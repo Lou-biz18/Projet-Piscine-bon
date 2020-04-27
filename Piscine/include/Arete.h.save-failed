@@ -1,0 +1,22 @@
+/// aide TP°5 de Mme Dridi
+
+#ifndef ARETE_H
+#define ARETE_H
+#include "Sommet.h"
+#include <iostream>
+
+class Arete
+{
+    public:
+        Arete();
+        virtual ~Arete();
+
+
+    //protected:
+
+    private:
+        double m_poids;
+        std::pair<Sommet*,Sommet*> m_arete;
+};
+
+#endif // ARETE_H

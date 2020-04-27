@@ -1,11 +1,20 @@
-#include "graphe.h"
+#include "Graphe.h"
+#include <iostream>
 
-graphe::graphe()
+Graphe::Graphe()
 {
     //ctor
 }
 
-graphe::~graphe()
+Graphe::~Graphe()
 {
     //dtor
+}
+
+void Graphe::afficher() const///afficher les données d'un bloc pour debug
+{
+    std::cout<<m_ordre<<std::endl
+             <<m_orientation<<std::endl
+             << m_taille<<std::endl;
+
 }
