@@ -11,7 +11,7 @@ class Arete
         Arete();
         virtual ~Arete();
 
-        Arete(double poids, std::pair<Sommet*,Sommet*> arete);
+
     //protected:
 
     private:
