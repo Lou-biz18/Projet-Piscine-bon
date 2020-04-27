@@ -10,7 +10,6 @@ class Sommet
         virtual ~Sommet();
 
         Sommet(int idSommet, std::string nom, std::pair<int,int> coords);
-        virtual void afficher() const;
 
 
     //protected:
@@ -22,8 +21,8 @@ class Sommet
         std::pair<int,int> m_coords;
 
         ///svg
-        //std::string m_couleur;
-        //float m_rayon;
+        std::string m_couleur;
+        float m_rayon;
 };
 
 #endif // SOMMET_H
