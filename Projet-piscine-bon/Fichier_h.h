@@ -10,6 +10,6 @@
 #include "Sommet.h"
 #include "Arete.h"
 
-void split(const std::string &ligne, char delimiteur);
+std::vector<std::string> split(const std::string &ligne, char delimiteur);
 
 #endif // FICHIER_H_H_INCLUDED

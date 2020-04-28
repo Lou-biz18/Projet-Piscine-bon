@@ -49,7 +49,7 @@ std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux re�
 
 }
 ///M�thode de parsing de type Graphe
-void Graphe::chargeGraphe(std::string nomFichier)
+/*void Graphe::chargeGraphe(std::string nomFichier)
 {
     try
     {
@@ -68,7 +68,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
             {
                 get_orient(tabLigne[0]);
                 get_ordre(tabLigne[1]);
-                /*for(int i=2;i<1+m_ordre;i++)
+                for(int i=2;i<1+m_ordre;i++)
                 {
                     ajoutArete(tabLigne[i]);//cr�er le nombre d'arete (n-1)
 
@@ -78,7 +78,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
                 {
 
                 }
-                */
+
 
             }
         }
@@ -89,7 +89,8 @@ void Graphe::chargeGraphe(std::string nomFichier)
             std::cerr<<"Attention: "<<e.what()<<std::endl;
     }
 
-}/*
+}*/
+/*
 Graphe::chargeGraphe(std::string fileName){
     getOriented(ligne 0) // une methode de graph
     getOrder(ligne 1),   // pareil
@@ -173,3 +174,9 @@ Graphe::addArrete(std::string){
     m_tabArette = m_tabArette + newArrete; //si la syntaxe est pas bonne c'est normal XD c'est un peu du pseudocode
 }
 */
+void Graphe::ajoutArete(std::string ligne)
+{
+    //split
+    split(ligne, ' ');
+    Arete newArete(m_idArete, m_arete.first, m_arete.second);
+}

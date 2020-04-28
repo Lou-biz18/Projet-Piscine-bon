@@ -9,11 +9,14 @@ class Arete
         Arete();
         virtual ~Arete();
 
-        Arete(double poids, std::pair<Sommet*,Sommet*> arete);
-    //protected:
+        int get_idArete()const;
+        int get_ex1();
+        int get_ex2();
+
 
     private:
-        double m_poids;
+        int m_idArete;
+        //double m_poids;
         std::pair<Sommet*,Sommet*> m_arete;// extremites de laretes
 };
 

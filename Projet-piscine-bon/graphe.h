@@ -8,13 +8,14 @@ class Graphe
         Graphe(std::string nomFichier);//prototyper le constructeur
         ~Graphe();
 
-        Graphe(int ordre, bool orient, int taille);
+        void ajoutArete(std::string ligne);
         void chargeGraphe(std::string nomFichier);
         //void chargeGraphe(std::string&fichier);
         void afficher() const;
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
+
 
 
     //protected:

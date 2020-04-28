@@ -8,8 +8,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         Sommet();//constructeur
         virtual ~Sommet();
 
-        Sommet(int idSommet, std::string nom, std::pair<int,int> coords);
         virtual void afficher() const;
+        int get_idSommet();
 // dans graphe oriente : ext  le depart ext destination
     //protected:
 

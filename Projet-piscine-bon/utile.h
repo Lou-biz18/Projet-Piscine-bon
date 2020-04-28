@@ -3,6 +3,6 @@
 #include <iostream>
 #include <vector>
 
-void split(const std::string &ligne, char delimiteur);
+std::vector<std::string> split(const std::string &ligne, char delimiteur);
 
 #endif // UTILE_H_INCLUDED
