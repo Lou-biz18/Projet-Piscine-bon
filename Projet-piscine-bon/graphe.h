@@ -7,20 +7,23 @@
 class Graphe
 {
     public:
-        Graphe();
+        Graphe(std::string nomFichier);//prototyper le constructeur
         ~Graphe();
 
-        Graphe(int ordre, bool orientation, int taille);
-
-        void chargeGraphe(std::string&fichier);
+        Graphe(int ordre, bool orient, int taille);
+        void chargeGraphe(std::string nomFichier);
+        //void chargeGraphe(std::string&fichier);
         void afficher() const;
+        bool get_orient() const;
+        int get_ordre() const;
+        int get_taille() const;
 
 
     //protected:
 
     private:
         int m_ordre;
-        bool m_orientation;
+        bool m_orient;
         int m_taille;
 };
 
