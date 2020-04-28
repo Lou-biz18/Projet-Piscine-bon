@@ -106,49 +106,8 @@ Graphe::addArrete(std::string){
     Arrete newArrete(index, m_tabArrete[indexSommet1], m_tabArrete[indexSommet2]);
     m_tabArette = m_tabArette + newArrete; //si la syntaxe est pas bonne c'est normal XD c'est un peu du pseudocode
 }*/
-/*void Graphe::chargeGraphe(std::string&f)//parsing lou testsx
-{
-    std::string monFichier=f;
-    try
-    {
-        std::string ligne;//chaque ligne lue
-        std::ifstream fichier{monFichier};//ouverture du fichier
 
-        if(!fichier)//si le fichier a un probl�me
-        {
-            std::cout<<"Erreur ouverture du fichier"<<std::endl;
-            exit(EXIT_FAILURE);
-        }
-        else
-        {
-            std::cout<<"Chargement fichier: OK"<<std::endl;
-            while(std::getline(fichier, ligne))//tant qu'il y a une ligne � lire dans le fichier
-            {//tester sur quelle ligne je suis
-                std::istringstream iss(ligne);//on cr�e flux avec toutes les donn�es lues sur une ligne du fichier par ligne
-                std::istringstream tempo(recupFichier(iss));//autre flux cr�� avec string des donn�es tri�es par fonction triFichier
 
-            }
-        }
-
-    }
-    catch(const std::exception&e)
-    {
-            std::cerr<<"Attention: "<<e.what()<<std::endl;
-    }
-
-}
-*/
-
-//0 non orient�
-//1 orient�
-
-/*
-Graphe::Graphe(std::istringstream iss)//recup des donn�es du flux
-{
-    iss >>m_ordre
-        >>m_orientation
-        >>m_taille
-}*/
 /*
 DataField::constructGraph(fileName){
     Graphe m_graph(fileName);
