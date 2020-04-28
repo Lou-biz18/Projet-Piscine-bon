@@ -1,46 +1,46 @@
-#include "Fichier_h.h"// acces aux librairies
+#include "Fichier_h.h"
 
-/// strings de sorties du prgm
-std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le num ro correspondant) \n1: Charger un graphe\n2: Choisir un fichier de pond rations\n3: Calculer/Afficher/Sauvegarder les diff rentss indices de centralit \n4: Faire des tests de vuln rabilit \n5 : Quitter";
-std::string stringFail = "Please enter an integer";
-std::string stringTooBig = "Number entered is too big";
+/// Phrases de sorties du programme
+std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite\n5 : Quitter";
+std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
+std::string mauvaiseOption = "L'option demandée n'existe pas";
+std::string queFaire = "L'option demandée n'existe pas";
 
 //Choix de l'utilisateur
-bool affichageMenu(int choix)
+bool lancementDuService(int choix)
 {
+    const char* nomFichier;
     switch(choix)
     {
-    case 1:
-        std::cout << "Creer un graphe" << std::endl;//charge le fichier et recup données
-        Graphe graphe("test.txt");//creation du graphe du fichier text.txt
-        break;
-    case 2:
-        std::cout << "option 2" << std::endl;
-        break;
-    case 3:
-        std::cout << "option 3" << std::endl;
-        break;
-    case 4:
-        std::cout << "option 4" << std::endl;
-        break;
-    case 5:
-        std::cout << "Partir" << std::endl;
-        return true;
+        case 5:
+            std::cout << "exit" << std::endl;
+            return true;
+        case 4:
+            std::cout << "menu4" << std::endl;
+            break;
+        case 3:
+            std::cout << "menu3" << std::endl;
+            break;
+        case 2:
+            std::cout << "menu2" << std::endl;
+            break;
+        case 1:
+            std::cout << "Création du graphe..." << std::endl;
+            nomFichier = demandeNomFichier();
+            // A exporter dans une fonction
+            Graphe graphe(nomFichier);
+            break;
     }
     return false;
 }
+
 bool menu()
 {
     int choixUtilisateur;
-    std::cout << "Bienvenue sur notre support de gestion de graphes" <<std::endl << std ::endl
-              << demandeMenu << std::endl
-              << " Creer un graphe : 1 " << std::endl
-              << "option2 : 2" << std::endl
-              << "option3 : 3" << std::endl
-              << "option4 : 4" << std::endl
-              << "Quitter : 5" << std::endl;
+    std::cout << "Bienvenue sur notre support de gestion de graphes" <<std::endl << std::endl
+              << demandeMenu << std::endl;
 
-              std::cin >> choixUtilisateur ;
+    std::cin >> choixUtilisateur;
 
     while(1)
     {
@@ -48,12 +48,12 @@ bool menu()
         {
             cin.clear();// recup un flux pur
             cin.ignore(numeric_limits<streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
-            std::cout << "snifff c est pas un int" <<std::endl;
+            std::cout << mauvaiseEntree <<std::endl;
             std::cin >> choixUtilisateur
         }
         else if(choixUtilisateur<1 || choixUtilisateur >5)
         {
-            std::cout << "chiffre trop eleve" << endl;
+            std::cout << mauvaiseOption << endl;
             std::cin >> choixUtilisateur;
         }
         else
@@ -62,14 +62,17 @@ bool menu()
         }
 
     }
-    return affichageMenu(choixUtilisateur);
+    return lancementDuService(choixUtilisateur);
 }
 
 int main() {
-    bool quitter = false; // bool pour tester si lútilisateur veut quitter
-    while (!quitter) {   ///On fait tourner la boucle pour utiliser le menu
+    bool quitter = false; // bool pour tester si l'utilisateur veut quitter
+    while (!quitter)   /// On relance le menu tant que l'utilisateur n'a pas demandé la sortie du programme
+    {
         quitter = menu();
+        if (!quitter) {
+            std::cout << queFaire << std::endl << demandeMenu << std::endl;
+        }
     }
     return 0;
 }
-

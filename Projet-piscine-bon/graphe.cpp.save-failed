@@ -177,7 +177,7 @@ Graphe::addArrete(std::string){
 void Graphe::ajoutArete(std::string ligne)
 {
     //split
-    std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+    std::vector recupLigneSplit=split(ligne, ' ');
 
     Arete newArete(m_idArete, m_arete.first, m_arete.second);
 }

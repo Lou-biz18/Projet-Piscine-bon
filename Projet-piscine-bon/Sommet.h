@@ -10,6 +10,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
 
         virtual void afficher() const;
         int get_idSommet();
+        std::string get_nom();
 // dans graphe oriente : ext  le depart ext destination
     //protected:
 
