@@ -2,28 +2,26 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Piscine" />
+		<Option title="Projet-piscine-bon" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Piscine" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Projet-piscine-bon" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Piscine" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Projet-piscine-bon" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,13 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Arete.cpp" />
-		<Unit filename="Fichier_h.h" />
-		<Unit filename="Sommet.cpp" />
-		<Unit filename="graphe.cpp" />
-		<Unit filename="include/Arete.h" />
-		<Unit filename="include/Sommet.h" />
-		<Unit filename="include/graphe.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
