@@ -1,5 +1,4 @@
 #include "Fichier_h.h"
-#include <iostream>
 
 Sommet::Sommet()
 {

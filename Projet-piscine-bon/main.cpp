@@ -1,52 +1,70 @@
 #include "Fichier_h.h"
 
-bool launchAssets(int uInput) {    //Menu
-    switch (uInput) {
+/// SS PRGMS MENU
+
+//Choix de l'utilisateur
+bool affichageMenu(int choix)
+{
+    switch(choix)
+    {
     case 1:
-        cout << "creating Graph" << endl;
-        Graphe graphe("test.txt");
+        std::cout << "Creer un graphe" << std::endl;//charge le fichier et recup données
+        Graphe graphe("test.txt");//creation du graphe du fichier text.txt
         break;
     case 2:
-        cout << "menu2" << endl;
+        std::cout << "option 2" << std::endl;
         break;
     case 3:
-        cout << "menu3" << endl;
+        std::cout << "option 3" << std::endl;
         break;
     case 4:
-        cout << "menu4" << endl;
+        std::cout << "option 4" << std::endl;
         break;
     case 5:
-        cout << "exit" << endl;
+        std::cout << "Partir" << std::endl;
         return true;
     }
     return false;
 }
+bool menu()
+{
+    int choixUtilisateur;
+    std::cout << "Bienvenue sur notre support de gestion de graphes" <<std::endl << std ::endl
+              << " Creer un graphe : 1 " << std::endl
+              << "option2 : 2" << std::endl
+              << "option3 : 3" << std::endl
+              << "option4 : 4" << std::endl
+              << "Partir : 5" << std::endl;
 
-bool menu() {
-    int x;
-    cout << demandeMenu << endl;  //Appele du menu
-    cin >> x;
+              std::cin >> choixUtilisateur ;
 
-    while (1) {
-        if (cin.fail()) {
-            cin.clear();   //Remet le flux d entree dans un etat apte � fournir la valeur a extraire
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');  //Permet d ignorer ces donn�es que le tzmpon du flux contient
-            cout << stringFail << endl;
-            cin >> x;
-        } else if (x < 1 || x > 5) {
-            cout << stringTooBig << endl;
-            cin >> x;
-        } else {
+    while(1)
+    {
+        if(cin.fail())
+        {
+            cin.clear();// recup un flux pur
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
+            std::cout << "snifff c est pas un int" <<std::endl;
+            std::cin >> choixUtilisateur
+        }
+        else if(choixUtilisateur<1 || choixUtilisateur >5)
+        {
+            std::cout << "chiffre trop eleve" << endl;
+            std::cin >> choixUtilisateur;
+        }
+        else
+        {
             break;
         }
+
     }
-    return launchAssets(x);
+    return affichageMenu(choixUtilisateur);
 }
 
 int main() {
-    bool userAbort = false; // bool pour tester si lútilisateur veut quitter
-    while (!userAbort) {   ///On fait tourner la boucle pour utiliser le menu
-        userAbort = menu();
+    bool quitter = false; // bool pour tester si lútilisateur veut quitter
+    while (!quitter) {   ///On fait tourner la boucle pour utiliser le menu
+        quitter = menu();
     }
     return 0;
 }
