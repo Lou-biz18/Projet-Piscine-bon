@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1588005049 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\main.cpp
+1588026361 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\main.cpp
 	<iostream>
+	"graphe.h"
+	"Sommet.h"
+	"Arete.h"
 
 1588005049 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\sommet.cpp
 	"Sommet.h"
@@ -9,11 +12,13 @@
 1588011681 c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\include\sommet.h
 	<iostream>
 
-1588020988 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\graphe.cpp
+1588066139 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\graphe.cpp
 	"Graphe.h"
 	<iostream>
 
-1588011917 c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\include\graphe.h
+1588025932 c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\include\graphe.h
+	<fstream>
+	<sstream>
 
 1588011720 source:c:\users\bizet\onedrive\documents\github\projet-piscine\piscine\arete.cpp
 	"Arete.h"

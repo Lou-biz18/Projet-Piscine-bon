@@ -1,15 +1,20 @@
 #ifndef GRAPHE_H
 #define GRAPHE_H
+#include <fstream>
+#include <sstream>
 
 
 class Graphe
 {
     public:
         Graphe();
-        virtual ~Graphe();
+        ~Graphe();
 
         Graphe(int ordre, bool orientation, int taille);
-        virtual void afficher() const;
+
+        void chargeGraphe(std::string&fichier);
+        void afficher() const;
+
 
     //protected:
 
