@@ -15,5 +15,5 @@ void setup(Graphe&graphe)//muscle
     std::string monFichier="test.txt";
     graphe.chargeGraphe(monFichier);
     graphe.afficher();
-    std::cout << "Hello world!" << std::endl;
+    std::cout << "il y a tous les fichiers !!! Carla tu les vois ? lol" << std::endl;
 }
