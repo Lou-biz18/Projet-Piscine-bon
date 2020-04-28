@@ -1,9 +1,7 @@
-/// aide TP°5 de Mme Dridi
-
+/// aide TPï¿½5 de Mme Dridi
 #ifndef ARETE_H
 #define ARETE_H
-#include "Sommet.h"
-#include <iostream>
+#include "Fichier_h.h"
 
 class Arete
 {

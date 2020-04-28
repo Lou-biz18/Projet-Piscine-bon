@@ -1,7 +1,6 @@
 #ifndef SOMMET_H
 #define SOMMET_H
-#include <iostream>
-
+#include "Fichier_h.h"
 
 class Sommet//dans chaque somme ya un tableaux darretes
 {
@@ -24,5 +23,4 @@ class Sommet//dans chaque somme ya un tableaux darretes
         //std::string m_couleur;
         //float m_rayon;
 };
-
-#endif // SOMMET_H
+#endif

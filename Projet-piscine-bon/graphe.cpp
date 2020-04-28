@@ -1,11 +1,10 @@
-#include "Graphe.h"
-#include <iostream>
-#include <vector>
-/*
-Graphe::Graphe()
+#include "Fichier_h.h"
+
+///TJ dans constructeur
+Graphe::Graphe(std::string nomFichier)
 {
-    //ctor
-}*/
+    //chargeGraphe(nomFichier);
+}
 
 Graphe::~Graphe()
 {
@@ -27,7 +26,7 @@ int Graphe::get_taille()const
     return m_taille;
 }
 
-void Graphe::afficher() const///afficher les données d'un bloc pour debug
+void Graphe::afficher() const///afficher les donnï¿½es d'un bloc pour debug
 {
     std::cout<<std::endl<<"graphe ";
             if(m_orient) std::cout<<"oriente"<<std::endl<<"  ";
@@ -37,37 +36,32 @@ void Graphe::afficher() const///afficher les données d'un bloc pour debug
 
 }
 
-std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux reçu en paramètre
+std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux reï¿½u en paramï¿½tre
 {
 
     std::string orient, ordre;
 
-    ///on récupère les variables
+    ///on rï¿½cupï¿½re les variables
     iss>>orient;
     iss>>ordre;
 
     return orient+" "+ordre;
 
 }
-///TJ dans constructeur
-Graphe::graphe(std::string nomFichier)
-{
-    chargeGraphe(nomFichier)
-}
-///Méthode de parsing de type Graphe
+///Mï¿½thode de parsing de type Graphe
 void Graphe::chargeGraphe(std::string nomFichier)
 {
     try
     {
-        std::vector<std::string> tabLigne;//tab dynamique constitué des lignes de données du le fichier
-        std::ifstream fichier{nomFichier};//ouverture du fichier
+        std::vector<std::string> tabLigne;//tab dynamique constituï¿½ des lignes de donnï¿½es du le fichier
+        std::ifstream fichier(nomFichier);//ouverture du fichier
 
         if(!fichier)//TEST ouverture de fichier
         {
             std::cout<<"Erreur ouverture du fichier"<<std::endl;
             exit(EXIT_FAILURE);
         }
-        else//le fichier s'est bien chargé et peut etre lu
+        else//le fichier s'est bien chargï¿½ et peut etre lu
         {
             std::cout<<"Chargement fichier: OK"<<std::endl;
             while(std::getline(fichier, tabLigne))
@@ -76,7 +70,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
                 get_ordre(tabLigne[1]);
                 /*for(int i=2;i<1+m_ordre;i++)
                 {
-                    ajoutArete(tabLigne[i]);//créer le nombre d'arete (n-1)
+                    ajoutArete(tabLigne[i]);//crï¿½er le nombre d'arete (n-1)
 
                 }
                 get_taille(tabLigne[2+m_ordre])
@@ -99,10 +93,10 @@ void Graphe::chargeGraphe(std::string nomFichier)
 Graphe::chargeGraphe(std::string fileName){
     getOriented(ligne 0) // une methode de graph
     getOrder(ligne 1),   // pareil
-    Pour chaque ligne de sommet (ligne n = 2 à 1 + graph.m_order):
+    Pour chaque ligne de sommet (ligne n = 2 ï¿½ 1 + graph.m_order):
       addArrete(ligne n) // methode de graph qui cree une arrete en appelant son constructeur et la met dans le tableau d'arrete
     graph.getTaille(line 2 + graph.m_order) // bon c'est parlant
-    Pour chaque ligne de arete (ligne n = 3 à 2 + graph.m_taille):
+    Pour chaque ligne de arete (ligne n = 3 ï¿½ 2 + graph.m_taille):
       addSommet(ligne n) // pareil que pour Sommet
 }
 
@@ -119,7 +113,7 @@ Graphe::addArrete(std::string){
         std::string ligne;//chaque ligne lue
         std::ifstream fichier{monFichier};//ouverture du fichier
 
-        if(!fichier)//si le fichier a un problème
+        if(!fichier)//si le fichier a un problï¿½me
         {
             std::cout<<"Erreur ouverture du fichier"<<std::endl;
             exit(EXIT_FAILURE);
@@ -127,10 +121,10 @@ Graphe::addArrete(std::string){
         else
         {
             std::cout<<"Chargement fichier: OK"<<std::endl;
-            while(std::getline(fichier, ligne))//tant qu'il y a une ligne à lire dans le fichier
+            while(std::getline(fichier, ligne))//tant qu'il y a une ligne ï¿½ lire dans le fichier
             {//tester sur quelle ligne je suis
-                std::istringstream iss(ligne);//on crée flux avec toutes les données lues sur une ligne du fichier par ligne
-                std::istringstream tempo(recupFichier(iss));//autre flux créé avec string des données triées par fonction triFichier
+                std::istringstream iss(ligne);//on crï¿½e flux avec toutes les donnï¿½es lues sur une ligne du fichier par ligne
+                std::istringstream tempo(recupFichier(iss));//autre flux crï¿½ï¿½ avec string des donnï¿½es triï¿½es par fonction triFichier
 
             }
         }
@@ -144,11 +138,11 @@ Graphe::addArrete(std::string){
 }
 */
 
-//0 non orienté
-//1 orienté
+//0 non orientï¿½
+//1 orientï¿½
 
 /*
-Graphe::Graphe(std::istringstream iss)//recup des données du flux
+Graphe::Graphe(std::istringstream iss)//recup des donnï¿½es du flux
 {
     iss >>m_ordre
         >>m_orientation
@@ -166,10 +160,10 @@ Graphe::graphe(std::string fileName){
 Graphe::chargeGraphe(std::string fileName){
     getOriented(ligne 0) // une methode de graph
     getOrder(ligne 1),   // pareil
-    Pour chaque ligne d'arrete (ligne n = 2 à 1 + graph.m_order):
+    Pour chaque ligne d'arrete (ligne n = 2 ï¿½ 1 + graph.m_order):
       addArrete(ligne n) // methode de graph qui cree une arrete en appelant son constructeur et la met dans le tableau d'arrete
     graph.getTaille(line 2 + graph.m_order) // bon c'est parlant
-    Pour chaque ligne de sommet (ligne n = 3 à 2 + graph.m_taille):
+    Pour chaque ligne de sommet (ligne n = 3 ï¿½ 2 + graph.m_taille):
       addSommet(ligne n) // pareil que pour Sommet
 }
 

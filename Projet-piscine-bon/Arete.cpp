@@ -1,4 +1,4 @@
-#include "Arete.h"
+#include "Fichier_h.h"
 
 Arete::Arete()
 {

@@ -1,8 +1,6 @@
 #ifndef GRAPHE_H
 #define GRAPHE_H
-#include <fstream>
-#include <sstream>
-
+#include "Fichier_h.h"
 
 class Graphe
 {
@@ -26,5 +24,4 @@ class Graphe
         bool m_orient;
         int m_taille;
 };
-
-#endif // GRAPHE_H
+#endif
