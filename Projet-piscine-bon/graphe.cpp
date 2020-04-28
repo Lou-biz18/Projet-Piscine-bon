@@ -179,5 +179,15 @@ void Graphe::ajoutArete(std::string ligne)
     //split
     std::vector<std::string> recupLigneSplit=split(ligne, ' ');
 
-    Arete newArete(m_idArete, m_arete.first, m_arete.second);
+    Arete newArete(recupLigneSplit[0], m_tabArete[recupLigneSplit[1]],m_tabArete[recupLigneSplit[2]]);
+    //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
 }
+void Graphe::ajoutSommet(std::string ligne)
+{
+    //split
+    std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+
+    Sommet newSommet(recupLigneSplit[0], m_tabSommet[recupLigneSplit[1]],m_tabSommet[recupLigneSplit[2]]);
+    //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
+}
+
