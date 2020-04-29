@@ -40,6 +40,7 @@ std::string demandeNomFichier()
 }
 
 void entete(){
+    using namespace std;
     std::string rouge = "\033[31m";
     std::string vert = "\033[32m";
     std::string jaune = "\033[33m";
