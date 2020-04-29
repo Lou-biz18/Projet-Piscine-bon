@@ -13,6 +13,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
 {
     public:
         Sommet();//constructeur
+        Sommet(int idSommet, std::string nom, int x, int y);
         virtual ~Sommet();
 
         virtual void afficher() const;
@@ -26,7 +27,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         int m_idSommet;
         std::string m_nom;
         std::pair<int,int> m_coords;
-        std::vector<Arete*> m_tabArete;
+        std::vector<Arete*> m_tabAreteSo;//il possede des aretes
+
 
         ///svg
         //std::string m_couleur;

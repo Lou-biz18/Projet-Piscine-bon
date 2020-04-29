@@ -15,18 +15,19 @@ class Sommet;
 class Arete
 {
    public:
-        Arete();
+        Arete(int idArete, Sommet*s1, Sommet*s2);
         virtual ~Arete();
 
         int get_idArete()const;
-        int get_ex1();
-        int get_ex2();
+        int get_s1();
+        int get_s2();
 
 
     private:
         int m_idArete;
         //double m_poids;
         std::pair<Sommet*,Sommet*> m_arete;// extremites de laretes
+
 };
 
 #endif // ARETE_H
