@@ -1,21 +1,31 @@
-/// aide TP°5 de Mme Dridi
-
+/// aide TPï¿½5 de Mme Dridi
 #ifndef ARETE_H
 #define ARETE_H
-#include "Sommet.h"
-#include <iostream>
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+#include "Graphe.h"
+#include "Sommet.h"
+
+
+class Sommet;
 class Arete
 {
-    public:
+   public:
         Arete();
         virtual ~Arete();
 
-        Arete(double poids, std::pair<Sommet*,Sommet*> arete);
-    //protected:
+        int get_idArete()const;
+        int get_ex1();
+        int get_ex2();
+
 
     private:
-        double m_poids;
+        int m_idArete;
+        //double m_poids;
         std::pair<Sommet*,Sommet*> m_arete;// extremites de laretes
 };
 

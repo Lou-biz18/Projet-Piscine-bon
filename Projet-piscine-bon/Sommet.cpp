@@ -1,5 +1,5 @@
 #include "Sommet.h"
-#include <iostream>
+#include "Arete.h"
 
 Sommet::Sommet()
 {
@@ -10,6 +10,17 @@ Sommet::~Sommet()
 {
     //dtor
 }
+
+int Sommet::get_idSommet()
+{
+    return m_idSommet;
+}
+
+std::string Sommet::get_nom()
+{
+    return m_nom;
+}
+
 void Sommet::afficher() const///afficher les données d'un bloc pour debug
 {
     std::cout<<m_idSommet<<std::endl
