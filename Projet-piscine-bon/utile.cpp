@@ -31,7 +31,7 @@ std::string demandeNomFichier()
             sortie = true;
         } else if (fichier.compare("quitter") == 0)  {
             fichier = "";
-            sortie == true;
+            sortie = true;
         } else {
             std::cout << "Le fichier renseigné n'existe pas." << std::endl;
         }
