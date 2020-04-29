@@ -26,7 +26,7 @@ bool lancementDuService(int choix)
             break;
         case 1:
             std::cout << "Création du graphe..." << std::endl;
-            nomFichier = demandeNomFichier();
+            //nomFichier = demandeNomFichier();//carla est en train de coder
             // A exporter dans une fonction
             Graphe graphe(nomFichier);
             break;
@@ -44,16 +44,16 @@ bool menu()
 
     while(1)
     {
-        if(cin.fail())
+        if(std::cin.fail())
         {
-            cin.clear();// recup un flux pur
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
+            std::cin.clear();// recup un flux pur
+            std::cin.ignore(std::numeric_limits<streamsize>::std::max(),'\n');//permet d'ignorer que le tampon du flux contient
             std::cout << mauvaiseEntree <<std::endl;
-            std::cin >> choixUtilisateur
+            std::cin >> choixUtilisateur;
         }
         else if(choixUtilisateur<1 || choixUtilisateur >5)
         {
-            std::cout << mauvaiseOption << endl;
+            std::cout << mauvaiseOption << std::endl;
             std::cin >> choixUtilisateur;
         }
         else
