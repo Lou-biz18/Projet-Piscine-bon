@@ -115,7 +115,6 @@ Graphe::addArrete(std::string){
     m_tabArette = m_tabArette + newArrete; //si la syntaxe est pas bonne c'est normal XD c'est un peu du pseudocode
 }*/
 
-
 /*
 DataField::constructGraph(fileName){
     Graphe m_graph(fileName);
@@ -149,6 +148,7 @@ void Graphe::ajoutArete(std::string ligne)
     Arete newArete(recupLigneSplit[0], m_tabArete[recupLigneSplit[1]],m_tabArete[recupLigneSplit[2]]);
     //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
 }
+
 void Graphe::ajoutSommet(std::string ligne)
 {
     //split
