@@ -2,6 +2,7 @@
 #include <limits>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
 
 #include "Graphe.h"
 #include "utile.h"
@@ -75,7 +76,7 @@ bool menu()
 
 int main() {
     bool quitter = false; // bool pour tester si l'utilisateur veut quitter
-    std::cout << "Bienvenue sur notre support de gestion de graphes" << std::endl;
+    entete();
     while (!quitter)   /// On relance le menu tant que l'utilisateur n'a pas demandé la sortie du programme
     {
         quitter = menu();

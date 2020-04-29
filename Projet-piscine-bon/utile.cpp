@@ -38,3 +38,53 @@ std::string demandeNomFichier()
     }
     return fichier;
 }
+
+void entete(){
+    std::string rouge = "\033[31m";
+    std::string vert = "\033[32m";
+    std::string jaune = "\033[33m";
+    std::string bleu = "\033[34m";
+    std::string magenta = "\033[35m";
+    std::string cian = "\033[36m";
+    std::string blanc = "\033[37m";
+    std::string normal = "\033[0m";
+
+    std::cout << bleu;
+    std::cout <<"     ________  __                                      __              "<<endl;
+    std::cout <<"    |        \\|  \\                                    |  \\             "<<endl;
+    std::cout <<"     \\$$$$$$$$| $$____    ______    ______    ______   \\$$  ______     "<<endl;
+    std::cout <<"       | $$   | $$    \\  /      \\  /      \\  /      \\ |  \\ /      \\    "<<endl;
+    std::cout <<"       | $$   | $$$$$$$\\|  $$$$$$\\|  $$$$$$\\|  $$$$$$\\| $$|  $$$$$$\\   "<<endl;
+    std::cout <<"       | $$   | $$  | $$| $$    $$| $$  | $$| $$   \\$$| $$| $$    $$   "<<endl;
+    std::cout <<"       | $$   | $$  | $$| $$$$$$$$| $$__/ $$| $$      | $$| $$$$$$$$   "<<endl;
+    std::cout <<"       | $$   | $$  | $$ \\$$     \\ \\$$    $$| $$      | $$ \\$$     \\   "<<endl;
+    std::cout <<"        \\$$    \\$$   \\$$  \\$$$$$$$  \\$$$$$$  \\$$       \\$$  \\$$$$$$$   "<<endl;
+    std::cout <<"                                                                  "<<endl;
+
+    std::cout << blanc;
+    std::cout <<"                             __                      "<<endl;
+    std::cout <<"                            |  \\                     "<<endl;
+    std::cout <<"                        ____| $$  ______    _______  "<<endl;
+    std::cout <<"                       /      $$ /      \\  /       \\ "<<endl;
+    std::cout <<"                      |  $$$$$$$|  $$$$$$\\|  $$$$$$$ "<<endl;
+    std::cout <<"                      | $$  | $$| $$    $$ \\$$    \\  "<<endl;
+    std::cout <<"                      | $$__| $$| $$$$$$$$ _\\$$$$$$\\ "<<endl;
+    std::cout <<"                       \\$$    $$ \\$$     \\|       $$ "<<endl;
+    std::cout <<"                        \\$$$$$$$  \\$$$$$$$ \\$$$$$$$  "<<endl;
+
+    std::cout << rouge;
+    std::cout <<"     ______                                 __                           "<<endl;
+    std::cout <<"    /      \\                               /  |                          "<<endl;
+    std::cout <<"   /$$$$$$  |  ______    ______    ______  $$ |____    ______    _______ "<<endl;
+    std::cout <<"   $$ | _$$/  /      \\  /      \\  /      \\ $$      \\  /      \\  /       |"<<endl;
+    std::cout <<"   $$ |/    |/$$$$$$  | $$$$$$  |/$$$$$$  |$$$$$$$  |/$$$$$$  |/$$$$$$$/ "<<endl;
+    std::cout <<"   $$ |$$$$ |$$ |  $$/  /    $$ |$$ |  $$ |$$ |  $$ |$$    $$ |$$      \\ "<<endl;
+    std::cout <<"   $$ \\__$$ |$$ |      /$$$$$$$ |$$ |__$$ |$$ |  $$ |$$$$$$$$/  $$$$$$  |"<<endl;
+    std::cout <<"   $$    $$/ $$ |      $$    $$ |$$    $$/ $$ |  $$ |$$       |/     $$/ "<<endl;
+    std::cout <<"    $$$$$$/  $$/        $$$$$$$/ $$$$$$$/  $$/   $$/  $$$$$$$/ $$$$$$$/  "<<endl;
+    std::cout <<"                                 $$ |                                    "<<endl;
+    std::cout <<"                                 $$ |                                    "<<endl;
+    std::cout <<"                                 $$/                                     "<<endl;
+
+    std::cout << normal;
+}

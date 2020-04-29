@@ -96,7 +96,6 @@ void Graphe::chargeGraphe(std::string nomFichier)
             for(int i=2;i<1+m_ordre;i++)//ajoute les sommets dans tabSommet
             {
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
-
             }
             m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
             std::vector<Arete*> temp(m_taille);
