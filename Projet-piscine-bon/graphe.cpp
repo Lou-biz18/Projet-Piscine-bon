@@ -11,7 +11,7 @@
 ///TJ dans constructeur
 Graphe::Graphe(std::string nomFichier)
 {
-    //chargeGraphe(nomFichier);
+    chargeGraphe(nomFichier);
 }
 
 Graphe::~Graphe()
@@ -37,10 +37,21 @@ int Graphe::get_taille()const
 void Graphe::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout<<std::endl<<"graphe ";
-            if(m_orient) std::cout<<"oriente"<<std::endl<<"  ";
-            else std::cout<<"non oriente"<<std::endl<<"  ";
+    if(m_orient)
+        std::cout<<"oriente"<<std::endl<<"  ";
+    else
+        std::cout<<"non oriente"<<std::endl<<"  ";
     std::cout<<m_orient<<std::endl
              << m_ordre<<std::endl;// nb sommets
+    for(int i=0;i<m_tabSommet.size();i++)
+    {
+        std::cout<< m_tabSommet[i] << " ";
+    }
+    std::cout<<m_taille<<std::endl;
+    for(int i=0;i<m_tabArete.size();i++)
+    {
+        std::cout<< m_tabArete[i] << " "<<std::endl;
+    }
 
 }
 
@@ -77,23 +88,23 @@ void Graphe::chargeGraphe(std::string nomFichier)
             {
                 tabLigne.push_back(tmpStr);//recup infos dans tabline
             }
-                m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
-                m_ordre = std::stoi(tabLigne[1]);
-                // m_tabArette = new vector(m_ordre);
-                std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
-                m_tabSommet = tmp;
-                for(int i=2;i<1+m_ordre;i++)//ajoute les sommets dans tabSommet
-                {
-                    ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
+            m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
+            m_ordre = std::stoi(tabLigne[1]);
+            // m_tabArette = new vector(m_ordre);
+            std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
+            m_tabSommet = tmp;
+            for(int i=2;i<1+m_ordre;i++)//ajoute les sommets dans tabSommet
+            {
+                ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
 
-                }
-                m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
-                std::vector<Arete*> temp(m_taille);
-                m_tabArete = temp;
-                for(int i=3+m_ordre;i<3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
-                {
-                    ajoutArete(tabLigne[i]);
-                }
+            }
+            m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
+            std::vector<Arete*> temp(m_taille);
+            m_tabArete = temp;
+            for(int i=3+m_ordre;i<3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
+            {
+                ajoutArete(tabLigne[i]);
+            }
         }
 
     }
