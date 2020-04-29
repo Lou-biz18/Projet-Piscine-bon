@@ -13,7 +13,7 @@ bool lancementDuService(int choix)
     switch(choix)
     {
         case 5:
-            std::cout << "exit" << std::endl;
+            std::cout << "Quitter" << std::endl;
             return true;
         case 4:
             std::cout << "menu4" << std::endl;
@@ -26,9 +26,11 @@ bool lancementDuService(int choix)
             break;
         case 1:
             std::cout << "Création du graphe..." << std::endl;
-            //nomFichier = demandeNomFichier();//carla est en train de coder
-            // A exporter dans une fonction
-            Graphe graphe(nomFichier);
+            nomFichier = demandeNomFichier();
+            if (nomFichier) // Si le fichier existe, alors on lance la suite
+            {
+                Graphe graphe(nomFichier);
+            }
             break;
     }
     return false;
