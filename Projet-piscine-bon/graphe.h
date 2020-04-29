@@ -22,6 +22,9 @@ class Graphe
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
+        void set_orient(bool m_orient);
+        void set_ordre(int m_ordre);
+        void set_taille(int m_taille);
 
 
  //void chargeGraphe(std::string&fichier);

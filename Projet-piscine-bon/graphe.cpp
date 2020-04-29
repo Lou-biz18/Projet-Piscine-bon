@@ -11,7 +11,7 @@
 ///TJ dans constructeur
 Graphe::Graphe(std::string nomFichier)
 {
-    //chargeGraphe(nomFichier);
+    //chargeGraphe(nomFichier);^!
 }
 
 Graphe::~Graphe()
@@ -24,14 +24,28 @@ bool Graphe::get_orient()const
     return m_orient;
 }
 
+void Graphe::set_orient(bool  m_orient)
+{
+    m_orient= orient;
+}
+
 int Graphe::get_ordre()const
 {
     return m_ordre;
 }
 
+void Graphe::set_ordre (int m_ordre)
+{
+   m_ordre= ordre;
+}
+
 int Graphe::get_taille()const
 {
     return m_taille;
+}
+void Graphe::set_taille(int m_taille)
+{
+    m_taille=taille;
 }
 
 void Graphe::afficher() const///afficher les donn�es d'un bloc pour debug
