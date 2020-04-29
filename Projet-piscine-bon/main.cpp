@@ -15,7 +15,7 @@ std::string queFaire = "L'option demandée n'existe pas";
 //Choix de l'utilisateur
 bool lancementDuService(int choix)
 {
-    const char* nomFichier;
+    std::string nomFichier;
     switch(choix)
     {
         case 5:
@@ -33,7 +33,7 @@ bool lancementDuService(int choix)
         case 1:
             std::cout << "Création du graphe..." << std::endl;
             nomFichier = demandeNomFichier();
-            if (nomFichier) // Si le fichier existe, alors on lance la suite
+            if (nomFichier.compare("") == 0) // Si le fichier existe, alors on lance la suite
             {
                 Graphe graphe(nomFichier);
             }
