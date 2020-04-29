@@ -31,5 +31,7 @@ class Graphe
         bool m_orient;
         int m_taille;
         std::vector<Sommet*> m_tabSommet;
+        std::vector<Arete*> m_tabArete;
+
 };
 #endif

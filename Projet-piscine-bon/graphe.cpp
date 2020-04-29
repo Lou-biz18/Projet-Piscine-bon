@@ -1,6 +1,6 @@
+#include <iostream>
 #include <fstream>
 #include <sstream>
-#include <iostream>
 #include <vector>
 
 #include "Graphe.h"
@@ -57,7 +57,7 @@ std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux re�
 
 }
 ///M�thode de parsing de type Graphe
-/*void Graphe::chargeGraphe(std::string nomFichier)
+void Graphe::chargeGraphe(std::string nomFichier)
 {
     try
     {
@@ -72,23 +72,28 @@ std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux re�
         else//le fichier s'est bien charg� et peut etre lu
         {
             std::cout<<"Chargement fichier: OK"<<std::endl;
-            while(std::getline(fichier, tabLigne))
+            std::string tmpStr;
+            while(std::getline(fichier, tmpStr))//recup info du fichier ligne par ligne
             {
-                get_orient(tabLigne[0]);
-                get_ordre(tabLigne[1]);
-                for(int i=2;i<1+m_ordre;i++)
-                {
-                    ajoutArete(tabLigne[i]);//cr�er le nombre d'arete (n-1)
-
-                }
-                get_taille(tabLigne[2+m_ordre])
-                for(int i=2+m_ordre;i<)
-                {
-
-                }
-
-
+                tabLigne.push_back(tmpStr);//recup infos dans tabline
             }
+                m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
+                m_ordre = std::stoi(tabLigne[1]);
+                // m_tabArette = new vector(m_ordre);
+                std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
+                m_tabSommet = tmp;
+                for(int i=2;i<1+m_ordre;i++)//ajoute les sommets dans tabSommet
+                {
+                    ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
+
+                }
+                m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
+                std::vector<Arete*> temp(m_taille);
+                m_tabArete = temp;
+                for(int i=3+m_ordre;i<3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
+                {
+                    ajoutArete(tabLigne[i]);
+                }
         }
 
     }
@@ -97,7 +102,7 @@ std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux re�
             std::cerr<<"Attention: "<<e.what()<<std::endl;
     }
 
-}*/
+}
 /*
 Graphe::chargeGraphe(std::string fileName){
     getOriented(ligne 0) // une methode de graph
@@ -137,24 +142,35 @@ Graphe::chargeGraphe(std::string fileName){
 Graphe::addArrete(std::string){
     on coupe la ligne en 3 variables, index, indexSommet1 et indexSommet2
     Arrete newArrete(index, m_tabArrete[indexSommet1], m_tabArrete[indexSommet2]);
-    m_tabArette = m_tabArette + newArrete; //si la syntaxe est pas bonne c'est normal XD c'est un peu du pseudocode
 }
 */
 void Graphe::ajoutArete(std::string ligne)
 {
     //split
     std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+    int index = std::stoi(recupLigneSplit[0]);//on transforme une string en int grace a stoi (string to int)
+    int indexSom1 = std::stoi(recupLigneSplit[1]);
+    int indexSom2 = std::stoi(recupLigneSplit[2]);
 
-    Arete newArete(recupLigneSplit[0], m_tabArete[recupLigneSplit[1]],m_tabArete[recupLigneSplit[2]]);
+
+    Arete newArete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
     //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
+    //m_tabArete[index] = newArete;
+    m_tabArete[index] = &newArete;//tableau de Arete* (pointeur sur aretes)
 }
 
 void Graphe::ajoutSommet(std::string ligne)
 {
     //split
     std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+    //4 var pour les 4 attributs du constructeurs
+    int index = std::stoi(recupLigneSplit[0]);
+    std::string indexNom = recupLigneSplit[1];
+    int coord_x = std::stoi(recupLigneSplit[2]);
+    int coord_y = std::stoi(recupLigneSplit[3]);
 
-    Sommet newSommet(recupLigneSplit[0], m_tabSommet[recupLigneSplit[1]],m_tabSommet[recupLigneSplit[2]]);
-    //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
+    Sommet newSommet(index, indexNom ,coord_x,coord_y);
+    m_tabSommet[index] = &newSommet;//car tab de som *
+
 }
 

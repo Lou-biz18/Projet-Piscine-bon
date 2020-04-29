@@ -1,9 +1,12 @@
 #include "Sommet.h"
 #include "Arete.h"
 
-Sommet::Sommet()
+Sommet::Sommet(int idSommet, std::string nom, int x, int y)//constructeur de arete
 {
-    //ctor
+    m_idSommet = idSommet;
+    m_nom = nom;
+    m_coords.first = x;
+    m_coords.second = y;
 }
 
 Sommet::~Sommet()

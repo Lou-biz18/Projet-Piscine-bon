@@ -1,4 +1,10 @@
-#include "Fichier_h.h"
+#include <iostream>
+#include <limits>
+#include <fstream>
+#include <sstream>
+
+#include "Graphe.h"
+#include "utile.h"
 
 /// Phrases de sorties du programme
 std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite\n5 : Quitter";
@@ -47,7 +53,7 @@ bool menu()
         if(std::cin.fail())
         {
             std::cin.clear();// recup un flux pur
-            std::cin.ignore(std::numeric_limits<streamsize>::std::max(),'\n');//permet d'ignorer que le tampon du flux contient
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
             std::cout << mauvaiseEntree <<std::endl;
             std::cin >> choixUtilisateur;
         }
