@@ -1,6 +1,13 @@
 #ifndef GRAPHE_H
 #define GRAPHE_H
-#include "Fichier_h.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+#include "Graphe.h"
+#include "Sommet.h"
+#include "Arete.h"
 
 class Graphe
 {
@@ -23,6 +30,6 @@ class Graphe
         int m_ordre;
         bool m_orient;
         int m_taille;
-        std::vector<Sommet> m_tabSommet;
+        std::vector<Sommet*> m_tabSommet;
 };
 #endif

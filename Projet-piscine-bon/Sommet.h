@@ -1,6 +1,13 @@
 #ifndef SOMMET_H
 #define SOMMET_H
-#include "Fichier_h.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+#include "Graphe.h"
+
+class Arete;
 
 class Sommet//dans chaque somme ya un tableaux darretes
 {
@@ -19,6 +26,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         int m_idSommet;
         std::string m_nom;
         std::pair<int,int> m_coords;
+        std::vector<Arete*> m_tabArete;
 
         ///svg
         //std::string m_couleur;

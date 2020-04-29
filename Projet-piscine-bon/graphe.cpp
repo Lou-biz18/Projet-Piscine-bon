@@ -1,4 +1,12 @@
-#include "Fichier_h.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+#include "Graphe.h"
+#include "Sommet.h"
+#include "Arete.h"
+#include "utile.h"
 
 ///TJ dans constructeur
 Graphe::Graphe(std::string nomFichier)

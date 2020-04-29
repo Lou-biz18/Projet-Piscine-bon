@@ -1,4 +1,5 @@
-#include "Fichier_h.h"
+#include "Arete.h"
+#include "Sommet.h"
 
 Arete::Arete()
 {

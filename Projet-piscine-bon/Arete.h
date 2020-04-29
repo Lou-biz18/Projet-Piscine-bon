@@ -1,11 +1,20 @@
 /// aide TP�5 de Mme Dridi
 #ifndef ARETE_H
 #define ARETE_H
-#include "Fichier_h.h"
 
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+#include "Graphe.h"
+#include "Sommet.h"
+
+
+class Sommet;
 class Arete
 {
-    public:
+   public:
         Arete();
         virtual ~Arete();
 
