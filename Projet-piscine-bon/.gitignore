@@ -1,0 +1,3 @@
+*.save-failed
+bin/
+obj/
