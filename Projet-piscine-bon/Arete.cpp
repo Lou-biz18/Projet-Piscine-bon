@@ -6,6 +6,8 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2, int ponderation)//constructeur d
     m_idArete = idArete;
     m_sommets.first = s1;
     m_sommets.second = s2;
+    s1->ajoutArrete(this);
+    s2->ajoutArrete(this);
     m_ponderation = 1;
 }
 

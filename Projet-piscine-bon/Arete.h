@@ -16,7 +16,7 @@ class Arete
 {
    public:
         Arete(int idArete, Sommet*s1, Sommet*s2);
-        virtual ~Arete();
+        ~Arete();
 
         void afficher();
         int get_idArete()const;
