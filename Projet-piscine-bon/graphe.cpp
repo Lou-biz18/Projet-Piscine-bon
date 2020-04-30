@@ -128,47 +128,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
     }
 
 }
-/*
-Graphe::chargeGraphe(std::string fileName){
-    getOriented(ligne 0) // une methode de graph
-    getOrder(ligne 1),   // pareil
-    Pour chaque ligne de sommet (ligne n = 2 � 1 + graph.m_order):
-      addArrete(ligne n) // methode de graph qui cree une arrete en appelant son constructeur et la met dans le tableau d'arrete
-    graph.getTaille(line 2 + graph.m_order) // bon c'est parlant
-    Pour chaque ligne de arete (ligne n = 3 � 2 + graph.m_taille):
-      addSommet(ligne n) // pareil que pour Sommet
-}
 
-Graphe::addArrete(std::string){
-    on coupe la ligne en 3 variables, index, indexSommet1 et indexSommet2
-    Arrete newArrete(index, m_tabArrete[indexSommet1], m_tabArrete[indexSommet2]);
-    m_tabArette = m_tabArette + newArrete; //si la syntaxe est pas bonne c'est normal XD c'est un peu du pseudocode
-}*/
-
-/*
-DataField::constructGraph(fileName){
-    Graphe m_graph(fileName);
-}
-// et vu que:
-Graphe::graphe(std::string fileName){
-    chargeGraphe(fileName)
-}
-// et ensuite dans chargeGraphe si tu fais ma technique de parsing:
-Graphe::chargeGraphe(std::string fileName){
-    getOriented(ligne 0) // une methode de graph
-    getOrder(ligne 1),   // pareil
-    Pour chaque ligne d'arrete (ligne n = 2 � 1 + graph.m_order):
-      addArrete(ligne n) // methode de graph qui cree une arrete en appelant son constructeur et la met dans le tableau d'arrete
-    graph.getTaille(line 2 + graph.m_order) // bon c'est parlant
-    Pour chaque ligne de sommet (ligne n = 3 � 2 + graph.m_taille):
-      addSommet(ligne n) // pareil que pour Sommet
-}
-
-Graphe::addArrete(std::string){
-    on coupe la ligne en 3 variables, index, indexSommet1 et indexSommet2
-    Arrete newArrete(index, m_tabArrete[indexSommet1], m_tabArrete[indexSommet2]);
-}
-*/
 void Graphe::ajoutArete(std::string ligne)
 {
     //split
