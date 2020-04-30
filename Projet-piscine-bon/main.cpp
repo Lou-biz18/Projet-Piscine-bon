@@ -13,7 +13,7 @@ std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandée n'existe pas";
 
 //Choix de l'utilisateur
-bool lancementDuService(int choix, Environnement env)
+bool lancementDuService(int choix, Environnement* env)
 {
     std::string nomFichier;
     switch(choix)
@@ -29,26 +29,29 @@ bool lancementDuService(int choix, Environnement env)
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
-            nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
+            //nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
+            nomFichier = "testPond.txt"; // !! a enlever 
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
-                env.get_graphe()->ajouterPonderation(nomFichier);//pas sure de le modif
+                env->get_graphe()->chargePonderation(nomFichier);//pas sure de le modif
+                env->get_graphe()->afficher();
             }
             break;
         case 1:
             std::cout << "Création du graphe..." << std::endl;
-            nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
+            //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
+            nomFichier = "test.txt"; // !! a enlever 
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
-                env.createGraphe(nomFichier);
-                env.get_graphe()->afficher();
+                env->createGraphe(nomFichier);
+                env->get_graphe()->afficher();
             }
             break;
     }
     return false;
 }
 
-bool menu(Environnement env)
+bool menu(Environnement* env)
 {
     int choixUtilisateur;
     std::cout << std::endl << demandeMenu << std::endl;
@@ -80,7 +83,7 @@ bool menu(Environnement env)
 
 int main() {
     bool quitter = false; // bool pour tester si l'utilisateur veut quitter
-    Environnement env;
+    Environnement* env = new Environnement;
     entete();
     while (!quitter)   /// On relance le menu tant que l'utilisateur n'a pas demandé la sortie du programme
     {
