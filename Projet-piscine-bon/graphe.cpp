@@ -203,6 +203,6 @@ void Graphe::ajoutSommet(std::string ligne)
     int coord_y = std::stoi(recupLigneSplit[3]);
 
     Sommet newSommet(index, indexNom ,coord_x,coord_y);
-    m_tabSommet[index] = &newSommet;//car tab de som
+    m_tabSommet[index] = &newSommet;//car tab de soms
 }
 

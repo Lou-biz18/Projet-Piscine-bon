@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1588209864 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\arete.cpp
+	"Arete.h"
+	"Sommet.h"
+
+1588207424 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\arete.h
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+	"Graphe.h"
+	"Sommet.h"
+
+1588208365 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.h
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+	"Graphe.h"
+	"Sommet.h"
+	"Arete.h"
+
+1588174926 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.h
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+	"Graphe.h"
+
+1588209973 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	"Graphe.h"
+	"Sommet.h"
+	"Arete.h"
+	"utile.h"
+
+1588203262 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\utile.h
+	<iostream>
+	<vector>
+
+1588208988 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.cpp
+	"Sommet.h"
+	"Arete.h"
+
+1588207606 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
+	<iostream>
+	<limits>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	"Graphe.h"
+	"utile.h"
+
+1588203507 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\utile.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	<sstream>
+
