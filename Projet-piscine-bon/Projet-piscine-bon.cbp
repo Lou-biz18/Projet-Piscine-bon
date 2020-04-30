@@ -34,11 +34,13 @@
 		</Compiler>
 		<Unit filename="Arete.cpp" />
 		<Unit filename="Arete.h" />
+		<Unit filename="Environnement.cpp" />
+		<Unit filename="Environnement.h" />
 		<Unit filename="Fichier_h.h" />
-		<Unit filename="Graphe.cpp" />
-		<Unit filename="Graphe.h" />
 		<Unit filename="Sommet.cpp" />
 		<Unit filename="Sommet.h" />
+		<Unit filename="graphe.cpp" />
+		<Unit filename="graphe.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="utile.cpp" />
 		<Unit filename="utile.h" />

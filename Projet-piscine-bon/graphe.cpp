@@ -16,7 +16,10 @@ Graphe::Graphe(std::string nomFichier)
 
 Graphe::~Graphe()
 {
-    //dtor
+    for (auto a : m_tabArete)
+        delete a;
+    for (auto s : m_tabSommet)
+        delete s;
 }
 
 bool Graphe::get_orient()const
