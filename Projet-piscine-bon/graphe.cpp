@@ -112,14 +112,10 @@ void Graphe::chargeGraphe(std::string nomFichier)
             m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
             std::vector<Arete*> temp(m_taille);
             m_tabArete = temp;
-            m_tabSommet[0]->afficher();
-            m_tabSommet[1]->afficher();
-            m_tabSommet[2]->afficher();
-            m_tabSommet[3]->afficher();
-            m_tabSommet[4]->afficher();
-            for(int i=3+m_ordre;i<=3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
+            for(int i=3+m_ordre;i<=2+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
             {
-                std::cout<<tabLigne[i];
+                std::cout<<"line = "<< tabLigne[i] <<std::endl;
+                std::cout << std::stoi(split(tabLigne[i], ' ')[1]) << std::endl;
                 ajoutArete(tabLigne[i]);
             }
             std::cout<< "Graphe terminé"<< std::endl;
@@ -181,15 +177,14 @@ void Graphe::ajoutArete(std::string ligne)
     int indexSom1 = std::stoi(recupLigneSplit[1]);
     int indexSom2 = std::stoi(recupLigneSplit[2]);
 
-
+    std::cout << index << " "<< indexSom1<< " "<< indexSom2 << " "<<std::endl;
     m_tabSommet[indexSom1]->afficher();
     m_tabSommet[indexSom2]->afficher();
-    Arete newArete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
+    Arete* newArete = new Arete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
     //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
     //m_tabArete[index] = newArete;
 
-    newArete.afficher();
-    m_tabArete[index] = &newArete;//tableau de Arete* (pointeur sur aretes)
+    m_tabArete[index] = newArete;//tableau de Arete* (pointeur sur aretes)
 }
 
 void Graphe::ajoutSommet(std::string ligne)
@@ -202,7 +197,7 @@ void Graphe::ajoutSommet(std::string ligne)
     int coord_x = std::stoi(recupLigneSplit[2]);
     int coord_y = std::stoi(recupLigneSplit[3]);
 
-    Sommet newSommet(index, indexNom ,coord_x,coord_y);
-    m_tabSommet[index] = &newSommet;//car tab de som
+    Sommet* newSommet = new Sommet(index, indexNom ,coord_x,coord_y);
+    m_tabSommet[index] = newSommet;//car tab de som
 }
 
