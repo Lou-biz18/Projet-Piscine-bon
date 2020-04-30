@@ -160,4 +160,3 @@ void Graphe::ajoutSommet(std::string ligne)
     Sommet* newSommet = new Sommet(index, indexNom ,coord_x,coord_y);
     m_tabSommet[index] = newSommet;//car tab de som
 }
-
