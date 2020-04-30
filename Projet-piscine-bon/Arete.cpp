@@ -1,11 +1,12 @@
 #include "Arete.h"
 #include "Sommet.h"
 
-Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
+Arete::Arete(int idArete, Sommet*s1, Sommet*s2, int ponderation)//constructeur de arete
 {
     m_idArete = idArete;
     m_sommets.first = s1;
     m_sommets.second = s2;
+    m_ponderation = 1;
 }
 
 Arete::~Arete()
@@ -17,7 +18,7 @@ int Arete::get_idArete()const
 {
     return m_idArete;
 }
-//chope la premiere extremité de l'arete
+//chope la premiere extremitï¿½ de l'arete
 int Arete::get_s1()
 {
     return m_sommets.first->get_idSommet();

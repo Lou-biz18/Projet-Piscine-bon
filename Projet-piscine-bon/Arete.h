@@ -26,6 +26,7 @@ class Arete
 
     private:
         int m_idArete;
+        int m_ponderation;
         //double m_poids;
         std::pair<Sommet*,Sommet*> m_sommets;// extremites de laretes
 

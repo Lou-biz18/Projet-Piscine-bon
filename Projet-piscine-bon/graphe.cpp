@@ -12,9 +12,10 @@
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
-    // Demande si user veut charger un fichier pondérations
+    // demandeSiPonderation()
         // si oui => demandeNomFichier => Graphe::chargePondérations
         // si non => rien
+
 
 }
 
