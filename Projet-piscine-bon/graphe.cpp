@@ -12,6 +12,11 @@
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
+    // demandeSiPonderation()
+        // si oui => demandeNomFichier => Graphe::chargePondérations
+        // si non => rien
+
+
 }
 
 Graphe::~Graphe()
@@ -131,6 +136,46 @@ void Graphe::chargeGraphe(std::string nomFichier)
     }
 
 }
+void Graphe::chargePonderation(std::string fichierPonderation)
+{
+    try
+    {
+        std::vector<std::string> tabLigne;//tab dynamique constitu� des lignes de donn�es du le fichier
+        std::ifstream fichier(fichierPonderation);//ouverture du fichier
+        int taille;
+
+        if(!fichier)//TEST ouverture de fichier
+        {
+            std::cout<<"Erreur ouverture du fichier"<<std::endl;
+            exit(EXIT_FAILURE);
+        }
+        else//le fichier s'est bien charg� et peut etre lu
+        {
+            std::cout<<"Chargement fichier: OK"<<std::endl;
+            std::string tmpStr;
+            while(std::getline(fichier, tmpStr))//recup info du fichier ligne par ligne
+            {
+                tabLigne.push_back(tmpStr);//recup infos dans tabline
+            }
+            taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
+            if(taille!=m_taille)
+            {
+                 std::cout<<"PB : tailles differentes"<<std::endl;
+                 return;
+            }
+            for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
+            {
+                ajouterPonderation(tabLigne[i]);
+            }
+            std::cout<< "Ponderation terminee"<< std::endl;
+        }
+
+    }
+    catch(const std::exception&e)
+    {
+            std::cerr<<"Attention: "<<e.what()<<std::endl;
+    }
+}
 
 void Graphe::ajoutArete(std::string ligne)
 {
@@ -156,10 +201,18 @@ void Graphe::ajoutSommet(std::string ligne)
     std::vector<std::string> recupLigneSplit=split(ligne, ' ');
     //4 var pour les 4 attributs du constructeurs
     int index = std::stoi(recupLigneSplit[0]);
-    std::string indexNom = recupLigneSplit[1];
+    std::string nom = recupLigneSplit[1];
     int coord_x = std::stoi(recupLigneSplit[2]);
     int coord_y = std::stoi(recupLigneSplit[3]);
 
-    Sommet* newSommet = new Sommet(index, indexNom ,coord_x,coord_y);
+    Sommet* newSommet = new Sommet(index, nom ,coord_x,coord_y);
     m_tabSommet[index] = newSommet;//car tab de som
+}
+void Graphe::ajouterPonderation(std::string lignePond)
+{
+    std::vector<std::string> recupLigneSplit=split(lignePond, ' ');
+    int index = std::stoi(recupLigneSplit[0]);
+    int poids = std::stoi(recupLigneSplit[1]);
+
+    m_tabArete[index]->set_poids(poids);
 }

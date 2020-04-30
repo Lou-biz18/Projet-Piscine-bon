@@ -16,13 +16,14 @@ class Arete
 {
    public:
         Arete(int idArete, Sommet*s1, Sommet*s2);
-        virtual ~Arete();
+        ~Arete();
 
         void afficher();
         void set_poids( int poids);
         int get_idArete()const;
         int get_s1();
         int get_s2();
+        int get_poids();
 
 
     private:
