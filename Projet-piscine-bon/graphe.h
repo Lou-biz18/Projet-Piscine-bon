@@ -15,17 +15,16 @@ class Graphe
         ~Graphe();
 
         void chargeGraphe(std::string nomFichier);
+        void chargePonderation(std::string fichierPonderation);
         void ajoutSommet(std::string ligne);
         void ajoutArete(std::string ligne);
+        void ajouterPonderation(std::string fichierPond);
         void afficherTabA();
         void afficherTabS();
         void afficher();
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
-
-
- //void chargeGraphe(std::string&fichier);
 
     private:
         int m_ordre;

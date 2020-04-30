@@ -22,11 +22,12 @@ class Arete
         int get_idArete()const;
         int get_s1();
         int get_s2();
+        int get_poids();
 
 
     private:
         int m_idArete;
-        int m_ponderation;
+        int m_poids;
         //double m_poids;
         std::pair<Sommet*,Sommet*> m_sommets;// extremites de laretes
 

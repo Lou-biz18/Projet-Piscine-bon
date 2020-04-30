@@ -1,12 +1,12 @@
 #include "Arete.h"
 #include "Sommet.h"
 
-Arete::Arete(int idArete, Sommet*s1, Sommet*s2, int ponderation)//constructeur de arete
+Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
 {
     m_idArete = idArete;
     m_sommets.first = s1;
     m_sommets.second = s2;
-    m_ponderation = 1;
+    m_poids = 1;
 }
 
 Arete::~Arete()
@@ -26,6 +26,10 @@ int Arete::get_s1()
 int Arete::get_s2()
 {
     return m_sommets.second->get_idSommet();
+}
+int Arete::get_poids()
+{
+    return m_poids;
 }
 void Arete::afficher()
 { //"Arrete 5: A-B"

@@ -28,7 +28,12 @@ bool lancementDuService(int choix, Environnement env)
             std::cout << "menu3" << std::endl;
             break;
         case 2:
-            std::cout << "menu2" << std::endl;
+            std::cout << "Ajout d'une ponderation" << std::endl;
+            nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
+            if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
+            {
+                env.get_graphe()->ajouterPonderation(nomFichier);//pas sure de le modif
+            }
             break;
         case 1:
             std::cout << "Création du graphe..." << std::endl;
@@ -71,6 +76,7 @@ bool menu(Environnement env)
     }
     return lancementDuService(choixUtilisateur, env);
 }
+
 
 int main() {
     bool quitter = false; // bool pour tester si l'utilisateur veut quitter

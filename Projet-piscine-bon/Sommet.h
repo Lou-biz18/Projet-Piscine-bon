@@ -14,9 +14,9 @@ class Sommet//dans chaque somme ya un tableaux darretes
     public:
         Sommet();//constructeur
         Sommet(int idSommet, std::string nom, int x, int y);
-        virtual ~Sommet();
+        ~Sommet();
 
-        virtual void afficher() const;
+        void afficher() const;
         int get_idSommet();
         std::string get_nom();
 // dans graphe oriente : ext  le depart ext destination
