@@ -5,7 +5,6 @@
 #include <iostream>
 #include <vector>
 
-#include "Graphe.h"
 #include "Sommet.h"
 #include "Arete.h"
 
