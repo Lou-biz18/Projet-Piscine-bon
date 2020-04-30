@@ -34,10 +34,11 @@ int Arete::get_poids()
     return m_poids;
 }
 void Arete::afficher()
-{ //"Arrete 5: A-B"
+{
     std::cout <<"Arrete --> "<<m_idArete
               <<": "<<m_sommets.first->get_nom()
-              <<"-"<<m_sommets.second->get_nom()<<std::endl;
+              <<"-"<<m_sommets.second->get_nom()
+              <<" poids:"<<m_poids<<std::endl;
 }
 
 void Arete::set_poids(int poids)
