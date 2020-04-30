@@ -38,6 +38,22 @@ std::string demandeNomFichier()
     }
     return fichier;
 }
+bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv)
+{
+    std::ofstream fichier (nomFichierSauv);//flux de fichier de sortie et ouverture du fichier
+    if(fichier)// si l'ouverture a réussie
+    {
+        fichier << ligneSauv;//operateur du flux de sortie
+        fichier.close();  // on ferme le fichier
+        return true;
+    }
+    else//sinon
+    {
+        std::cerr << "Impossible d'ouvrir le fichier !" <<nomFichierSauv<< std::endl;
+        return false;
+    }
+
+}
 
 void entete(){
     using namespace std;
