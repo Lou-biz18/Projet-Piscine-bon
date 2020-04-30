@@ -32,8 +32,8 @@ bool lancementDuService(int choix)
             break;
         case 1:
             std::cout << "Création du graphe..." << std::endl;
-            nomFichier = demandeNomFichier();
-            if (nomFichier.compare("") == 0) // Si le fichier existe, alors on lance la suite
+            nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
+            if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 Graphe graphe(nomFichier);
                 graphe.afficher();

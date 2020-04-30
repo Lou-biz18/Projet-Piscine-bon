@@ -34,24 +34,36 @@ int Graphe::get_taille()const
     return m_taille;
 }
 
-void Graphe::afficher() const///afficher les donn�es d'un bloc pour debug
+void Graphe::afficherTabS()
 {
-    std::cout<<std::endl<<"graphe ";
+    for(unsigned int i=0;i<m_tabSommet.size();i++)
+    {
+
+        std::cout<<"i=" << i<< std::endl<< m_tabSommet.size()<<std::endl;
+        m_tabSommet[i]->afficher();
+        std::cout<<std::endl;
+    }
+}
+void Graphe::afficherTabA()
+{
+    for(unsigned int i=0;i<m_tabArete.size();i++)
+    {
+        m_tabArete[i]->afficher();
+        std::cout<<std::endl;
+    }
+}
+
+void Graphe::afficher()///afficher les donn�es d'un bloc pour debug
+{
+    std::cout<<std::endl<<"Graphe ";
     if(m_orient)
-        std::cout<<"oriente"<<std::endl<<"  ";
+        std::cout<<"oriente"<<std::endl;
     else
-        std::cout<<"non oriente"<<std::endl<<"  ";
-    std::cout<<m_orient<<std::endl
-             << m_ordre<<std::endl;// nb sommets
-    for(int i=0;i<m_tabSommet.size();i++)
-    {
-        std::cout<< m_tabSommet[i] << " ";
-    }
-    std::cout<<m_taille<<std::endl;
-    for(int i=0;i<m_tabArete.size();i++)
-    {
-        std::cout<< m_tabArete[i] << " "<<std::endl;
-    }
+        std::cout<< "non oriente"<<std::endl;
+    std::cout<< "ordre = " <<m_ordre<<std::endl;// nb sommets
+    afficherTabS();
+    std::cout<< "taille =" <<m_taille<<std::endl;
+    afficherTabA();
 
 }
 
@@ -93,17 +105,24 @@ void Graphe::chargeGraphe(std::string nomFichier)
             // m_tabArette = new vector(m_ordre);
             std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
             m_tabSommet = tmp;
-            for(int i=2;i<1+m_ordre;i++)//ajoute les sommets dans tabSommet
+            for(int i=2;i<=1+m_ordre;i++)//ajoute les sommets dans tabSommet
             {
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
             }
             m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
             std::vector<Arete*> temp(m_taille);
             m_tabArete = temp;
-            for(int i=3+m_ordre;i<3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
+            m_tabSommet[0]->afficher();
+            m_tabSommet[1]->afficher();
+            m_tabSommet[2]->afficher();
+            m_tabSommet[3]->afficher();
+            m_tabSommet[4]->afficher();
+            for(int i=3+m_ordre;i<=3+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
             {
+                std::cout<<tabLigne[i];
                 ajoutArete(tabLigne[i]);
             }
+            std::cout<< "Graphe terminé"<< std::endl;
         }
 
     }
@@ -163,9 +182,13 @@ void Graphe::ajoutArete(std::string ligne)
     int indexSom2 = std::stoi(recupLigneSplit[2]);
 
 
+    m_tabSommet[indexSom1]->afficher();
+    m_tabSommet[indexSom2]->afficher();
     Arete newArete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
     //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
     //m_tabArete[index] = newArete;
+
+    newArete.afficher();
     m_tabArete[index] = &newArete;//tableau de Arete* (pointeur sur aretes)
 }
 
@@ -180,7 +203,6 @@ void Graphe::ajoutSommet(std::string ligne)
     int coord_y = std::stoi(recupLigneSplit[3]);
 
     Sommet newSommet(index, indexNom ,coord_x,coord_y);
-    m_tabSommet[index] = &newSommet;//car tab de som *
-
+    m_tabSommet[index] = &newSommet;//car tab de som
 }
 
