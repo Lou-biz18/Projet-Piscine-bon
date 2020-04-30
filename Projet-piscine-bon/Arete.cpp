@@ -35,3 +35,8 @@ void Arete::afficher()
               <<": "<<m_sommets.first->get_nom()
               <<"-"<<m_sommets.second->get_nom()<<std::endl;
 }
+
+void Arete::set_poids(int poids)
+{
+    m_poids= poids;
+}
