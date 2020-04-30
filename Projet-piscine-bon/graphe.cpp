@@ -12,11 +12,6 @@
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
-    // demandeSiPonderation()
-        // si oui => demandeNomFichier => Graphe::chargePondérations
-        // si non => rien
-
-
 }
 
 Graphe::~Graphe()
@@ -44,20 +39,14 @@ int Graphe::get_taille()const
 
 void Graphe::afficherTabS()
 {
-    for(unsigned int i=0;i<m_tabSommet.size();i++)
-    {
-
-        std::cout<<"i=" << i<< std::endl<< m_tabSommet.size()<<std::endl;
-        m_tabSommet[i]->afficher();
-        std::cout<<std::endl;
+    for(auto elem: m_tabSommet){
+        elem->afficher();
     }
 }
 void Graphe::afficherTabA()
 {
-    for(unsigned int i=0;i<m_tabArete.size();i++)
-    {
-        m_tabArete[i]->afficher();
-        std::cout<<std::endl;
+    for(auto elem: m_tabArete){
+        elem->afficher();
     }
 }
 

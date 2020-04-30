@@ -33,7 +33,7 @@ void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 
 }
 
-void Sommet::ajoutArrete(Arete* newArete)
+void Sommet::ajoutArete(Arete* newArete)
 {
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;

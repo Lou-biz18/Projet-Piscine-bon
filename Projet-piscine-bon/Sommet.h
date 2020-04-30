@@ -19,7 +19,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void afficher() const;
         int get_idSommet();
         std::string get_nom();
-        void ajoutArrete(Arete newArete);
+        void ajoutArete(Arete* newArete);
 // dans graphe oriente : ext  le depart ext destination
     //protected:
 

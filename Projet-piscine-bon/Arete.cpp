@@ -7,8 +7,8 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_sommets.first = s1;
     m_sommets.second = s2;
     m_poids = 1;
-    s1->ajoutArrete(this);
-    s2->ajoutArrete(this);
+    s1->ajoutArete(this);
+    s2->ajoutArete(this);
 }
 
 Arete::~Arete()
