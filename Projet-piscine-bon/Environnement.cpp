@@ -5,7 +5,7 @@ Environnement::Environnement(){
 }
 
 Environnement::~Environnement(){
-    //dtor
+    delete m_graphe;
 }
 
 void Environnement::createGraphe(std::string nomFichier){

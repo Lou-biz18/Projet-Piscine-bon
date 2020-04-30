@@ -7,6 +7,8 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_sommets.first = s1;
     m_sommets.second = s2;
     m_poids = 1;
+    s1->ajoutArrete(this);
+    s2->ajoutArrete(this);
 }
 
 Arete::~Arete()
@@ -36,4 +38,9 @@ void Arete::afficher()
     std::cout <<"Arrete --> "<<m_idArete
               <<": "<<m_sommets.first->get_nom()
               <<"-"<<m_sommets.second->get_nom()<<std::endl;
+}
+
+void Arete::set_poids(int poids)
+{
+    m_poids= poids;
 }

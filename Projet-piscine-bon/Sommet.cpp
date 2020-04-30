@@ -7,6 +7,7 @@ Sommet::Sommet(int idSommet, std::string nom, int x, int y)//constructeur de are
     m_nom = nom;
     m_coords.first = x;
     m_coords.second = y;
+    m_nbArete = 0;
 }
 
 Sommet::~Sommet()
@@ -24,10 +25,16 @@ std::string Sommet::get_nom()
     return m_nom;
 }
 
-void Sommet::afficher() const///afficher les données d'un bloc pour debug
+void Sommet::afficher() const///afficher les donnï¿½es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
               <<":x= "<<m_coords.first
               <<";y= "<<m_coords.second<<std::endl;
 
+}
+
+void Sommet::ajoutArrete(Arete* newArete)
+{
+    m_tabAreteSo.push_back(newArete);
+    m_nbArete++;
 }
