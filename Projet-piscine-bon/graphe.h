@@ -18,7 +18,9 @@ class Graphe
         void chargeGraphe(std::string nomFichier);
         void ajoutSommet(std::string ligne);
         void ajoutArete(std::string ligne);
-        void afficher() const;
+        void afficherTabA();
+        void afficherTabS();
+        void afficher();
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;

@@ -26,8 +26,8 @@ std::string Sommet::get_nom()
 
 void Sommet::afficher() const///afficher les données d'un bloc pour debug
 {
-    std::cout<<m_idSommet<<std::endl
-             <<m_nom<<std::endl
-             << m_coords.first << ", " << m_coords.second<<std::endl;
+    std::cout <<"Sommet --> "<<m_idSommet
+              <<":x= "<<m_coords.first
+              <<";y= "<<m_coords.second<<std::endl;
 
 }

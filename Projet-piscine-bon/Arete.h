@@ -18,6 +18,7 @@ class Arete
         Arete(int idArete, Sommet*s1, Sommet*s2);
         virtual ~Arete();
 
+        void afficher();
         int get_idArete()const;
         int get_s1();
         int get_s2();
@@ -26,7 +27,7 @@ class Arete
     private:
         int m_idArete;
         //double m_poids;
-        std::pair<Sommet*,Sommet*> m_arete;// extremites de laretes
+        std::pair<Sommet*,Sommet*> m_sommets;// extremites de laretes
 
 };
 
