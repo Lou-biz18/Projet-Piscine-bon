@@ -46,3 +46,25 @@ void Sommet::ajoutArete(Arete* newArete)
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;
 }
+
+// faire une fonction dans graphe qui lance celle la pour tout les sommets du graphe
+void Sommet::calculeIndiceCentraliteDegres(int m_ordre)
+{
+    int ordre = m_ordre-1;
+    // somme des aretes d'un sommet = cds
+    int m_indiceDegre = m_tabAreteSo.size();
+    int m_indiceDegreNorm= m_indiceDegre/ordre;
+    std::cout << "indice : " << m_indiceDegre << std::endl;
+    std::cout << "indice normalisé : " << m_indiceDegreNorm << std::endl;
+
+}
+
+
+
+
+
+
+
+
+
+

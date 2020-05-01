@@ -229,5 +229,15 @@ void Graphe::dessiner(Svgfile&svgout)
         std::cout<<"on arrive jusquici"<<std::endl;
     }
     svgout.addDisk(1000,800,20,"blue");
+}
+
+void Graphe::commencerIndiceDeCentralite()
+{
+
+    for (auto s : m_tabSommet)
+    {
+        s->calculerIndiceSommet(m_ordre);
+
+    }
 
 }

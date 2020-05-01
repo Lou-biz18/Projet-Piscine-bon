@@ -23,18 +23,16 @@ class Sommet//dans chaque somme ya un tableaux darretes
         double get_coordx();//pour dessiner
         double get_coordy();
         void ajoutArete(Arete* newArete);
-
-        ///DESSIN
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
-
-// dans graphe oriente : ext  le depart ext destination
+        void calculeIndiceCentraliteDegres(int m_ordre);
 
 
     private:
 
         int m_idSommet;
         int m_nbArete;
+
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
