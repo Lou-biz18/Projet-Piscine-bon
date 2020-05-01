@@ -16,6 +16,7 @@ class Arete
 {
    public:
         Arete(int idArete, Sommet*s1, Sommet*s2);
+        Arete(const Arete &areteACopier); // constrtucteur de copie
         ~Arete();
 
         void afficher();
