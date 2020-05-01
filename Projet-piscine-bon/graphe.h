@@ -7,6 +7,7 @@
 
 #include "Sommet.h"
 #include "Arete.h"
+#include "Svgfile.h"
 
 class Graphe
 {
@@ -28,6 +29,9 @@ class Graphe
         int get_taille() const;
         std::vector<Arete*> get_tabArete() const;
         std::vector<Sommet*> get_tabSommet() const;
+        void dessiner(Svgfile&svgout);
+        void commencerIndiceDeCentralite();
+        void calcCouleurG();
 
     private:
         int m_ordre;
