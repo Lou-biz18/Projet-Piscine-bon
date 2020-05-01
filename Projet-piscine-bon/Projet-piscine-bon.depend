@@ -70,11 +70,13 @@
 	"Environnement.h"
 	"Sommet.h"
 
-1588358070 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.h
+1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.h
 	<fstream>
 	<sstream>
 	<iostream>
-	<sstream>
+	<vector>
+	"Graphe.h"
+	"Svgfile.h"
 
 1588282143 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\include\svgfile.h
 	<iostream>
@@ -96,4 +98,43 @@
 	<vector>
 	<fstream>
 	<sstream>
+
+1588359440 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
+	<iostream>
+	<limits>
+	<fstream>
+	<sstream>
+	<cstdlib>
+	"utile.h"
+	"Environnement.h"
+
+1588344938 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\utile.h
+	<iostream>
+	<vector>
+
+1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\environnement.h
+	<iostream>
+	"Graphe.h"
+
+1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.h
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+	"Sommet.h"
+	"Arete.h"
+	"Svgfile.h"
+
+1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\svgfile.h
+	<iostream>
+	<fstream>
+	<set>
+
+1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\arete.h
+	<fstream>
+	<sstream>
+	<iostream>
+	<vector>
+	"Graphe.h"
+	"Sommet.h"
 
