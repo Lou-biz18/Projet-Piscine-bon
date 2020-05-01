@@ -33,6 +33,17 @@ double Sommet::get_coordy()
     return m_coords.second;
 }
 
+ float  Sommet::get_indiceDegre()
+ {
+     return m_indiceDegre;
+ }
+    float Sommet::get_indiceDegreNorm()
+    {
+        return m_indiceDegreNorm;
+    }
+
+
+
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
@@ -48,14 +59,15 @@ void Sommet::ajoutArete(Arete* newArete)
 }
 
 // faire une fonction dans graphe qui lance celle la pour tout les sommets du graphe
-void Sommet::calculeIndiceCentraliteDegres(int m_ordre)
+void Sommet::calculeIndiceCentraliteDegres(int ordre)
 {
-    int ordre = m_ordre-1;
+    int n = ordre-1;
     // somme des aretes d'un sommet = cds
-    int m_indiceDegre = m_tabAreteSo.size();
-    int m_indiceDegreNorm= m_indiceDegre/ordre;
+
+     m_indiceDegre = m_nbArete;
+     m_indiceDegreNorm = m_indiceDegre/ n;
     std::cout << "indice : " << m_indiceDegre << std::endl;
-    std::cout << "indice normalisé : " << m_indiceDegreNorm << std::endl;
+    std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
 

@@ -26,12 +26,16 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
         void calculeIndiceCentraliteDegres(int m_ordre);
+        float get_indiceDegre();
+        float get_indiceDegreNorm();
 
 
     private:
 
         int m_idSommet;
         int m_nbArete;
+        float m_indiceDegre;
+        float m_indiceDegreNorm;
 
         std::string m_nom;
         std::pair<double,double> m_coords;
