@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="Projet-piscine-bon/include" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="Projet-piscine-bon/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,11 +38,14 @@
 		</Compiler>
 		<Unit filename="Arete.cpp" />
 		<Unit filename="Arete.h" />
-		<Unit filename="Fichier_h.h" />
+		<Unit filename="Environnement.cpp" />
+		<Unit filename="Environnement.h" />
 		<Unit filename="Graphe.cpp" />
 		<Unit filename="Graphe.h" />
 		<Unit filename="Sommet.cpp" />
 		<Unit filename="Sommet.h" />
+		<Unit filename="Svgfile.cpp" />
+		<Unit filename="Svgfile.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="utile.cpp" />
 		<Unit filename="utile.h" />

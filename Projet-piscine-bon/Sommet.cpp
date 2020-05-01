@@ -8,6 +8,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
     m_coords.first = x;
     m_coords.second = y;
     m_nbArete = 0;
+    m_couleurS = "black";//couleur par default
 }
 
 Sommet::~Sommet()
@@ -19,7 +20,6 @@ int Sommet::get_idSommet()
 {
     return m_idSommet;
 }
-
 std::string Sommet::get_nom()
 {
     return m_nom;
@@ -31,6 +31,10 @@ double Sommet::get_coordx()
 double Sommet::get_coordy()
 {
     return m_coords.second;
+}
+std::string Sommet::get_couleurS()
+{
+    return m_couleurS;
 }
 
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug

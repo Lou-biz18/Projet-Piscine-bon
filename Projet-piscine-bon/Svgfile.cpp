@@ -100,3 +100,10 @@ void Svgfile::addFleche(double x1, double y1, double x2, double y2, std::string 
             << attrib("stroke-width", "7px")
             << "/>\n";
 }
+///couleur pour degradés
+std::string Svgfile::makeRGB(int r, int g, int b)
+{
+    std::ostringstream oss;
+    oss << "rgb(" << r << "," << g << "," << b << ")";
+    return oss.str();
+}

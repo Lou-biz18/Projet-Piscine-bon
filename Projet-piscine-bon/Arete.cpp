@@ -1,21 +1,23 @@
 #include "Arete.h"
 #include "Sommet.h"
 
+///CONSTRUCTEUR
 Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
 {
     m_idArete = idArete;
     m_sommets.first = s1;
     m_sommets.second = s2;
-    m_poids = 1;
+    m_poids = 1;//Arete de poids 1 par default pour graphe non orienté
     s1->ajoutArete(this);
     s2->ajoutArete(this);
+    m_couleurA = "black";
 }
-
+///DESTRUCTEUR
 Arete::~Arete()
 {
     //dtor
 }
-
+///GET
 int Arete::get_idArete()const
 {
     return m_idArete;
@@ -41,15 +43,20 @@ int Arete::get_poids()
 {
     return m_poids;
 }
+std::string Arete::get_couleurA()
+{
+    return m_couleurA;
+}
+///SET
+void Arete::set_poids(int poids)
+{
+    m_poids= poids;
+}
+///AFFICHAGE
 void Arete::afficher()
 {
     std::cout <<"Arrete --> "<<m_idArete
               <<": "<<m_sommets.first->get_nom()
               <<"-"<<m_sommets.second->get_nom()
               <<" poids:"<<m_poids<<std::endl;
-}
-
-void Arete::set_poids(int poids)
-{
-    m_poids= poids;
 }

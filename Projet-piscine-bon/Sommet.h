@@ -22,6 +22,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         std::string get_nom();
         double get_coordx();//pour dessiner
         double get_coordy();
+        std::string get_couleurS();
+
         void ajoutArete(Arete* newArete);
 
         ///DESSIN
@@ -38,6 +40,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
+        std::string m_couleurS;
 
 
         ///svg

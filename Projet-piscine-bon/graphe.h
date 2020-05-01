@@ -28,6 +28,7 @@ class Graphe
         int get_taille() const;
         ///DESSIN
         void dessiner(Svgfile&svgout);
+        void calcCouleurG();
 
     private:
         int m_ordre;
