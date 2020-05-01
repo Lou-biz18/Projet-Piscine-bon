@@ -12,7 +12,7 @@ class Graphe
 {
     public:
         Graphe(std::string nomFichier);//prototyper le constructeur
-        Graphe(const Graphe &grapheACopier);
+        Graphe(const Graphe &grapheACopier);// constructeur de copie
         ~Graphe();
 
         void chargeGraphe(std::string nomFichier);

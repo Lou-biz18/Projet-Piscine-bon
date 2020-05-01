@@ -19,15 +19,23 @@ Graphe(const Graphe &grapheACopier)
     m_ordre = grapheACopier.get_ordre();
     m_orient = grapheACopier.get_orient();
     m_taille = grapheACopier.get_taille();
-    std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
-    m_tabSommet = tmp;
-    std::vector<Sommet*> tabSomACopier = graheACopier.getTabSommet() // A CODER getTabSommet
+
+    std::vector<Sommet*> tmpS(m_ordre);// taille m_ordre pour tabSommet
+    m_tabSommet = tmpS;
+    std::vector<Sommet*> tabSomACopier = graheACopier.get_tabSommet() // A CODER getTabSommet
     for(int i = 0; i <= m_ordre; i++)
     {
-        Sommet newSommet = tabSomACopier[i];
+        Sommet newSommet = *(tabSomACopier[i]); // Sommet newSomme = *monSommet
         m_tabSommet[i] = &newSommet;
     }
-    //Pareil que pour les sommets, mais avec les aretes
+    std::vector<Arete*> tmpA(m_taille);// taille m_ordre pour tabSommet
+    m_tabArete = tmpA;
+    std::vector<Arete*> tabAreteACopier = graheACopier.get_tabArete() // A CODER getTabArete
+    for(int i = 0; i <= m_ordre; i++)
+    {
+        Arete newArete = *(tabAreteACopier[i]);
+        m_tabArete[i] = &newArete;
+    }
 }
 
 Graphe::~Graphe()
