@@ -22,7 +22,8 @@ bool lancementDuService(int choix, Environnement* env)
             std::cout << "Quitter" << std::endl;
             return true;
         case 4:
-            std::cout << "menu4" << std::endl;
+            std::cout << "Etude de vulnérabilité" << std::endl;
+            env->creationGrapheAModifer();
             break;
         case 3:
             std::cout << "menu3" << std::endl;
