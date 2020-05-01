@@ -53,6 +53,16 @@ int Graphe::get_taille()const
     return m_taille;
 }
 
+std::vector<Arete*> Graphe::get_tabArete()const
+{
+    return m_tabArete;
+}
+
+std::vector<Sommet*> Graphe::get_tabSommet()const
+{
+    return m_tabSommet;
+}
+
 void Graphe::afficherTabS()
 {
     for(auto elem: m_tabSommet){
