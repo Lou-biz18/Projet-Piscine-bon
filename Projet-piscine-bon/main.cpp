@@ -25,7 +25,8 @@ bool lancementDuService(int choix, Environnement env)
             std::cout << "menu4" << std::endl;
             break;
         case 3:
-            std::cout << "menu3" << std::endl;
+            std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;
+            commencerIndiceDeCentralite();
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
@@ -82,6 +83,7 @@ int main() {
     bool quitter = false; // bool pour tester si l'utilisateur veut quitter
     Environnement env;
     entete();
+    g.commencerIndiceDeCentralite();
     while (!quitter)   /// On relance le menu tant que l'utilisateur n'a pas demandé la sortie du programme
     {
         quitter = menu(env);
