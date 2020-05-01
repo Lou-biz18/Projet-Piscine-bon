@@ -10,6 +10,15 @@ Sommet::Sommet(int idSommet, std::string nom, int x, int y)//constructeur de are
     m_nbArete = 0;
 }
 
+Sommet(const Sommet &sommetACopier)
+{
+    m_idSommet = sommetACopier.get_idSommet();
+    m_nbArete = 0;
+    m_nom = sommetACopier.get_nom();
+    m_coords.first = sommetACopier.get_coordx();
+    m_coords.second = sommetACopier.get_coordy();
+}
+
 Sommet::~Sommet()
 {
     //dtor
