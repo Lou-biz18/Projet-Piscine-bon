@@ -30,16 +30,19 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceDegreNorm();
 
 
+
     private:
 
         int m_idSommet;
         int m_nbArete;
         float m_indiceDegre;
         float m_indiceDegreNorm;
+        float m_indiceVecteurPropre;
 
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
+
 
 
         ///svg
