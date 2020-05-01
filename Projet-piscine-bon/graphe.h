@@ -7,6 +7,7 @@
 
 #include "Sommet.h"
 #include "Arete.h"
+#include "Svgfile.h"
 
 class Graphe
 {
@@ -25,6 +26,8 @@ class Graphe
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
+        ///DESSIN
+        void dessiner(Svgfile&svgout);
 
     private:
         int m_ordre;

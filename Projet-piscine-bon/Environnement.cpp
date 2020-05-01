@@ -1,4 +1,6 @@
 #include "Environnement.h"
+#include "Sommet.h"
+
 
 Environnement::Environnement(){
     //ctor

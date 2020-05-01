@@ -21,13 +21,21 @@ int Arete::get_idArete()const
     return m_idArete;
 }
 //chope la premiere extremit� de l'arete
-int Arete::get_s1()
+int Arete::get_idS1()
 {
     return m_sommets.first->get_idSommet();
 }
-int Arete::get_s2()
+int Arete::get_idS2()
 {
     return m_sommets.second->get_idSommet();
+}
+Sommet* Arete::get_s1()
+{
+    return m_sommets.first;
+}
+Sommet* Arete::get_s2()
+{
+    return m_sommets.second;
 }
 int Arete::get_poids()
 {

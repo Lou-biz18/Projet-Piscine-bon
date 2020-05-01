@@ -30,7 +30,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
             //nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
-            nomFichier = "testPond.txt"; // !! a enlever 
+            nomFichier = "testPond.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->get_graphe()->chargePonderation(nomFichier);//pas sure de le modif
@@ -40,11 +40,16 @@ bool lancementDuService(int choix, Environnement* env)
         case 1:
             std::cout << "Création du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "test.txt"; // !! a enlever 
+            nomFichier = "test.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
                 env->get_graphe()->afficher();
+                Svgfile svg;
+                //Graphe graphe;
+
+                env->get_graphe()->dessiner(svg);//dessine le graphe
+
             }
             break;
     }

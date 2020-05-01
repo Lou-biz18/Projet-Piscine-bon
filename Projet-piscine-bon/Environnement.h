@@ -13,5 +13,6 @@ class Environnement
         ~Environnement();
         void createGraphe(std::string nomFichier);
         Graphe* get_graphe();
+
 };
 #endif

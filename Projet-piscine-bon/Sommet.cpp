@@ -1,7 +1,7 @@
 #include "Sommet.h"
 #include "Arete.h"
 
-Sommet::Sommet(int idSommet, std::string nom, int x, int y)//constructeur de arete
+Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur de arete
 {
     m_idSommet = idSommet;
     m_nom = nom;
@@ -23,6 +23,14 @@ int Sommet::get_idSommet()
 std::string Sommet::get_nom()
 {
     return m_nom;
+}
+double Sommet::get_coordx()
+{
+    return m_coords.first;
+}
+double Sommet::get_coordy()
+{
+    return m_coords.second;
 }
 
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
