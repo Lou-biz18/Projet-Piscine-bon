@@ -17,6 +17,8 @@ Arete::Arete(const Arete &areteACopier)
     m_poids = areteACopier.getPoids();
     m_sommets.first = areteACopier.get_s1();
     m_sommets.second = areteACopier.get_s2();
+    m_sommets.first->ajoutArete(this);
+    m_sommets.second->ajoutArete(this);
 }
 
 Arete::~Arete()
