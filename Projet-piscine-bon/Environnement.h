@@ -8,6 +8,7 @@ class Environnement
 {
     private:
         Graphe* m_graphe;
+        Graphe* m_grapheModifie;
     public:
         Environnement();
         ~Environnement();

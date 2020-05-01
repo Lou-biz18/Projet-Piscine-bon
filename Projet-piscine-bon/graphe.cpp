@@ -14,6 +14,22 @@ Graphe::Graphe(std::string nomFichier)
     chargeGraphe(nomFichier);
 }
 
+Graphe(const Graphe &grapheACopier)
+{
+    m_ordre = grapheACopier.get_ordre();
+    m_orient = grapheACopier.get_orient();
+    m_taille = grapheACopier.get_taille();
+    std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
+    m_tabSommet = tmp;
+    std::vector<Sommet*> tabSomACopier = graheACopier.getTabSommet() // A CODER getTabSommet
+    for(int i = 0; i <= m_ordre; i++)
+    {
+        Sommet newSommet = tabSomACopier[i];
+        m_tabSommet[i] = &newSommet;
+    }
+    //Pareil que pour les sommets, mais avec les aretes
+}
+
 Graphe::~Graphe()
 {
     for (auto a : m_tabArete)
@@ -99,10 +115,9 @@ void Graphe::chargeGraphe(std::string nomFichier)
             }
             m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
             m_ordre = std::stoi(tabLigne[1]);
-            // m_tabArette = new vector(m_ordre);
             std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
             m_tabSommet = tmp;
-            for(int i=2;i<=1+m_ordre;i++)//ajoute les sommets dans tabSommet
+            for(int i = 2; i <= 1 + m_ordre; i++)//ajoute les sommets dans tabSommet
             {
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
             }
@@ -186,8 +201,7 @@ void Graphe::ajoutArete(std::string ligne)
 
 void Graphe::ajoutSommet(std::string ligne)
 {
-    //split
-    std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+    std::vector<std::string> recupLigneSplit = split(ligne, ' ');
     //4 var pour les 4 attributs du constructeurs
     int index = std::stoi(recupLigneSplit[0]);
     std::string nom = recupLigneSplit[1];

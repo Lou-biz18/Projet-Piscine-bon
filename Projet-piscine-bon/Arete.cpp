@@ -25,14 +25,17 @@ int Arete::get_s1()
 {
     return m_sommets.first->get_idSommet();
 }
+
 int Arete::get_s2()
 {
     return m_sommets.second->get_idSommet();
 }
+
 int Arete::get_poids()
 {
     return m_poids;
 }
+
 void Arete::afficher()
 {
     std::cout <<"Arrete --> "<<m_idArete
