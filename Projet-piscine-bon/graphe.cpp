@@ -257,7 +257,7 @@ void Graphe::commencerIndiceDeCentralite()
 
     for (auto s : m_tabSommet)
     {
-        s->calculerIndiceSommet(m_ordre);
+        s->calculeIndiceCentraliteDegres(m_ordre);
 
     }
 
