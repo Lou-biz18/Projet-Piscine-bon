@@ -14,6 +14,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
     public:
         Sommet();//constructeur
         Sommet(int idSommet, std::string nom, int x, int y);
+        Sommet(const Sommet &sommetACopier);// constructeur de copie
         ~Sommet();
 
         void afficher() const;
