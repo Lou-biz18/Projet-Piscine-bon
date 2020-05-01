@@ -70,6 +70,13 @@ void Sommet::ajoutArete(Arete* newArete)
     m_nbArete++;
 }
 
+/*
+void Sommet::enleveArete(Arete* arete){
+    supprimer arrete de m_tabAreteSo => supprimer element d'un vector
+    m_nbArete--;
+}
+*/
+
 // faire une fonction dans graphe qui lance celle la pour tout les sommets du graphe
 void Sommet::calculeIndiceCentraliteDegres(int ordre)
 {
@@ -81,13 +88,3 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
     std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
-
-
-
-
-
-
-
-
-
-

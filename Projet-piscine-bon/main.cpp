@@ -12,6 +12,15 @@ std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero cor
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandée n'existe pas";
 
+/*
+void demandeSuppressionAretes(){
+    // boucle de demande suppression arette(s) (par index et quitter fait sortir de cette fonction)
+        env->get_graphemodifie()->supprimerArrete(arretechoisie)
+        Svgfile svg;
+        env->get_graphemodifie()->dessiner(svg);
+}
+*/
+
 //Choix de l'utilisateur
 bool lancementDuService(int choix, Environnement* env)
 {
@@ -24,6 +33,10 @@ bool lancementDuService(int choix, Environnement* env)
         case 4:
             std::cout << "Etude de vulnérabilité" << std::endl;
             env->creationGrapheAModifer();
+            // demandeSuppressionAretes();
+            // relancer les methodes de calcul d'indices
+            // sauvegarder/afficher les indices dans un fichier different de celui du graph normal
+            // comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
             break;
         case 3:
             std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;

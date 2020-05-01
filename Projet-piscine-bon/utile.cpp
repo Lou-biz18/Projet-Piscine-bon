@@ -38,9 +38,9 @@ std::string demandeNomFichier()
     }
     return fichier;
 }
-bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv)
+bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) // a changer pour faire en sorte que meme si le fichier existe pas, ca le cree
 {
-    std::ofstream fichier (nomFichierSauv);//flux de fichier de sortie et ouverture du fichier
+    std::ofstream fichier(nomFichierSauv);//flux de fichier de sortie et ouverture du fichier
     if(fichier)// si l'ouverture a réussie
     {
         fichier << ligneSauv;//operateur du flux de sortie

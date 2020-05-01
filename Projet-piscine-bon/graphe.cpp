@@ -262,6 +262,22 @@ void Graphe::commencerIndiceDeCentralite()
     }
 
 }
+/* bool Graphe::supprimerArrete(int arretechoisie) {
+    chercher dans tabArrete si elle existe
+    si l'arrete existe
+       1: supprimer arrete de m_tabArete => => supprimer element d'un vector
+        Sommet* s1 = arete.get_s1();
+        Sommet* s2 = arete.get_s2();
+       2: s1->enleveArete(arete);
+       3: s2->enleveArete(arete);
+       4: delete arete;
+}
+*/
+
+
+
+
+
 /*
 void Graphe::calcCouleurG()
 {
