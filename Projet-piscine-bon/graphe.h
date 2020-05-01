@@ -26,8 +26,8 @@ class Graphe
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
-        ///DESSIN
         void dessiner(Svgfile&svgout);
+        void commencerIndiceDeCentralite();
         void calcCouleurG();
 
     private:
