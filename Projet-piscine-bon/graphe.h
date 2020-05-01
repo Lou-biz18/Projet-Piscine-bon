@@ -25,6 +25,7 @@ class Graphe
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
+        void commencerIndiceDeCentralite();
 
     private:
         int m_ordre;

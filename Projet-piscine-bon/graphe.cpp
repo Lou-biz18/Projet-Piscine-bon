@@ -216,3 +216,14 @@ void Graphe::ajouterPonderation(std::string lignePond)
 
     m_tabArete[index]->set_poids(poids);
 }
+
+void Graphe::commencerIndiceDeCentralite()
+{
+
+    for (auto s : m_tabSommet)
+    {
+        s->calculerIndiceSommet(m_ordre);
+
+    }
+
+}
