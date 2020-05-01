@@ -14,6 +14,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
 {
     public:
         Sommet();//constructeur
+        Sommet(const Sommet &sommetACopier);// constructeur de copie
         Sommet(int idSommet, std::string nom, double x, double y);
         ~Sommet();
 
@@ -22,6 +23,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         std::string get_nom();
         double get_coordx();//pour dessiner
         double get_coordy();
+        std::string get_couleurS();
+
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
@@ -42,6 +45,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
+        std::string m_couleurS;
 
 
 

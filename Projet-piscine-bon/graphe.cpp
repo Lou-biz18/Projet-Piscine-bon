@@ -9,10 +9,34 @@
 #include "Arete.h"
 #include "utile.h"
 
-///TJ dans constructeur
+///CONSTRUCTEUR
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
+}
+
+Graphe(const Graphe &grapheACopier)
+{
+    m_ordre = grapheACopier.get_ordre();
+    m_orient = grapheACopier.get_orient();
+    m_taille = grapheACopier.get_taille();
+
+    std::vector<Sommet*> tmpS(m_ordre);// taille m_ordre pour tabSommet
+    m_tabSommet = tmpS;
+    std::vector<Sommet*> tabSomACopier = graheACopier.get_tabSommet() // A CODER getTabSommet
+    for(int i = 0; i <= m_ordre; i++)
+    {
+        Sommet newSommet = *(tabSomACopier[i]); // Sommet newSomme = *monSommet
+        m_tabSommet[i] = &newSommet;
+    }
+    std::vector<Arete*> tmpA(m_taille);// taille m_ordre pour tabSommet
+    m_tabArete = tmpA;
+    std::vector<Arete*> tabAreteACopier = graheACopier.get_tabArete() // A CODER getTabArete
+    for(int i = 0; i <= m_ordre; i++)
+    {
+        Arete newArete = *(tabAreteACopier[i]);
+        m_tabArete[i] = &newArete;
+    }
 }
 
 Graphe::~Graphe()
@@ -22,7 +46,7 @@ Graphe::~Graphe()
     for (auto s : m_tabSommet)
         delete s;
 }
-
+///GET
 bool Graphe::get_orient()const
 {
     return m_orient;
@@ -36,6 +60,16 @@ int Graphe::get_ordre()const
 int Graphe::get_taille()const
 {
     return m_taille;
+}
+
+std::vector<Arete*> Graphe::get_tabArete()const
+{
+    return m_tabArete;
+}
+
+std::vector<Sommet*> Graphe::get_tabSommet()const
+{
+    return m_tabSommet;
 }
 
 void Graphe::afficherTabS()
@@ -65,19 +99,7 @@ void Graphe::afficher()///afficher les donn�es d'un bloc pour debug
 
 }
 
-std::string recupFichier (std::istringstream& iss)///ssprgm de tri du flux re�u en param�tre
-{
-
-    std::string orient, ordre;
-
-    ///on r�cup�re les variables
-    iss>>orient;
-    iss>>ordre;
-
-    return orient+" "+ordre;
-
-}
-///M�thode de parsing de type Graphe
+///PARSING
 void Graphe::chargeGraphe(std::string nomFichier)
 {
     try
@@ -100,10 +122,9 @@ void Graphe::chargeGraphe(std::string nomFichier)
             }
             m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
             m_ordre = std::stoi(tabLigne[1]);
-            // m_tabArette = new vector(m_ordre);
             std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
             m_tabSommet = tmp;
-            for(int i=2;i<=1+m_ordre;i++)//ajoute les sommets dans tabSommet
+            for(int i = 2; i <= 1 + m_ordre; i++)//ajoute les sommets dans tabSommet
             {
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
             }
@@ -166,7 +187,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             std::cerr<<"Attention: "<<e.what()<<std::endl;
     }
 }
-
+///AJOUT D'OBJETS
 void Graphe::ajoutArete(std::string ligne)
 {
     //split
@@ -187,8 +208,7 @@ void Graphe::ajoutArete(std::string ligne)
 
 void Graphe::ajoutSommet(std::string ligne)
 {
-    //split
-    std::vector<std::string> recupLigneSplit=split(ligne, ' ');
+    std::vector<std::string> recupLigneSplit = split(ligne, ' ');
     //4 var pour les 4 attributs du constructeurs
     int index = std::stoi(recupLigneSplit[0]);
     std::string nom = recupLigneSplit[1];
@@ -206,7 +226,8 @@ void Graphe::ajouterPonderation(std::string lignePond)
 
     m_tabArete[index]->set_poids(poids);
 }
-///initialisation des fonctions dessiner
+
+///DESSIN
 void Graphe::dessiner(Svgfile&svgout)
 {
     for(int i=0;i<m_taille;i++)
@@ -217,14 +238,14 @@ void Graphe::dessiner(Svgfile&svgout)
         double y1 = a->get_s1()->get_coordy();
         double y2 = a->get_s2()->get_coordy();
 
-        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "black");
-        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),"red");//attention int converti en string par to_string
+        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
         // on ecrit l'idArete au milieu de l'arete
     }
     for(int i=0;i<m_ordre;i++)
     {
         Sommet* s = m_tabSommet[i];
-        svgout.addDisk(s->get_coordx() * 100,s->get_coordy() *100, 30, "black");
+        svgout.addDisk(s->get_coordx() * 100,s->get_coordy() *100, 30, s->get_couleurS());
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
         std::cout<<"on arrive jusquici"<<std::endl;
     }
@@ -241,3 +262,13 @@ void Graphe::commencerIndiceDeCentralite()
     }
 
 }
+/*
+void Graphe::calcCouleurG()
+{
+    for(int i=0;i<nb_arete;i++)
+    {
+       // nb_arete[i].m_couleur = set_couleurA(couleurCac);//grosse merde
+       //pour chaque sommet de degre diff, on set la couelur calculée
+    }
+}
+*/

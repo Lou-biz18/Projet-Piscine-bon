@@ -8,6 +8,16 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
     m_coords.first = x;
     m_coords.second = y;
     m_nbArete = 0;
+    m_couleurS = "black";//couleur par default
+}
+
+Sommet(const Sommet &sommetACopier)
+{
+    m_idSommet = sommetACopier.get_idSommet();
+    m_nbArete = 0;
+    m_nom = sommetACopier.get_nom();
+    m_coords.first = sommetACopier.get_coordx();
+    m_coords.second = sommetACopier.get_coordy();
 }
 
 Sommet::~Sommet()
@@ -19,7 +29,6 @@ int Sommet::get_idSommet()
 {
     return m_idSommet;
 }
-
 std::string Sommet::get_nom()
 {
     return m_nom;
@@ -32,17 +41,20 @@ double Sommet::get_coordy()
 {
     return m_coords.second;
 }
+std::string Sommet::get_couleurS()
+{
+    return m_couleurS;
+}
 
  float  Sommet::get_indiceDegre()
  {
      return m_indiceDegre;
  }
-    float Sommet::get_indiceDegreNorm()
-    {
-        return m_indiceDegreNorm;
-    }
 
-
+float Sommet::get_indiceDegreNorm()
+{
+    return m_indiceDegreNorm;
+}
 
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
@@ -63,9 +75,8 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
 {
     int n = ordre-1;
     // somme des aretes d'un sommet = cds
-
-     m_indiceDegre = m_nbArete;
-     m_indiceDegreNorm = m_indiceDegre/ n;
+    m_indiceDegre = m_nbArete;
+    m_indiceDegreNorm = m_indiceDegre/ n;
     std::cout << "indice : " << m_indiceDegre << std::endl;
     std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 

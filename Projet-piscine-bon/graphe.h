@@ -13,6 +13,7 @@ class Graphe
 {
     public:
         Graphe(std::string nomFichier);//prototyper le constructeur
+        Graphe(const Graphe &grapheACopier);// constructeur de copie
         ~Graphe();
 
         void chargeGraphe(std::string nomFichier);
@@ -26,8 +27,11 @@ class Graphe
         bool get_orient() const;
         int get_ordre() const;
         int get_taille() const;
+        std::vector<Arete*> get_tabArete() const;
+        std::vector<Sommet*> get_tabSommet() const;
         void dessiner(Svgfile&svgout);
         void commencerIndiceDeCentralite();
+        void calcCouleurG();
 
     private:
         int m_ordre;
