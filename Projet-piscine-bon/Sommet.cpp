@@ -56,6 +56,11 @@ float Sommet::get_indiceDegreNorm() const
     return m_indiceDegreNorm;
 }
 
+int Sommet::get_longueurDeChemin() const
+{
+    return m_longueurDeChemin;
+}
+
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
@@ -104,13 +109,18 @@ void Sommet::deployerDijkstra()
 {
     int longueurDeCheminTest;
     int longueurDeCheminSommetSuivant;
-    for(auto a: m_tabAreteSo)
+    for (auto a: m_tabAreteSo)
     {
         longueurDeCheminTest = m_longueurDeChemin + a->get_poids();
         longueurDeCheminSommetSuivant = a->autreSommet(this)->get_longueurDeChemin();
-        if(longueurDeCheminSommetSuivant > longueurDeChemin || longueurDeCheminSommetSuivant == 0)
+        if (longueurDeCheminSommetSuivant > longueurDeCheminTest || longueurDeCheminSommetSuivant == 0)
         {
-            deploie
+            a->autreSommet(this)->set_longueurDeChemin(longueurDeCheminTest);
         }
     }
+}
+
+void Sommet::set_longueurDeChemin(int longueur)
+{
+    m_longueurDeChemin = longueur;
 }
