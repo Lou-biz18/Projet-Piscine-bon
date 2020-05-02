@@ -62,14 +62,14 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
 
     for(auto s: tabSommet)
     {
-        s->set_dijkstra(0);
+        s->set_longueurDeChemin(0);
     }
-    sommetDepart->set_dijkstra(1);
-    while(sommetArrivee->get_dijkstra() == 0)
+    sommetDepart->set_longueurDeChemin(1);
+    while(sommetArrivee->get_longueurDeChemin() == 0)
     {
         for(auto s: tabSommet)
         {
-            if (s->get_dijkstra() == i)
+            if (s->get_longueurDeChemin() == i)
             {
                 s->deployerDijkstra()
             }

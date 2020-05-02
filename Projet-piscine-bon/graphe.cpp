@@ -262,10 +262,7 @@ void Graphe::commencerIndiceDeCentralite()
 
 void Graphe::commencerIndiceDeProximite()
 {
-    for (auto s : m_tabSommet)
-    {
-        s->calculeIndiceProximite();
-    }
+    
 }
 
 bool Graphe::supprimerArete(int areteChoisie)
