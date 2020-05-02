@@ -15,7 +15,7 @@ Graphe::Graphe(std::string nomFichier)
     chargeGraphe(nomFichier);
 }
 
-Graphe(const Graphe &grapheACopier)
+Graphe::Graphe(const Graphe &grapheACopier)
 {
     m_ordre = grapheACopier.get_ordre();
     m_orient = grapheACopier.get_orient();
@@ -23,7 +23,7 @@ Graphe(const Graphe &grapheACopier)
 
     std::vector<Sommet*> tmpS(m_ordre);// taille m_ordre pour tabSommet
     m_tabSommet = tmpS;
-    std::vector<Sommet*> tabSomACopier = graheACopier.get_tabSommet() // A CODER getTabSommet
+    std::vector<Sommet*> tabSomACopier = grapheACopier.get_tabSommet();
     for(int i = 0; i <= m_ordre; i++)
     {
         Sommet newSommet = *(tabSomACopier[i]); // Sommet newSomme = *monSommet
@@ -31,7 +31,7 @@ Graphe(const Graphe &grapheACopier)
     }
     std::vector<Arete*> tmpA(m_taille);// taille m_ordre pour tabSommet
     m_tabArete = tmpA;
-    std::vector<Arete*> tabAreteACopier = graheACopier.get_tabArete() // A CODER getTabArete
+    std::vector<Arete*> tabAreteACopier = grapheACopier.get_tabArete();
     for(int i = 0; i <= m_ordre; i++)
     {
         Arete newArete = *(tabAreteACopier[i]);
@@ -266,12 +266,14 @@ bool Graphe::supprimerArete(int areteChoisie)
 {
     for(auto a : m_tabArete)
     {
-       if(m_tabArete[a]==areteChoisie)
-       {
-           return true;
-           std::cout <<"l'arete "<<m_tabArete[areteChoisie]<<std::cout<<"existe"<<std::endl;
-           m_tabArete.erase(m_tabArete.begin() + areteChoisie + 1);//efface l'arete d'id aretechoisie+1
-           m_taille = m_taille - 1 ;
+        if(a->get_idArete()==areteChoisie)
+        {
+            return true;
+            std::cout <<"l'arete ";
+            m_tabArete[areteChoisie]->afficher();
+            std::cout<<"existe"<<std::endl;
+            m_tabArete.erase(m_tabArete.begin() + areteChoisie + 1);//efface l'arete d'id aretechoisie+1
+            m_taille = m_taille - 1 ;
            /*Sommet* s1 = arete.get_s1();
            Sommet* s2 = arete.get_s2();
            s1->enleveA(areteChoisie);//methode dans arete chelou type sommet

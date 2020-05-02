@@ -16,8 +16,8 @@ void Environnement::createGraphe(std::string nomFichier){
 
 void Environnement::creationGrapheAModifer()
 {
-    Graphe tmp = m_graphe;
-    m_grapheModifie = tmp;
+    Graphe tmp = *(m_graphe);
+    m_grapheModifie = &tmp;
 }
 
 Graphe* Environnement::get_graphe(){

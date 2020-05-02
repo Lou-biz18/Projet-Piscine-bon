@@ -33,27 +33,27 @@ int Arete::get_idArete()const
     return m_idArete;
 }
 //chope la premiere extremit� de l'arete
-int Arete::get_idS1()
+int Arete::get_idS1() const
 {
     return m_sommets.first->get_idSommet();
 }
-int Arete::get_idS2()
+int Arete::get_idS2() const
 {
     return m_sommets.second->get_idSommet();
 }
-Sommet* Arete::get_s1()
+Sommet* Arete::get_s1() const
 {
     return m_sommets.first;
 }
-Sommet* Arete::get_s2()
+Sommet* Arete::get_s2() const
 {
     return m_sommets.second;
 }
-int Arete::get_poids()
+int Arete::get_poids() const
 {
     return m_poids;
 }
-std::string Arete::get_couleurA()
+std::string Arete::get_couleurA() const
 {
     return m_couleurA;
 }

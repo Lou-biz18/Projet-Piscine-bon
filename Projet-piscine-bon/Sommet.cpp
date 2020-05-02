@@ -11,7 +11,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
     m_couleurS = "black";//couleur par default
 }
 
-Sommet(const Sommet &sommetACopier)
+Sommet::Sommet(const Sommet &sommetACopier)
 {
     m_idSommet = sommetACopier.get_idSommet();
     m_nbArete = 0;
@@ -25,33 +25,33 @@ Sommet::~Sommet()
     //dtor
 }
 
-int Sommet::get_idSommet()
+int Sommet::get_idSommet() const
 {
     return m_idSommet;
 }
-std::string Sommet::get_nom()
+std::string Sommet::get_nom() const
 {
     return m_nom;
 }
-double Sommet::get_coordx()
+double Sommet::get_coordx() const
 {
     return m_coords.first;
 }
-double Sommet::get_coordy()
+double Sommet::get_coordy() const
 {
     return m_coords.second;
 }
-std::string Sommet::get_couleurS()
+std::string Sommet::get_couleurS() const
 {
     return m_couleurS;
 }
 
- float  Sommet::get_indiceDegre()
+ float  Sommet::get_indiceDegre() const
  {
      return m_indiceDegre;
  }
 
-float Sommet::get_indiceDegreNorm()
+float Sommet::get_indiceDegreNorm() const
 {
     return m_indiceDegreNorm;
 }
