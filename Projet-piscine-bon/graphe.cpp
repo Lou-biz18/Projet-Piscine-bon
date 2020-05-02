@@ -254,14 +254,17 @@ void Graphe::dessiner(Svgfile&svgout)
 
 void Graphe::commencerIndiceDeCentralite()
 {
-
     for (auto s : m_tabSommet)
     {
         s->calculeIndiceCentraliteDegres(m_ordre);
-
     }
-
 }
+
+void Graphe::commencerIndiceDeProximite()
+{
+    
+}
+
 bool Graphe::supprimerArete(int areteChoisie)
 {
     Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp

@@ -58,6 +58,29 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) //
 
 }
 
+int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
+{
+    std::vector<Sommet*> tabSommet = graphe.get_tabSommet();
+    int i = 1;
+
+    for(auto s: tabSommet)
+    {
+        s->set_longueurDeChemin(0);
+    }
+    sommetDepart->set_longueurDeChemin(1);
+    while(sommetArrivee->get_longueurDeChemin() == 0)
+    {
+        for(auto s: tabSommet)
+        {
+            if (s->get_longueurDeChemin() == i)
+            {
+                s->deployerDijkstra()
+            }
+        }
+        i++;
+    }
+}
+
 void entete(){
     using namespace std;
     std::string rouge = "\033[31m";
