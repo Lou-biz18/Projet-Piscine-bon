@@ -56,11 +56,18 @@ void demandeSuppA(Environnement * env)
 bool lancementDuService(int choix, Environnement* env)
 {
     std::string nomFichier;
+    std::string nomFichierSauv = "sauv.txt";
+    std::string ligneSauv;
     switch(choix)
     {
-        case 5:
+        case 6:
             std::cout << "Quitter" << std::endl;
             return true;
+        case 5:
+            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
+            std::cin>> ligneSauv;
+            sauvegardeDansFichier(nomFichierSauv,ligneSauv);
+            break;
         case 4:
             std::cout << "Etude de vulnérabilité" << std::endl;
             env->creationGrapheAModifer();
@@ -119,7 +126,7 @@ bool menu(Environnement* env)
             std::cout << mauvaiseEntree << std::endl;
             std::cin >> choixUtilisateur;
         }
-        else if(choixUtilisateur < 1 || choixUtilisateur > 5)
+        else if(choixUtilisateur < 1 || choixUtilisateur > 6)
         {
             std::cout << mauvaiseOption << std::endl;
             std::cin >> choixUtilisateur;
