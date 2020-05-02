@@ -31,6 +31,8 @@ class Graphe
         std::vector<Sommet*> get_tabSommet() const;
         void dessiner(Svgfile&svgout);
         void commencerIndiceDeCentralite();
+        void commencerIndiceDeProximite();
+        bool supprimerArete(int areteChoisie);
         void calcCouleurG();
 
     private:

@@ -42,6 +42,8 @@
 		<Unit filename="Environnement.h" />
 		<Unit filename="Sommet.cpp" />
 		<Unit filename="Sommet.h" />
+		<Unit filename="Svgfile.cpp" />
+		<Unit filename="Svgfile.h" />
 		<Unit filename="graphe.cpp" />
 		<Unit filename="graphe.h" />
 		<Unit filename="main.cpp" />

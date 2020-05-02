@@ -20,27 +20,69 @@ void demandeSuppressionAretes(){
         env->get_graphemodifie()->dessiner(svg);
 }
 */
+///CHOIX SUPP ARETE
+void demandeSuppA(Environnement * env)
+{
+    int choixU;
+    std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaiter supprimer"<<std::endl;
+    std::cin >> choixU;
+
+    while(1)
+    {
+        if(std::cin.fail())
+        {
+            std::cin.clear();// recup un flux pur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
+            std::cout << mauvaiseEntree << std::endl;
+            std::cin >> choixU;
+        }
+        else if(!(env->get_grapheModif()->supprimerArete(choixU)))//si bool = false
+        {
+            std::cout <<"l'arete choisie n'existe pas, veuillez entrer une arete qui existe"<<std::endl;
+            std::cin >> choixU;
+        }
+        else
+        {
+            std::cout << "Tout s'est bien passé" <<std::endl;
+            env->get_grapheModif()->supprimerArete(choixU);
+            Svgfile svg;
+            env->get_grapheModif()->dessiner(svg);// a modif
+        }
+
+    }
+}
 
 //Choix de l'utilisateur
 bool lancementDuService(int choix, Environnement* env)
 {
     std::string nomFichier;
+    std::string nomFichierSauv = "sauv.txt";
+    std::string ligneSauv;
     switch(choix)
     {
-        case 5:
+        case 6:
             std::cout << "Quitter" << std::endl;
             return true;
+        case 5:
+            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
+            std::cin>> ligneSauv;
+            sauvegardeDansFichier(nomFichierSauv,ligneSauv);
+            break;
         case 4:
-            std::cout << "Etude de vulnérabilité" << std::endl;
-            env->creationGrapheAModifer();
-            // demandeSuppressionAretes();
-            // relancer les methodes de calcul d'indices
-            // sauvegarder/afficher les indices dans un fichier different de celui du graph normal
-            // comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
+            std::cout << "Etude de vulnerabilite" << std::endl;
+            env->creationGrapheAModifer();//ca marche pas sa mereé
+            std::cout <<"est ce que creationGraphe AModifier crash mon pgm ?"<<std::endl;
+            demandeSuppA(env);
+            /*demandeSuppressionAretes();FAIT
+            relancer les methodes de calcul d'indices
+             sauvegarder/afficher les indices dans un fichier different de celui du graph normal
+             comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
+            */
             break;
         case 3:
             std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->commencerIndiceDeCentralite();
+            env->get_graphe()->commencerIndiceDeProximite();
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
@@ -86,7 +128,7 @@ bool menu(Environnement* env)
             std::cout << mauvaiseEntree << std::endl;
             std::cin >> choixUtilisateur;
         }
-        else if(choixUtilisateur < 1 || choixUtilisateur > 5)
+        else if(choixUtilisateur < 1 || choixUtilisateur > 6)
         {
             std::cout << mauvaiseOption << std::endl;
             std::cin >> choixUtilisateur;

@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <sstream>
+#include "utile.h"
 
 std::vector<std::string> split(const std::string &ligne, char delimiteur)
 {
@@ -40,9 +37,12 @@ std::string demandeNomFichier()
 }
 bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) // a changer pour faire en sorte que meme si le fichier existe pas, ca le cree
 {
-    std::ofstream fichier(nomFichierSauv);//flux de fichier de sortie et ouverture du fichier
+    std::ofstream fichier;//flux de fichier de sortie et ouverture du fichier
+    fichier.open(nomFichierSauv);//creer un fichier nommé nomFichier
     if(fichier)// si l'ouverture a réussie
     {
+        fichier<<"coutenu du fichier";
+        fichier<<"deux"<<std::endl;
         fichier << ligneSauv;//operateur du flux de sortie
         fichier.close();  // on ferme le fichier
         return true;
@@ -53,6 +53,29 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) //
         return false;
     }
 
+}
+
+int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
+{
+    std::vector<Sommet*> tabSommet = graphe.get_tabSommet();
+    int i = 1;
+
+    for(auto s: tabSommet)
+    {
+        s->set_longueurDeChemin(0);
+    }
+    sommetDepart->set_longueurDeChemin(1);
+    while(sommetArrivee->get_longueurDeChemin() == 0)
+    {
+        for(auto s: tabSommet)
+        {
+            if (s->get_longueurDeChemin() == i)
+            {
+                s->deployerDijkstra();
+            }
+        }
+        i++;
+    }
 }
 
 void entete(){
