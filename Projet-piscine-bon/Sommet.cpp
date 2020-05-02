@@ -99,3 +99,18 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
     std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
+
+void Sommet::deployerDijkstra()
+{
+    int longueurDeCheminTest;
+    int longueurDeCheminSommetSuivant;
+    for(auto a: m_tabAreteSo)
+    {
+        longueurDeCheminTest = m_longueurDeChemin + a->get_poids();
+        longueurDeCheminSommetSuivant = a->autreSommet(this)->get_longueurDeChemin();
+        if(longueurDeCheminSommetSuivant > longueurDeChemin || longueurDeCheminSommetSuivant == 0)
+        {
+            deploie
+        }
+    }
+}

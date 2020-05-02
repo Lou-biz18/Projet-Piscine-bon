@@ -262,6 +262,15 @@ void Graphe::commencerIndiceDeCentralite()
     }
 
 }
+
+void Graphe::commencerIndiceDeProximite()
+{
+    for (auto s : m_tabSommet)
+    {
+        s->calculeIndiceProximite();
+    }
+}
+
 bool Graphe::supprimerArete(int areteChoisie)
 {
     Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp

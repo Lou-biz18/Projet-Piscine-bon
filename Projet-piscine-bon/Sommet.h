@@ -24,14 +24,15 @@ class Sommet//dans chaque somme ya un tableaux darretes
         double get_coordx() const;//pour dessiner
         double get_coordy() const;
         std::string get_couleurS() const;
+        float get_indiceDegreNorm() const;
+        float get_indiceDegre() const;
 
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
         void calculeIndiceCentraliteDegres(int m_ordre);
-        float get_indiceDegre() const;
-        float get_indiceDegreNorm() const;
         void enleveA(Arete* arete);
+        void deployerDijkstra();
 
 
     private:

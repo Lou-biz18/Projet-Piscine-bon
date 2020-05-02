@@ -74,6 +74,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 3:
             std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->commencerIndiceDeCentralite();
+            env->get_graphe()->commencerIndiceDeProximite();
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
