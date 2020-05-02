@@ -23,3 +23,6 @@ void Environnement::creationGrapheAModifer()
 Graphe* Environnement::get_graphe(){
     return m_graphe;
 }
+Graphe* Environnement::get_grapheModif(){
+    return m_grapheModifie;
+}

@@ -262,6 +262,29 @@ void Graphe::commencerIndiceDeCentralite()
     }
 
 }
+bool Graphe::supprimerArete(int areteChoisie)
+{
+    for(auto a : m_tabArete)
+    {
+       if(m_tabArete[a]==areteChoisie)
+       {
+           return true;
+           std::cout <<"l'arete "<<m_tabArete[areteChoisie]<<std::cout<<"existe"<<std::endl;
+           m_tabArete.erase(m_tabArete.begin() + areteChoisie + 1);//efface l'arete d'id aretechoisie+1
+           m_taille = m_taille - 1 ;
+           /*Sommet* s1 = arete.get_s1();
+           Sommet* s2 = arete.get_s2();
+           s1->enleveA(areteChoisie);//methode dans arete chelou type sommet
+           s2->enleveA(areteChoisie);*/
+           //delete areteChoisie;//impossible
+       }
+       else
+       {
+           std::cout <<"l'arete "<<areteChoisie<<"n'existe pas, veuillez entrer une arete qui existe"<<std::endl;
+           return false;
+       }
+    }
+}
 /* bool Graphe::supprimerArrete(int arretechoisie) {
     chercher dans tabArrete si elle existe
     si l'arrete existe

@@ -20,6 +20,20 @@ void demandeSuppressionAretes(){
         env->get_graphemodifie()->dessiner(svg);
 }
 */
+///CHOIX SUPP ARETE
+void demandeSuppA()
+{
+    Environnement* env;
+    int choixU;
+    std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaiter supprimer"<<std::endl;
+    std::cin >> choixU;
+    while(1)
+    {
+        env->get_grapheModif()->supprimerArete(choixU);
+        Svgfile svg;
+        env->get_grapheModif()->dessiner(svg);
+    }
+}
 
 //Choix de l'utilisateur
 bool lancementDuService(int choix, Environnement* env)
@@ -33,10 +47,12 @@ bool lancementDuService(int choix, Environnement* env)
         case 4:
             std::cout << "Etude de vulnérabilité" << std::endl;
             env->creationGrapheAModifer();
-            // demandeSuppressionAretes();
-            // relancer les methodes de calcul d'indices
-            // sauvegarder/afficher les indices dans un fichier different de celui du graph normal
-            // comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
+            //demandeSuppA();
+            /*demandeSuppressionAretes();FAIT
+            relancer les methodes de calcul d'indices
+             sauvegarder/afficher les indices dans un fichier different de celui du graph normal
+             comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
+            */
             break;
         case 3:
             std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;

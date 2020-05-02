@@ -16,7 +16,7 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
 Arete::Arete(const Arete &areteACopier)
 {
     m_idArete = areteACopier.get_idArete();
-    m_poids = areteACopier.getPoids();
+    m_poids = areteACopier.get_poids();
     m_sommets.first = areteACopier.get_s1();
     m_sommets.second = areteACopier.get_s2();
     m_sommets.first->ajoutArete(this);
