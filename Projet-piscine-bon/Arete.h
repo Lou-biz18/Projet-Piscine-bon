@@ -20,14 +20,14 @@ class Arete
         ~Arete();
 
         void afficher();
-        void set_poids( int poids);
-        int get_idArete()const;
-        int get_idS1();
-        int get_idS2();
-        Sommet* get_s1();
-        Sommet* get_s2();
-        int get_poids();
-        std::string get_couleurA();
+        void set_poids(int poids);
+        int get_idArete() const;
+        int get_idS1() const;
+        int get_idS2() const;
+        Sommet* get_s1() const;
+        Sommet* get_s2() const;
+        int get_poids() const;
+        std::string get_couleurA() const;
         Sommet* get_autreSommet (Sommet* premierSommet)const;
 
 

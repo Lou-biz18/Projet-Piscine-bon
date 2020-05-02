@@ -15,6 +15,7 @@ class Environnement
         void createGraphe(std::string nomFichier);
         void creationGrapheAModifer();
         Graphe* get_graphe();
+        Graphe* get_grapheModif();
 
 };
 #endif

@@ -16,8 +16,8 @@ Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
 }
-/*
-Graphe(const Graphe &grapheACopier)
+
+Graphe::Graphe(const Graphe &grapheACopier)
 {
     m_ordre = grapheACopier.get_ordre();
     m_orient = grapheACopier.get_orient();
@@ -25,7 +25,7 @@ Graphe(const Graphe &grapheACopier)
 
     std::vector<Sommet*> tmpS(m_ordre);// taille m_ordre pour tabSommet
     m_tabSommet = tmpS;
-    std::vector<Sommet*> tabSomACopier = graheACopier.get_tabSommet() // A CODER getTabSommet
+    std::vector<Sommet*> tabSomACopier = grapheACopier.get_tabSommet();
     for(int i = 0; i <= m_ordre; i++)
     {
         Sommet newSommet = *(tabSomACopier[i]); // Sommet newSomme = *monSommet
@@ -33,14 +33,14 @@ Graphe(const Graphe &grapheACopier)
     }
     std::vector<Arete*> tmpA(m_taille);// taille m_ordre pour tabSommet
     m_tabArete = tmpA;
-    std::vector<Arete*> tabAreteACopier = graheACopier.get_tabArete() // A CODER getTabArete
+    std::vector<Arete*> tabAreteACopier = grapheACopier.get_tabArete();
     for(int i = 0; i <= m_ordre; i++)
     {
         Arete newArete = *(tabAreteACopier[i]);
         m_tabArete[i] = &newArete;
     }
 }
-*/
+
 Graphe::~Graphe()
 {
     for (auto a : m_tabArete)
@@ -256,13 +256,55 @@ void Graphe::dessiner(Svgfile&svgout)
 
 void Graphe::commencerIndiceDeCentralite()
 {
-
     for (auto s : m_tabSommet)
     {
         s->calculeIndiceCentraliteDegres(m_ordre);
-
     }
+}
 
+void Graphe::commencerIndiceDeProximite()
+{
+    for (auto s : m_tabSommet)
+    {
+        for (auto sE: m_tabSommet)
+        {
+
+        }
+    }
+}
+
+bool Graphe::supprimerArete(int areteChoisie)
+{
+    Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp
+    for(int i=0; i<m_taille;i++)// ! mettre des i
+    {
+        if(m_tabArete[i]->get_idArete()==areteChoisie)
+        {
+            arete = m_tabArete[i];//on attribue à arete cette refereence i precise
+            std::cout <<"l'arete ";
+            m_tabArete[i]->afficher();
+            std::cout<<"existe"<<std::endl;
+
+            m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
+
+            m_taille = m_taille - 1 ;//mise a jour de la taille du tableau
+
+            //m_tabArete[i]->get_s1();
+            Sommet* s1 = m_tabArete[i]->get_s1();
+            Sommet* s2 = m_tabArete[i]->get_s2();
+            s1->enleveA(m_tabArete[i]);//on efface les ref de Arete dans sommet
+            s2->enleveA(m_tabArete[i]);//car tabAreteSo dans Sommet
+
+            delete(arete);// destruction finale de l'objet arete i
+            std::cout<<"l'arete";
+            m_tabArete[i]->afficher();
+            std::cout<<" a bien été suprimée"<<std::endl;
+            return true;
+       }
+       else
+        return false;
+    }
+    return false;
 }
 
 void Graphe::commencerVecteurPropre()
