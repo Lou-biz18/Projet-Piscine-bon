@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <fstream>
-#include <sstream>
+#include "utile.h"
 
 std::vector<std::string> split(const std::string &ligne, char delimiteur)
 {
@@ -74,7 +71,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
         {
             if (s->get_longueurDeChemin() == i)
             {
-                s->deployerDijkstra()
+                s->deployerDijkstra();
             }
         }
         i++;

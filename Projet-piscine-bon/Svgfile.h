@@ -5,7 +5,7 @@
 #include <fstream>
 #include <set>
 
-constexpr char defcol[] = "black";
+const std::string defcol = "black";
 
 class Svgfile
 {
@@ -17,7 +17,7 @@ class Svgfile
         void addFleche(double x1, double y1, double x2, double y2, std::string color);
         void addId(double x, double y, std::string text, std::string color);
 
-        static std::string makeRGB(int r, int g, int b);//couleur separée pour degradés
+        static std::string makeRGB(int r, int g, int b);//couleur separï¿½e pour degradï¿½s
 
         static bool s_verbose;
 
@@ -27,7 +27,7 @@ class Svgfile
         int m_width;
         int m_height;
 
-        // Pour éviter les ouverture multiples
+        // Pour ï¿½viter les ouverture multiples
         static std::set<std::string> s_openfiles;
 };
 

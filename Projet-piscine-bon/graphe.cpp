@@ -262,7 +262,13 @@ void Graphe::commencerIndiceDeCentralite()
 
 void Graphe::commencerIndiceDeProximite()
 {
-    
+    for (auto s : m_tabSommet)
+    {
+        for (auto sE: m_tabSommet)
+        {
+            
+        }
+    }
 }
 
 bool Graphe::supprimerArete(int areteChoisie)
@@ -296,6 +302,7 @@ bool Graphe::supprimerArete(int areteChoisie)
        else
         return false;
     }
+    return false;
 }
 /* bool Graphe::supprimerArrete(int arretechoisie) {
     chercher dans tabArrete si elle existe
