@@ -21,17 +21,34 @@ void demandeSuppressionAretes(){
 }
 */
 ///CHOIX SUPP ARETE
-void demandeSuppA()
+void demandeSuppA(Environnement * env)
 {
-    Environnement* env;
     int choixU;
     std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaiter supprimer"<<std::endl;
     std::cin >> choixU;
+
     while(1)
     {
-        env->get_grapheModif()->supprimerArete(choixU);
-        Svgfile svg;
-        env->get_grapheModif()->dessiner(svg);
+        if(std::cin.fail())
+        {
+            std::cin.clear();// recup un flux pur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
+            std::cout << mauvaiseEntree << std::endl;
+            std::cin >> choixU;
+        }
+        else if(!(env->get_grapheModif()->supprimerArete(choixU)))//si bool = false
+        {
+            std::cout <<"l'arete choisie n'existe pas, veuillez entrer une arete qui existe"<<std::endl;
+            std::cin >> choixU;
+        }
+        else
+        {
+            std::cout << "Tout s'est bien passé" <<std::endl;
+            env->get_grapheModif()->supprimerArete(choixU);
+            Svgfile svg;
+            env->get_grapheModif()->dessiner(svg);// a modif
+        }
+
     }
 }
 

@@ -69,7 +69,18 @@ void Sommet::ajoutArete(Arete* newArete)
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;
 }
-
+void Sommet::enleveA(Arete* arete)
+{
+    for(int i=0;i<m_nbArete;i++)
+    {
+        if(m_tabAreteSo[i]==arete)
+        {
+            m_tabAreteSo.erase(m_tabAreteSo.begin()+ i);
+        //vect.erase(std::remove(vect.beging(),vetc.end(),vect[aretesup]),vetc.end())
+            m_nbArete = m_nbArete - 1;
+        }
+    }
+}
 /*
 void Sommet::enleveArete(Arete* arete){
     supprimer arrete de m_tabAreteSo => supprimer element d'un vector

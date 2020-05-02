@@ -31,6 +31,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void calculeIndiceCentraliteDegres(int m_ordre);
         float get_indiceDegre() const;
         float get_indiceDegreNorm() const;
+        void enleveA(Arete* arete);
 
 
     private:

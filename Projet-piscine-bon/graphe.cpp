@@ -264,27 +264,34 @@ void Graphe::commencerIndiceDeCentralite()
 }
 bool Graphe::supprimerArete(int areteChoisie)
 {
-    for(auto a : m_tabArete)
+    Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp
+    for(int i=0; i<m_taille;i++)// ! mettre des i
     {
-        if(a->get_idArete()==areteChoisie)
+        if(m_tabArete[i]->get_idArete()==areteChoisie)
         {
-            return true;
+            arete = m_tabArete[i];//on attribue à arete cette refereence i precise
             std::cout <<"l'arete ";
-            m_tabArete[areteChoisie]->afficher();
+            m_tabArete[i]->afficher();
             std::cout<<"existe"<<std::endl;
-            m_tabArete.erase(m_tabArete.begin() + areteChoisie + 1);//efface l'arete d'id aretechoisie+1
-            m_taille = m_taille - 1 ;
-           /*Sommet* s1 = arete.get_s1();
-           Sommet* s2 = arete.get_s2();
-           s1->enleveA(areteChoisie);//methode dans arete chelou type sommet
-           s2->enleveA(areteChoisie);*/
-           //delete areteChoisie;//impossible
+
+            m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
+
+            m_taille = m_taille - 1 ;//mise a jour de la taille du tableau
+
+            //m_tabArete[i]->get_s1();
+            Sommet* s1 = m_tabArete[i]->get_s1();
+            Sommet* s2 = m_tabArete[i]->get_s2();
+            s1->enleveA(m_tabArete[i]);//on efface les ref de Arete dans sommet
+            s2->enleveA(m_tabArete[i]);//car tabAreteSo dans Sommet
+
+            delete(arete);// destruction finale de l'objet arete i
+            std::cout<<"l'arete";
+            m_tabArete[i]->afficher();
+            std::cout<<" a bien été suprimée"<<std::endl;
+            return true;
        }
        else
-       {
-           std::cout <<"l'arete "<<areteChoisie<<"n'existe pas, veuillez entrer une arete qui existe"<<std::endl;
-           return false;
-       }
+        return false;
     }
 }
 /* bool Graphe::supprimerArrete(int arretechoisie) {
