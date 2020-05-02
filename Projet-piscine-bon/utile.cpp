@@ -57,7 +57,7 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) //
 
 int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
 {
-    std::vector<Sommet*> tabSommet = graphe.get_tabSommet();
+    std::vector<Sommet*> tabSommet = graphe->get_tabSommet();
     int i = 1;
 
     for(auto s: tabSommet)

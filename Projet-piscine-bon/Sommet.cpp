@@ -112,10 +112,10 @@ void Sommet::deployerDijkstra()
     for (auto a: m_tabAreteSo)
     {
         longueurDeCheminTest = m_longueurDeChemin + a->get_poids();
-        longueurDeCheminSommetSuivant = a->autreSommet(this)->get_longueurDeChemin();
+        longueurDeCheminSommetSuivant = a->get_autreSommet(this)->get_longueurDeChemin();
         if (longueurDeCheminSommetSuivant > longueurDeCheminTest || longueurDeCheminSommetSuivant == 0)
         {
-            a->autreSommet(this)->set_longueurDeChemin(longueurDeCheminTest);
+            a->get_autreSommet(this)->set_longueurDeChemin(longueurDeCheminTest);
         }
     }
 }
