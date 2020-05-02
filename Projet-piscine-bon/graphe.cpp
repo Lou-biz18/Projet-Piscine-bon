@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>//pour to_string
+#include <tgmath.h>
 
 #include "Graphe.h"
 #include "Sommet.h"
@@ -10,6 +11,7 @@
 #include "utile.h"
 
 ///CONSTRUCTEUR
+///
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
@@ -266,7 +268,7 @@ void Graphe::commencerIndiceDeProximite()
     {
         for (auto sE: m_tabSommet)
         {
-            
+
         }
     }
 }
@@ -303,6 +305,33 @@ bool Graphe::supprimerArete(int areteChoisie)
         return false;
     }
     return false;
+}
+
+void Graphe::commencerVecteurPropre()
+{
+    float lambda = 0;
+    float lambda_avant = 0;
+    for (auto s : m_tabSommet)
+    {
+        s->set_indiceVecteurPropre(1);
+
+        do
+        {
+            for (auto s : m_tabSommet)
+                s->set_sommeIVPVoisin();// somme des indcides des voisins
+
+            lambda_avant = lambda;
+            lambda= 0;
+
+            for (auto s : m_tabSommet)
+                lambda += s->get_sommeIVPVoisin() * s->get_sommeIVPVoisin(); //
+                lambda = std::sqrt(lambda);
+
+            for(auto s : m_tabSommet)
+                s->set_indiceVecteurPropre(s->get_sommeVecteurPropre()/ lambda);
+        } while(lambda_avant - lambda < 0.01);
+    }
+
 }
 /* bool Graphe::supprimerArrete(int arretechoisie) {
     chercher dans tabArrete si elle existe

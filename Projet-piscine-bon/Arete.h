@@ -28,6 +28,7 @@ class Arete
         Sommet* get_s2() const;
         int get_poids() const;
         std::string get_couleurA() const;
+        Sommet* get_autreSommet (Sommet* premierSommet)const;
 
 
     private:

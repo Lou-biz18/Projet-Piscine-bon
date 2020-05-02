@@ -34,6 +34,7 @@ class Graphe
         void commencerIndiceDeProximite();
         bool supprimerArete(int areteChoisie);
         void calcCouleurG();
+        void commencerVecteurPropre();
 
     private:
         int m_ordre;

@@ -32,6 +32,13 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
         void calculeIndiceCentraliteDegres(int m_ordre);
+        float get_indiceDegre();
+        float get_indiceDegreNorm();
+        void set_indiceVecteurPropre(float m_indiceVecteurPropre);
+        void get_indiceVecteurPropre()const;
+        void set_sommeIVPVoisins();
+        float get_sommeIVPVoisins() const;
+
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
@@ -45,6 +52,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float m_indiceDegre;
         float m_indiceDegreNorm;
         float m_indiceVecteurPropre;
+        float m_sommeIVPVoisins;
         int m_longueurDeChemin;
 
         std::string m_nom;

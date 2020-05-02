@@ -70,7 +70,7 @@
 	"Environnement.h"
 	"Sommet.h"
 
-1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.h
+1588447906 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.h
 	<fstream>
 	<sstream>
 	<iostream>
@@ -93,13 +93,13 @@
 	<sstream>
 	"svgfile.h"
 
-1588344938 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\utile.cpp
+1588361360 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\utile.cpp
 	<iostream>
 	<vector>
 	<fstream>
 	<sstream>
 
-1588359440 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
+1588447906 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
 	<iostream>
 	<limits>
 	<fstream>
@@ -112,11 +112,11 @@
 	<iostream>
 	<vector>
 
-1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\environnement.h
+1588434176 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\environnement.h
 	<iostream>
 	"Graphe.h"
 
-1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.h
+1588447906 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.h
 	<fstream>
 	<sstream>
 	<iostream>
@@ -130,11 +130,39 @@
 	<fstream>
 	<set>
 
-1588359440 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\arete.h
+1588447922 c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\arete.h
 	<fstream>
 	<sstream>
 	<iostream>
 	<vector>
 	"Graphe.h"
 	"Sommet.h"
+
+1588436703 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\arete.cpp
+	"Arete.h"
+	"Sommet.h"
+
+1588437057 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\environnement.cpp
+	"Environnement.h"
+	"Sommet.h"
+
+1588436769 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\sommet.cpp
+	"Sommet.h"
+	"Arete.h"
+
+1588436786 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\graphe.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<string>
+	"Graphe.h"
+	"Sommet.h"
+	"Arete.h"
+	"utile.h"
+
+1588359440 source:c:\users\carla\documents\github\projet-piscine-bon\projet-piscine-bon\svgfile.cpp
+	<iostream>
+	<sstream>
+	"svgfile.h"
 

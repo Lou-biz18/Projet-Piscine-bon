@@ -105,6 +105,31 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
 
 }
 
+
+void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
+{
+    m_indiceVecteurPropre = indiceVecteurPropre;
+}
+
+void Sommet::get_indiceVecteurPropre() const
+{
+    return m_indiceVecteurPropre;
+}
+
+void Sommet::set_sommeIVPVoisins()
+{
+    m_sommeIVPVoisins = 0;
+    for (auto a: m_tabAreteSo)
+    {
+        m_sommeIVPVoisins += a->autreSommet(this)->get_indiceVecteurPropre();
+    }
+}
+
+
+float Sommet::get_sommeIVPVoisins() const
+{
+    return m_sommeIVPVoisins;
+}
 void Sommet::deployerDijkstra()
 {
     int longueurDeCheminTest;
