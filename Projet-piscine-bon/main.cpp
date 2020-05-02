@@ -69,9 +69,10 @@ bool lancementDuService(int choix, Environnement* env)
             sauvegardeDansFichier(nomFichierSauv,ligneSauv);
             break;
         case 4:
-            std::cout << "Etude de vulnérabilité" << std::endl;
-            env->creationGrapheAModifer();
-            //demandeSuppA();
+            std::cout << "Etude de vulnerabilite" << std::endl;
+            env->creationGrapheAModifer();//ca marche pas sa mereé
+            std::cout <<"est ce que creationGraphe AModifier crash mon pgm ?"<<std::endl;
+            demandeSuppA(env);
             /*demandeSuppressionAretes();FAIT
             relancer les methodes de calcul d'indices
              sauvegarder/afficher les indices dans un fichier different de celui du graph normal
