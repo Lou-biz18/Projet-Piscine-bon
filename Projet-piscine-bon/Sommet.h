@@ -32,8 +32,10 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceDegre();
         float get_indiceDegreNorm();
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);
-        void set_sommeVecteurPropre (float m_sommeVecteurPropre);
-        float get_sommeVecteurPropre();
+        void get_indiceVecteurPropre()const;
+        void set_sommeIVPVoisins();
+        float get_sommeIVPVoisins() const;
+
 
 
 
@@ -44,7 +46,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float m_indiceDegre;
         float m_indiceDegreNorm;
         float m_indiceVecteurPropre;
-        float m_sommeVecteurPropre;
+        float m_sommeIVPVoisins;
 
         std::string m_nom;
         std::pair<double,double> m_coords;

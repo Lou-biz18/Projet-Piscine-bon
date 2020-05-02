@@ -70,3 +70,18 @@ void Arete::afficher()
               <<"-"<<m_sommets.second->get_nom()
               <<" poids:"<<m_poids<<std::endl;
 }
+Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
+{
+        if (premierSommet== sommet.first())
+        {
+            return m_sommets.second();
+        }
+        else
+        {
+            return m_sommets.first();
+        }
+
+
+
+
+}

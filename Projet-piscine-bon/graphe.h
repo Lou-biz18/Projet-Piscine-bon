@@ -32,6 +32,7 @@ class Graphe
         void dessiner(Svgfile&svgout);
         void commencerIndiceDeCentralite();
         void calcCouleurG();
+        void commencerVecteurPropre();
 
     private:
         int m_ordre;
