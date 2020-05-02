@@ -32,7 +32,7 @@ bool lancementDuService(int choix, Environnement* env)
             return true;
         case 4:
             std::cout << "Etude de vulnérabilité" << std::endl;
-            env->creationGrapheAModifer();
+//            env->creationGrapheAModifer();
             // demandeSuppressionAretes();
             // relancer les methodes de calcul d'indices
             // sauvegarder/afficher les indices dans un fichier different de celui du graph normal

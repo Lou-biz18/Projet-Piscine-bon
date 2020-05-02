@@ -31,6 +31,9 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void calculeIndiceCentraliteDegres(int m_ordre);
         float get_indiceDegre();
         float get_indiceDegreNorm();
+        void set_indiceVecteurPropre(float m_indiceVecteurPropre);
+        void set_sommeVecteurPropre (float m_sommeVecteurPropre);
+        float get_sommeVecteurPropre();
 
 
 
@@ -41,6 +44,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float m_indiceDegre;
         float m_indiceDegreNorm;
         float m_indiceVecteurPropre;
+        float m_sommeVecteurPropre;
 
         std::string m_nom;
         std::pair<double,double> m_coords;

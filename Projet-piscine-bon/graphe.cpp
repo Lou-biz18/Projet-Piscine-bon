@@ -10,11 +10,12 @@
 #include "utile.h"
 
 ///CONSTRUCTEUR
+///
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
 }
-
+/*
 Graphe(const Graphe &grapheACopier)
 {
     m_ordre = grapheACopier.get_ordre();
@@ -38,7 +39,7 @@ Graphe(const Graphe &grapheACopier)
         m_tabArete[i] = &newArete;
     }
 }
-
+*/
 Graphe::~Graphe()
 {
     for (auto a : m_tabArete)
@@ -260,6 +261,35 @@ void Graphe::commencerIndiceDeCentralite()
         s->calculeIndiceCentraliteDegres(m_ordre);
 
     }
+
+}
+
+void Graphe::commencerVecteurPropre()
+{
+    float lambda = 0;
+    float lambda_avant = 0;
+    for (auto s : m_tabSommet)
+        s->set_indiceVecteurPropre(1)
+
+        do
+        {
+            for (auto s : m_tabSommet)
+                s->set_sommeVecteurPropre(m_sommeVecteurPropre);// somme des indcides des voisins
+
+            lambda_avant = lambda;
+            lambda= 0;
+
+            for (auto s : m_tabSommet)
+            lambda += s->get_sommeVecteurPropre() * s->get_sommeVecteurPropre()  //
+            lambda = sqrt (lambda);
+
+            for(auto s : m_tabSommet)
+            s->set_indiceVecteurPropre(s->get_sommeVecteurPropre/ lambda);
+
+
+        }
+    while(lambda_avant - lambda < 0.01)
+
 
 }
 /* bool Graphe::supprimerArrete(int arretechoisie) {

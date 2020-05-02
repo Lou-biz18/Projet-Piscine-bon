@@ -10,7 +10,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
     m_nbArete = 0;
     m_couleurS = "black";//couleur par default
 }
-
+/*
 Sommet(const Sommet &sommetACopier)
 {
     m_idSommet = sommetACopier.get_idSommet();
@@ -19,7 +19,7 @@ Sommet(const Sommet &sommetACopier)
     m_coords.first = sommetACopier.get_coordx();
     m_coords.second = sommetACopier.get_coordy();
 }
-
+*/
 Sommet::~Sommet()
 {
     //dtor

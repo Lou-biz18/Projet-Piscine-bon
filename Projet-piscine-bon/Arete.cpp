@@ -12,17 +12,17 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     s2->ajoutArete(this);
     m_couleurA = "black";
 }
-
+/*
 Arete::Arete(const Arete &areteACopier)
 {
     m_idArete = areteACopier.get_idArete();
-    m_poids = areteACopier.getPoids();
-    m_sommets.first = areteACopier.get_s1();
+//    m_poids = areteACopier.getPoids();
+  //  m_sommets.first = areteACopier.get_s1();
     m_sommets.second = areteACopier.get_s2();
     m_sommets.first->ajoutArete(this);
     m_sommets.second->ajoutArete(this);
 }
-
+*/
 Arete::~Arete()
 {
     //dtor
