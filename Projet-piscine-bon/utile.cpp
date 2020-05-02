@@ -35,6 +35,7 @@ std::string demandeNomFichier()
     }
     return fichier;
 }
+
 bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) // a changer pour faire en sorte que meme si le fichier existe pas, ca le cree
 {
     std::ofstream fichier;//flux de fichier de sortie et ouverture du fichier
@@ -76,6 +77,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
         }
         i++;
     }
+    return(sommetArrivee->get_longueurDeChemin());
 }
 
 void entete(){
