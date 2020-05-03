@@ -24,52 +24,27 @@ Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
     m_couleurA = "black";
 }
 
-Arete::~Arete()
+Arete::~Arete() // destructeur
 {
-    //dtor
+
 }
 ///GET
-int Arete::get_idArete()const
+
+int Arete::get_idArete()const // id de l'arret
 {
     return m_idArete;
 }
-//chope la premiere extremit� de l'arete
-int Arete::get_idS1() const
+
+
+// donne les coordonnées des extremités de l'arret
+
+int Arete::get_idS1() const// premiere extrimité
 {
     return m_sommets.first->get_idSommet();
 }
-int Arete::get_idS2() const
+int Arete::get_idS2() const // deuxieme extremité
 {
     return m_sommets.second->get_idSommet();
-}
-Sommet* Arete::get_s1() const
-{
-    return m_sommets.first;
-}
-Sommet* Arete::get_s2() const
-{
-    return m_sommets.second;
-}
-int Arete::get_poids() const
-{
-    return m_poids;
-}
-std::string Arete::get_couleurA() const
-{
-    return m_couleurA;
-}
-///SET
-void Arete::set_poids(int poids)
-{
-    m_poids= poids;
-}
-///AFFICHAGE
-void Arete::afficher()
-{
-    std::cout <<"Arrete --> "<<m_idArete
-              <<": "<<m_sommets.first->get_nom()
-              <<"-"<<m_sommets.second->get_nom()
-              <<" poids:"<<m_poids;
 }
 
 Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
@@ -82,4 +57,38 @@ Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
     {
         return m_sommets.first;
     }
+}
+// donne l'extremité de l'arete voulu
+
+Sommet* Arete::get_s1() const // le premier sommet
+{
+    return m_sommets.first;
+}
+Sommet* Arete::get_s2() const //le deuxieme sommet
+{
+    return m_sommets.second;
+}
+
+int Arete::get_poids() const // donne le poid des aretes
+{
+    return m_poids;
+}
+
+std::string Arete::get_couleurA() const // donne la couleur
+{
+    return m_couleurA;
+}
+
+///SET
+void Arete::set_poids(int poids)
+{
+    m_poids= poids;
+}
+///AFFICHAGE
+void Arete::afficher()
+{
+    std::cout <<"Arrete --> "<<m_idArete
+              <<": "<<m_sommets.first->get_nom()
+              <<"-"<<m_sommets.second->get_nom()
+              <<" poids:"<<m_poids;
 }

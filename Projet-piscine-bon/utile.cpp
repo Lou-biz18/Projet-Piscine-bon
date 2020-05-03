@@ -10,7 +10,7 @@ std::vector<std::string> split(const std::string &ligne, char delimiteur)
         recup.push_back(temp);
     }
 
-    return recup;
+    return recup; // retourne un tableau du tableau de base coupé
 }
 
 std::string demandeNomFichier()
@@ -79,7 +79,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
     }
     return(sommetArrivee->get_longueurDeChemin() - 1);
 }
-
+//entete de notre menu
 void entete(){
     using namespace std;
     std::string rouge = "\033[31m";

@@ -24,23 +24,24 @@ void demandeSuppressionAretes(){
 void demandeSuppA(Environnement * env)
 {
     int choixU;
-    std::string choixUstr = "";
+    std::string choixUstr;
 
     while(1)
     {
-        std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaitez supprimer" << std::endl;
+        choixUstr = "";
+        std::cout<<"Veuillez donner l'identifiant de l'arete que vous souhaitez supprimer" << std::endl;
         std::cin >> choixU;
         if(std::cin.fail())
         {
+            std::cout << mauvaiseEntree << std::endl;
             std::cin.clear();// recup un flux pur
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
-            std::cout << mauvaiseEntree << std::endl;
-            std::cin >> choixU;
         }
         else if(!(env->get_grapheModif()->supprimerArete(choixU)))//si bool = false
         {
             std::cout <<"l'arete choisie n'existe pas, veuillez entrer une arete qui existe"<<std::endl;
-            std::cin >> choixU;
+            std::cin.clear();// recup un flux pur
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
         }
         else
             std::cout << "Tout c'est bien passé." << std::endl;
@@ -53,6 +54,8 @@ void demandeSuppA(Environnement * env)
         {
             break;
         }
+        std::cin.clear();// recup un flux pur
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
     }
 }
 
@@ -65,35 +68,31 @@ bool lancementDuService(int choix, Environnement* env)
     switch(choix)
     {
         case 6:
-            std::cout << "Quitter" << std::endl;
+            std::cout << "Quitter" << std::endl; // quitter le programme
             return true;
         case 5:
-            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
+            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl; // Sauvegarde
             std::cin>> ligneSauv;
             sauvegardeDansFichier(nomFichierSauv,ligneSauv);
             break;
         case 4:
-            std::cout << "Etude de vulnerabilite" << std::endl;
-            env->creationGrapheAModifer();//ca marche pas sa mereé
-            env->get_grapheModif()->afficher();
+            std::cout << "Etude de vulnerabilite" << std::endl; // vulnérabilité
+            env->creationGrapheAModifer();//
             demandeSuppA(env);
             if (env->get_grapheModif()->test_connexite(env->get_grapheModif()->get_tabSommet()[0]) == false)
                 std::cout << "Le graphe n'est plus connexe." << std::endl;
-                env->get_grapheModif()->commencerIndiceDeProximite();
             else
+            {
                 std::cout << "Le graphe est toujours connexe." << std::endl;
+                env->get_grapheModif()->commencerIndiceDeProximite();
+            }
             env->get_grapheModif()->commencerIndiceDeCentralite();
             env->get_grapheModif()->commencerVecteurPropre();
             env->get_grapheModif()->reinitialiseConnexite();
             env->get_grapheModif()->dessiner("outputVulnerability.svg"); //dessine le graphe
-            /*demandeSuppressionAretes();FAIT
-            relancer les methodes de calcul d'indices FAIT
-             sauvegarder/afficher les indices dans un fichier different de celui du graph normal
-             comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
-            */
             break;
         case 3:
-            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
+            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl; // calcule des indices
             env->get_graphe()->commencerIndiceDeCentralite();
             env->get_graphe()->commencerVecteurPropre();
             env->get_graphe()->commencerIndiceDeProximite();
@@ -108,7 +107,7 @@ bool lancementDuService(int choix, Environnement* env)
             }
             break;
         case 1:
-            std::cout << "Création du graphe..." << std::endl;
+            std::cout << "Creation du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             nomFichier = "graphe_cycle5_topo.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite

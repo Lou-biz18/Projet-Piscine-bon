@@ -355,7 +355,8 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
 
     for(auto s : m_tabSommet)
     {
-        std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl;
+        std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl; // d'après la méthode du sujet le vecteur normalisé est insensible à la taille du reseaux
+        std::cout<< "Indice vecteur Propre non-normalise "<<s->get_nom() << ":" << s->get_sommeIVPVoisins () <<std::endl; //le nonnormalisé doit donc ne pas e^tre divisé par lambda
     }
 }
 
