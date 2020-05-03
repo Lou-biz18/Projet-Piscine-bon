@@ -2,7 +2,7 @@
 #include "Sommet.h"
 
 ///CONSTRUCTEUR
-Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
+Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur d'arete
 {
     m_idArete = idArete;
     m_sommets.first = s1;
@@ -13,7 +13,7 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_couleurA = "black";
 }
 
-Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
+Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)// constructeur de la copie
 {
     m_idArete = areteACopier.get_idArete();
     m_poids = areteACopier.get_poids();
@@ -30,15 +30,15 @@ Arete::~Arete() // destructeur
 }
 ///GET
 
-int Arete::get_idArete()const // id de l'arret
+int Arete::get_idArete()const // id de l'arete
 {
     return m_idArete;
 }
 
 
-// donne les coordonnées des extremités de l'arret
+// donne les coordonnées des extremités de l'arete
 
-int Arete::get_idS1() const// premiere extrimité
+int Arete::get_idS1() const// premiere extremité
 {
     return m_sommets.first->get_idSommet();
 }
@@ -79,12 +79,14 @@ std::string Arete::get_couleurA() const // donne la couleur
     return m_couleurA;
 }
 
-///SET
+    ///SET
 void Arete::set_poids(int poids)
 {
     m_poids= poids;
 }
-///AFFICHAGE
+
+
+    ///AFFICHAGE
 void Arete::afficher()
 {
     std::cout <<"Arrete --> "<<m_idArete
