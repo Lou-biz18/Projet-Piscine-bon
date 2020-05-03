@@ -37,6 +37,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         std::string get_couleurIVPN() const;
         std::string get_couleurIPN() const;
 
+
+        // les diff�rents set
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);

@@ -201,8 +201,6 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
     // somme des aretes d'un sommet = cds
     m_indiceDegre = m_nbArete; // l'indice correspond au nombres d'arete
     m_indiceDegreNorm = m_indiceDegre/ n;  //on divise par l'ordre -1
-    std::cout << "indice : " << m_indiceDegre << std::endl;
-    std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
 

@@ -8,7 +8,6 @@
 #include "utile.h"
 #include "Environnement.h"
 
-using namespace std;
 
 /// Phrases de sorties du programme
 
@@ -16,15 +15,8 @@ std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero cor
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandee n'existe pas";
 
-
-/*
-void demandeSuppressionAretes(){
-    // boucle de demande suppression arette(s) (par index et quitter fait sortir de cette fonction)
-        env->get_graphemodifie()->supprimerArrete(arretechoisie)
-        Svgfile svg;
-        env->get_graphemodifie()->dessiner(svg);
-}
-*/
+bool grapheChargey = false;
+bool indiceCalculey = false;
 ///CHOIX SUPP ARETE
 void demandeSuppA(Environnement * env)
 {
@@ -73,18 +65,22 @@ bool lancementDuService(int choix, Environnement* env)
     std::string nomFichierSauv = "sauv.txt";
     std::string nomFichierSvg;///HELP JOJOOOOOOOO
     std::string ligneSauv;
+    
+    if (choix != 1 && choix != 5 && grapheChargey != true)
+    {
+        std::cout << "Il faut d'abord charger un graphe..." << std::endl;
+        lancementDuService(1, env);
+    }
+    if (choix == 4 && indiceCalculey != true) {
+        std::cout << "Il faut d'abord calculer les indices de centralite..." << std::endl;
+        lancementDuService(3, env);
+    }
     switch(choix)
     {
-        case 6:
+        case 5:
             SetConsoleTextAttribute(console, 12);
             std::cout << "Quitter" << std::endl;
             return true;
-        case 5:
-            SetConsoleTextAttribute(console, 14);
-            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
-            std::cin>> ligneSauv;
-            sauvegardeDansFichier(nomFichierSauv,ligneSauv);
-            break;
         case 4:
             SetConsoleTextAttribute(console, 1);
             std::cout << "Etude de vulnerabilite" << std::endl;
@@ -105,9 +101,8 @@ bool lancementDuService(int choix, Environnement* env)
         case 3:
             SetConsoleTextAttribute(console, 11);
             std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
-            env->get_graphe()->commencerIndiceDeCentralite();
-            env->get_graphe()->commencerVecteurPropre();
-            env->get_graphe()->commencerIndiceDeProximite();
+            env->get_graphe()->lancerLesIndices(nomFichierSauv);
+            indiceCalculey = true;
             env->get_graphe()->calcCouleurG();
             env->get_graphe()->dessinerGICDN("fichierD.svg");//OK
             env->get_graphe()->dessinerGIVPN("fichierVP.svg");//caca
@@ -126,8 +121,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 1:
             SetConsoleTextAttribute(console, 14);
             std::cout << "Création du graphe..." << std::endl;
-            //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "graphe_cycle5_topo.txt"; // !! a enlever
+            nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
@@ -137,7 +131,8 @@ bool lancementDuService(int choix, Environnement* env)
                 else
                     std::cout << "Le graphe est connexe." << std::endl;
                 env->get_graphe()->reinitialiseConnexite();
-                env->get_graphe()->dessiner("output.svg"); //dessine le graphe
+                env->get_graphe()->dessiner("outputNormal.svg"); //dessine le graphe
+                grapheChargey = true;
             }
             break;
     }

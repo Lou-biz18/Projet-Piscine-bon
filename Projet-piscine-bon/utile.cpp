@@ -45,8 +45,6 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) //
     fichier.open(nomFichierSauv);//creer un fichier nommé nomFichier
     if(fichier)// si l'ouverture a réussie
     {
-        fichier<<"coutenu du fichier";
-        fichier<<"deux"<<std::endl;
         fichier << ligneSauv;//operateur du flux de sortie
         fichier.close();  // on ferme le fichier
         return true;
