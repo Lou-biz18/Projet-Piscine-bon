@@ -33,7 +33,7 @@ std::string demandeNomFichier()
             fichier = "";
             sortie = true;
         } else {
-            std::cout << "Le fichier renseigné n'existe pas." << std::endl;
+            std::cout << "Le fichier renseigne n'existe pas." << std::endl;
         }
     }
     return fichier;

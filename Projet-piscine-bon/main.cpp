@@ -84,7 +84,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 4:
             SetConsoleTextAttribute(console, 1);
             std::cout << "Etude de vulnerabilite" << std::endl;
-            env->creationGrapheAModifer();//ca marche pas sa mereé
+            env->creationGrapheAModifer();
             demandeSuppA(env);
             if (env->get_grapheModif()->test_connexite(env->get_grapheModif()->get_tabSommet()[0]) == false)
                 std::cout << "Le graphe n'est plus connexe." << std::endl;

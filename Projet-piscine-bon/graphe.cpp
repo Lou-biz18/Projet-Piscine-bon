@@ -182,7 +182,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
             if(taille!=m_taille)
             {
-                 std::cout<<"Erreur : La taille est différente. Fichier non charge"<<std::endl;
+                 std::cout<<"Erreur : La taille est differente. Fichier non charge"<<std::endl;
                  return;
             }
             for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
@@ -303,7 +303,7 @@ void Graphe::dessinerGICDN(std::string fileName)
         svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");//parametre ok
     }
     std::cout << " Dessin du graphe avec centralite de degre apparente "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 void Graphe::dessinerGIVPN(std::string fileName)
 {
@@ -328,7 +328,7 @@ void Graphe::dessinerGIVPN(std::string fileName)
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
     std::cout << " Dessin du graphe avec vecteurs propres apparents normalises "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 void Graphe::dessinerGIPN(std::string fileName)
 {
@@ -353,7 +353,7 @@ void Graphe::dessinerGIPN(std::string fileName)
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
     std::cout << " Dessin du graphe avec indices de proximite normalises "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
