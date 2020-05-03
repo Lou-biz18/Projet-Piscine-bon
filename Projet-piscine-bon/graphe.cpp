@@ -272,6 +272,89 @@ void Graphe::dessiner(std::string fileName)
     }
     std::cout << "Création du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
 }
+///valeurs de centralité affichées à coté des ommets, système de couleurs permettant de discrimer les sommets
+///en fonction de leur importance mesurée par ces indices …
+
+void Graphe::dessinerGICDN(std::string fileName)
+{
+    Svgfile svgout(fileName);
+    for(int i=0;i<m_taille;i++)
+    {
+        Arete* a = m_tabArete[i];
+        double x1 = a->get_s1()->get_coordx();
+        double x2 = a->get_s2()->get_coordx();
+        double y1 = a->get_s1()->get_coordy();
+        double y2 = a->get_s2()->get_coordy();
+
+        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
+        // on ecrit l'idArete au milieu de l'arete
+    }
+    for(int i=0;i<m_ordre;i++)
+    {
+        Sommet* s = m_tabSommet[i];
+        std::ostringstream oss;//creation d'un flux de transfert pour mettre float dans string
+        std::string indiceC;
+        oss<<s->get_indiceDegreNorm();
+        indiceC = oss.str();
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIDN());
+        std::cout <<"|"<<s->get_couleurIDN()<<"|"<<std::endl;
+        svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
+        svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");//parametre ok
+    }
+    std::cout << " Dessin du graphe avec centralite de degre apparente "<<std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+}
+void Graphe::dessinerGIVPN(std::string fileName)
+{
+    Svgfile svgout(fileName);
+    for(int i=0;i<m_taille;i++)
+    {
+        Arete* a = m_tabArete[i];
+        double x1 = a->get_s1()->get_coordx();
+        double x2 = a->get_s2()->get_coordx();
+        double y1 = a->get_s1()->get_coordy();
+        double y2 = a->get_s2()->get_coordy();
+
+        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
+        // on ecrit l'idArete au milieu de l'arete
+    }
+    for(int i=0;i<m_ordre;i++)
+    {
+        Sommet* s = m_tabSommet[i];
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIVPN());//sommet degrade
+        std::cout <<s->get_couleurIVPN()<<std::endl;
+        svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
+    }
+    std::cout << " Dessin du graphe avec vecteurs propres apparents normalises "<<std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+}
+void Graphe::dessinerGIPN(std::string fileName)
+{
+    Svgfile svgout(fileName);
+    for(int i=0;i<m_taille;i++)
+    {
+        Arete* a = m_tabArete[i];
+        double x1 = a->get_s1()->get_coordx();
+        double x2 = a->get_s2()->get_coordx();
+        double y1 = a->get_s1()->get_coordy();
+        double y2 = a->get_s2()->get_coordy();
+
+        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
+        // on ecrit l'idArete au milieu de l'arete
+    }
+    for(int i=0;i<m_ordre;i++)
+    {
+        Sommet* s = m_tabSommet[i];
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, "pink");//seule ligne changée
+        std::cout <<s->get_couleurIDN()<<std::endl;
+        svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
+    }
+    std::cout << " Dessin du graphe avec indices de proximite normalises "<<std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+}
 
 void Graphe::commencerIndiceDeCentralite()
 {
@@ -425,6 +508,7 @@ void Graphe::calcCouleurG()
 
         std::ostringstream oss;
         std::string couleurIDN;
+        std::cout << calcIDN<< std::endl;
         oss<<"rgb("<<calcIDN<<",0,0)";
         couleurIDN = oss.str();
 

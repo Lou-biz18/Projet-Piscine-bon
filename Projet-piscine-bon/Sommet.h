@@ -33,6 +33,9 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_sommeIVPVoisins() const;
         float get_indiceVecteurPropre()const;
         std::vector<Arete*> get_tabArete() const;
+        std::string get_couleurIDN() const;
+        std::string get_couleurIVPN() const;
+        std::string get_couleurIPN() const;
 
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);

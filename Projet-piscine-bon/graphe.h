@@ -30,6 +30,9 @@ class Graphe
         std::vector<Arete*> get_tabArete() const;
         std::vector<Sommet*> get_tabSommet() const;
         void dessiner(std::string fileName);
+        void dessinerGICDN(std::string fileName);
+        void dessinerGIVPN(std::string fileName);
+        void dessinerGIPN(std::string fileName);
         void commencerIndiceDeCentralite();
         void commencerIndiceDeProximite();
         bool supprimerArete(int areteChoisie);

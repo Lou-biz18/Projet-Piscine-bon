@@ -64,6 +64,7 @@ bool lancementDuService(int choix, Environnement* env)
 {
     std::string nomFichier;
     std::string nomFichierSauv = "sauv.txt";
+    std::string nomFichierSvg;///HELP JOJOOOOOOOO
     std::string ligneSauv;
     switch(choix)
     {
@@ -96,6 +97,10 @@ bool lancementDuService(int choix, Environnement* env)
             env->get_graphe()->commencerIndiceDeCentralite();
             env->get_graphe()->commencerVecteurPropre();
             env->get_graphe()->commencerIndiceDeProximite();
+            env->get_graphe()->calcCouleurG();
+            env->get_graphe()->dessinerGICDN("fichierD.svg");//OK
+            env->get_graphe()->dessinerGIVPN("fichierVP.svg");//caca
+            env->get_graphe()->dessinerGIPN("fichierP.svg");//caca
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;

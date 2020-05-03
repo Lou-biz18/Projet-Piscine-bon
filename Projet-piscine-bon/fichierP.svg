@@ -27,23 +27,23 @@
 <text x="150" y="450" fill="black" text-anchor="middle" >11</text>
 <line x1="100" y1="500" x2="500" y2="500" stroke="rgb(255,200,200)" />
 <text x="300" y="500" fill="black" text-anchor="middle" >12</text>
-<circle cx="300" cy="100" r="20" fill="black" />
+<circle cx="300" cy="100" r="20" fill="pink" />
 <text x="300" y="100" fill="pink" text-anchor="middle" >A</text>
-<circle cx="200" cy="200" r="20" fill="black" />
+<circle cx="200" cy="200" r="20" fill="pink" />
 <text x="200" y="200" fill="pink" text-anchor="middle" >B</text>
-<circle cx="400" cy="200" r="20" fill="black" />
+<circle cx="400" cy="200" r="20" fill="pink" />
 <text x="400" y="200" fill="pink" text-anchor="middle" >C</text>
-<circle cx="300" cy="300" r="20" fill="black" />
+<circle cx="300" cy="300" r="20" fill="pink" />
 <text x="300" y="300" fill="pink" text-anchor="middle" >D</text>
-<circle cx="200" cy="400" r="20" fill="black" />
+<circle cx="200" cy="400" r="20" fill="pink" />
 <text x="200" y="400" fill="pink" text-anchor="middle" >E</text>
-<circle cx="300" cy="400" r="20" fill="black" />
+<circle cx="300" cy="400" r="20" fill="pink" />
 <text x="300" y="400" fill="pink" text-anchor="middle" >F</text>
-<circle cx="400" cy="400" r="20" fill="black" />
+<circle cx="400" cy="400" r="20" fill="pink" />
 <text x="400" y="400" fill="pink" text-anchor="middle" >G</text>
-<circle cx="100" cy="500" r="20" fill="black" />
+<circle cx="100" cy="500" r="20" fill="pink" />
 <text x="100" y="500" fill="pink" text-anchor="middle" >H</text>
-<circle cx="500" cy="500" r="20" fill="black" />
+<circle cx="500" cy="500" r="20" fill="pink" />
 <text x="500" y="500" fill="pink" text-anchor="middle" >I</text>
 
 

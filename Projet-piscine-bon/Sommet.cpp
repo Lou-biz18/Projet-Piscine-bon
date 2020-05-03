@@ -54,7 +54,18 @@ std::string Sommet::get_couleurS() const // donne la couleur
 {
     return m_couleurS;
 }
-
+std::string Sommet::get_couleurIDN() const // donne la couleur
+{
+    return m_couleurIDN;
+}
+std::string Sommet::get_couleurIVPN() const // donne la couleur
+{
+    return m_couleurIVP;
+}
+std::string Sommet::get_couleurIPN() const // donne la couleur
+{
+    return m_couleurIPN;
+}
 float  Sommet::get_indiceDegre() const // donne l'indice de degrés non normalisé
 {
     return m_indiceDegre;
