@@ -58,7 +58,7 @@ Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
         return m_sommets.first;
     }
 }
-// donne l'extremité de l'arete voulu
+// donne l'extremité de l'arete voulue
 
 Sommet* Arete::get_s1() const // le premier sommet
 {
