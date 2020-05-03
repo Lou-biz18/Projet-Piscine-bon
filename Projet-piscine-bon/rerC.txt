@@ -1,0 +1,172 @@
+0
+84
+0 Pontoise 0 2
+1 St-OuenL'Aumone 1 2
+2 St-OuenL'AumoneLiesse 2 2
+3 Pierrelaye 3 2
+4 MontignyBeauchamp 4 2
+5 FranconvilleLePlessis-Bouchard 5 2
+6 Cernay 6 2
+7 ErmontEaubonne 7 2
+8 St-Gratien 8 2
+9 EpinaySurSeine 9 2
+10 Gennevilliers 10 2
+11 LesGresillons 11 2
+12 St-Ouen 12 2
+13 PorteDeClichy 13 2
+14 PereireLevallois 14 2
+15 NeuillyPorteMaillot 15 2
+16 AvenueFoch 16 2
+17 AvenueHenriMartin 17 2
+18 Boulainvilliers 18 2
+19 AvenueDuPdtKennedy 19 2
+20 ChampDeMars 20 2
+21 PontDeL'Alma 21 2
+22 Invalides 22 2
+23 MuseeD'Orsay 23 2
+24 St-Michel 24 2
+25 ParisAusterlitz 26 2
+26 BibliothequeFrancoisMitterrand 27 2
+27 IvrySurSeine 28 2
+28 VitrySurSeine 29 2
+29 LesArdoines 30 2
+30 ChoisyLeRoi 31 2
+31 VilleneuveLeRoi 33 2
+32 Ablon 34 2
+33 AthisMons 35 2
+34 Juvisy 36 2
+35 SavignySurOrge 37 2
+36 EpinaySurOrge 38 2
+37 Ste-GenevieveDesBois 39 2
+38 St-MichelSurOrge 40 2
+39 Bretigny 41 2
+40 MarollesEnHurepoix 43 2
+41 Bouray 45 2
+42 Lardy 46 2
+43 Chamarande 47 2
+44 Etrechy 48 2
+45 Etampes 49 2
+46 St-MartinD'Etampes 50 2
+47 Javel 20 5
+48 PontDuGarigliano 19 5
+49 IssyValDeSeine 18 5
+50 Issy 17 5
+51 MeudonValFleury 16 5
+52 ChavilleVelizy 13 5
+53 ViroflayRiveGauche 10 5
+54 Porchefontaine 5 5
+55 VersaillesChateauRiveGauche 2 5
+56 St-QuentinEnYvelines 0 7
+57 St-Cyr 3 7
+58 VersaillesChantiers 6 7
+59 PetitJouyLesLoges 9 8
+60 JouyEnJosas 11 8
+61 Vauboyen 13 8
+62 Bievres 15 8
+63 Igny 17 8
+64 MassyPalaiseau 20 8
+65 Longjumeau 33 8
+66 ChillyMazarin 34 8
+67 GravignyBalizy 35 8
+68 PetitVaux 36 8
+69 LesSaules 30 7
+70 OrlyVille 28 7
+71 PontDeRungis 27 7
+72 RungisLaFraternelle 25 7
+73 CheminD'Antony 24 7
+74 MassyVerrieres 22 7
+75 LaNorville 42 8
+76 Arpajon 43 8
+77 Egly 44 8
+78 Breuillet 45 8
+79 BreuilletVillage 46 8
+80 St-Cheron 47 8
+81 Sermaise 48 8
+82 Dourdan 49 8
+83 DourdanLaForet 51 8
+85 
+0 0 1
+1 1 2
+2 2 3
+3 3 4
+4 4 5
+5 5 6 
+6 6 7
+7 7 8
+8 8 9
+9 9 10
+10 10 11
+11 11 12
+12 12 13
+13 13 14
+14 14 15
+15 15 16
+16 16 17
+17 17 18
+18 18 19
+19 19 20
+20 20 21
+21 21 22
+22 22 23
+23 23 24
+24 24 25
+25 25 26
+26 26 27
+27 27 28
+28 28 29
+29 29 30
+30 30 31
+31 31 32
+32 32 33
+33 33 34
+34 34 35
+35 35 36
+36 36 37
+37 37 38
+38 38 39
+39 39 40
+40 40 41
+41 41 42
+42 42 43
+43 43 44
+44 44 45
+45 45 46
+46 55 54
+47 54 53
+48 53 52
+49 52 51
+50 51 50
+51 50 49
+52 49 48
+53 48 47
+54 47 20
+55 56 57
+56 57 58
+57 58 53
+58 58 59
+59 59 60
+60 60 61
+61 61 62
+62 62 63
+63 63 64
+64 64 74
+65 74 73
+66 73 72
+67 72 71
+68 71 70
+69 70 69
+70 69 30
+71 64 65
+72 65 66
+73 66 67
+74 67 68
+75 68 35
+76 39 75
+77 75 76
+78 76 77
+79 77 78
+80 78 79
+81 79 80
+82 80 81
+83 81 82
+84 82 83

@@ -127,7 +127,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
             std::cout<<"Erreur ouverture du fichier"<<std::endl;
             exit(EXIT_FAILURE);
         }
-        else//le fichier s'est bien charg� et peut etre lu
+        else//le fichier s'est bien charge et peut etre lu
         {
             std::cout<<"Chargement fichier: OK"<<std::endl;
             std::string tmpStr;
@@ -148,7 +148,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
             {
                 ajoutArete(tabLigne[i]);
             }
-            std::cout<< "Graphe terminé"<< std::endl;
+            std::cout<< "Graphe termine"<< std::endl;
         }
 
     }
@@ -182,7 +182,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
             if(taille!=m_taille)
             {
-                 std::cout<<"Erreur : La taille est différente. Fichier non chargé"<<std::endl;
+                 std::cout<<"Erreur : La taille est différente. Fichier non charge"<<std::endl;
                  return;
             }
             for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
@@ -270,7 +270,7 @@ void Graphe::dessiner(std::string fileName)
         svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurS());
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
-    std::cout << "Création du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
@@ -321,7 +321,7 @@ bool Graphe::supprimerArete(int areteChoisie)
             delete(arete);// destruction finale de l'objet arete i
             std::cout<<"L'arete ";
             m_tabArete[i]->afficher();
-            std::cout<<" a bien été suprimee"<<std::endl;
+            std::cout<<" a bien ete suprimee"<<std::endl;
             return true;
         }
     }
@@ -389,6 +389,7 @@ void Graphe::lancerLesIndices(std::string nomFichier)
     indiceSauv = oss.str();
     sauvegardeDansFichier(nomFichier, indiceSauv);
 }
+
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {
     sommetActuel->afficher();
@@ -474,9 +475,4 @@ void Graphe::calcCouleurG()
         s->set_couleurIPN(couleurIPN);
         oss.clear();
     }
-
-    // pour chaque sommet
-        // calculIVP = //la tu fé calcul
-        // s->set_ivpcolor("rgb(calculIVP,0,calcuIVPl))
-        // pareil avec degre et prox
 }
