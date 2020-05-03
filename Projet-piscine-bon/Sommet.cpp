@@ -149,7 +149,7 @@ void Sommet::set_couleurIVP(std::string couleurIVP) //couleur
 {
     m_couleurIVP = couleurIVP;
 }
-bool Sommet::set_connexite(bool conn)
+void Sommet::set_connexite(bool conn)
 {
     m_connexite = conn;
 }
@@ -167,7 +167,9 @@ void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
               <<":x= "<<m_coords.first
-              <<";y= "<<m_coords.second;
+              <<";y= "<<m_coords.second
+              <<":m_nbArete= "<< m_nbArete
+              <<":m_connexite= "<<m_connexite;
 
 }
 

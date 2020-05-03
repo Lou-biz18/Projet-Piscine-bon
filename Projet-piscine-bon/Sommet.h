@@ -49,7 +49,7 @@ class Sommet//dans chaque somme il y a un tableaux d'aretes
         void set_couleurIVP(std::string couleurIVP);
         void set_couleurIPN(std::string couleurIPN);
 
-        // les m�thodes
+        // les méthodes
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
@@ -60,7 +60,7 @@ class Sommet//dans chaque somme il y a un tableaux d'aretes
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
         bool get_connexite();
-        bool set_connexite(bool conn);
+        void set_connexite(bool conn);
 
 
 
