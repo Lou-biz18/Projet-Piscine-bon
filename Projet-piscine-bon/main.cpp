@@ -1,3 +1,7 @@
+// Auteurs:
+// Lou Bizet
+// Léo Valet
+// Carla Gaignard
 #include <iostream>
 #include <limits>
 #include <fstream>
@@ -11,7 +15,6 @@
 
 /// Phrases de sorties du programme
 
-//std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandee n'existe pas";
 
@@ -42,7 +45,7 @@ void demandeSuppA(Environnement * env)
         }
         else
             std::cout << "Tout c'est bien passe" << std::endl;
-        while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
+        while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 ) // On demande si l'utilisateur veut encore faire des suppressions
         {
             std::cout << "Voulez-vous continuer? (oui/non)" << std::endl;
             std::cin >> choixUstr;
@@ -66,7 +69,7 @@ bool lancementDuService(int choix, Environnement* env)
     std::string nomFichierSvg;
     std::string ligneSauv;
 
-    if (choix != 1 && choix != 5 && grapheChargey != true)
+    if (choix != 1 && choix != 5 && grapheChargey != true) // Nous permet de proteger les choix dependant des autres
     {
         std::cout << "Il faut d'abord charger un graphe..." << std::endl;
         lancementDuService(1, env);
@@ -75,13 +78,13 @@ bool lancementDuService(int choix, Environnement* env)
         std::cout << "Il faut d'abord calculer les indices de centralite..." << std::endl;
         lancementDuService(3, env);
     }
-    switch(choix)
+    switch(choix) 
     {
         case 5:
             SetConsoleTextAttribute(console, 12);
             std::cout << "Quitter" << std::endl;
             return true;
-        case 4:
+        case 4:  // On copie notre graphe grace aux copy constructor, puis on supprime des arretes, calcule les indices, puis compare le tout
             SetConsoleTextAttribute(console, 1);
             std::cout << "Etude de vulnerabilite" << std::endl;
             env->creationGrapheAModifer();
@@ -103,7 +106,7 @@ bool lancementDuService(int choix, Environnement* env)
             env->get_graphe()->commencerIndiceDeCentralite();
             env->comparaisonIndiceSommet ();
             break;
-        case 3:
+        case 3: // on calclule, affiche et sauvegarde les indices
             SetConsoleTextAttribute(console, 11);
             std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->lancerLesIndices(nomFichierSauv);
@@ -113,7 +116,7 @@ bool lancementDuService(int choix, Environnement* env)
             env->get_graphe()->dessinerGIVPN("fichierVP.svg");
             env->get_graphe()->dessinerGIPN("fichierP.svg");
             break;
-        case 2:
+        case 2: //on peut charger un fichier de ponderation
             SetConsoleTextAttribute(console, 10);
             std::cout << "Ajout d'une ponderation" << std::endl;
             nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
@@ -123,7 +126,7 @@ bool lancementDuService(int choix, Environnement* env)
                 env->get_graphe()->afficher();
             }
             break;
-        case 1:
+        case 1: // on charge un graphe
             SetConsoleTextAttribute(console, 13);
             std::cout << "Creation du graphe..." << std::endl;
             nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide

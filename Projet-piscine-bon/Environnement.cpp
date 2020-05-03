@@ -3,13 +3,15 @@
 #include <windows.h>
 
 ///CONSTRUCTEUR
-Environnement::Environnement(){
+Environnement::Environnement(){ 
     //ctor
 }
+
 ///DESTRUCTEUR
 Environnement::~Environnement(){
     delete m_graphe;
 }
+
 ///CREATION DUN GRAPHE
 void Environnement::createGraphe(std::string nomFichier){
     m_graphe = new Graphe(nomFichier);
@@ -24,13 +26,14 @@ void Environnement::creationGrapheAModifer()
 Graphe* Environnement::get_graphe(){
     return m_graphe;
 }
+
 Graphe* Environnement::get_grapheModif(){
     return m_grapheModifie;
 }
 
 
 
-void Environnement::comparaisonIndiceSommet ()// vulnaribilité comparaison d'indice
+void Environnement::comparaisonIndiceSommet ()// vulnaribilitï¿½ comparaison d'indice
 {
     HANDLE console;
     console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -41,7 +44,7 @@ void Environnement::comparaisonIndiceSommet ()// vulnaribilité comparaison d'ind
     for ( int i= 0; i < m_graphe->get_ordre(); i++ )
     {
 
-// on calcule la difference entre le premiere indice et le nouveau modifié, puis on calcule le pourcentage de variation en l'affichant dans la conso
+// on calcule la difference entre le premiere indice et le nouveau modifiï¿½, puis on calcule le pourcentage de variation en l'affichant dans la conso
 
         SetConsoleTextAttribute(console, 15);
         std::cout<<"    Sommet : "<< tabSommet[i]->get_nom()<<std::endl;
