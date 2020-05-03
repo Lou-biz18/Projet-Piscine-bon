@@ -41,7 +41,7 @@ void demandeSuppA(Environnement * env)
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');//permet d'ignorer que le tampon du flux contient
         }
         else
-            std::cout << "Tout c'est bien passé." << std::endl;
+            std::cout << "Tout c'est bien passe" << std::endl;
         while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
         {
             std::cout << "Voulez-vous continuer? (oui/non)" << std::endl;
@@ -95,8 +95,13 @@ bool lancementDuService(int choix, Environnement* env)
             }
             env->get_grapheModif()->commencerIndiceDeCentralite();
             env->get_grapheModif()->commencerVecteurPropre();
+
             env->get_grapheModif()->reinitialiseConnexite();
             env->get_grapheModif()->dessiner("outputVulnerability.svg"); //dessine le graphe
+            env->get_graphe()->commencerVecteurPropre();
+            env->get_graphe()->commencerIndiceDeProximite();
+            env->get_graphe()->commencerIndiceDeCentralite();
+            env->comparaisonIndiceSommet ();
             break;
         case 3:
             SetConsoleTextAttribute(console, 11);
@@ -145,8 +150,10 @@ bool menu(Environnement* env)
     HANDLE console;
     console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, 15);
+    //system("cls");
     std::cout << std::endl << demandeMenu << std::endl;
     std::cin >> choixUtilisateur;
+    system("cls");
 
     while(1)
     {

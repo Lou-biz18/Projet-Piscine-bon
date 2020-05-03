@@ -17,5 +17,7 @@ class Environnement
         Graphe* get_graphe();
         Graphe* get_grapheModif();
 
+        void comparaisonIndiceSommet();
+
 };
 #endif
