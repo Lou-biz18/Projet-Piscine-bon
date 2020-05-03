@@ -32,8 +32,6 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceProximiteNorm() const;
         float get_sommeIVPVoisins() const;
         float get_indiceVecteurPropre()const;
-        float get_indiceDegre();
-        float get_indiceDegreNorm();
         std::vector<Arete*> get_tabArete() const;
 
         void set_indiceProximite(float indicePr);
