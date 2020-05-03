@@ -29,27 +29,31 @@ int Sommet::get_idSommet() const
 {
     return m_idSommet;
 }
+
 std::string Sommet::get_nom() const
 {
     return m_nom;
 }
+
 double Sommet::get_coordx() const
 {
     return m_coords.first;
 }
+
 double Sommet::get_coordy() const
 {
     return m_coords.second;
 }
+
 std::string Sommet::get_couleurS() const
 {
     return m_couleurS;
 }
 
- float  Sommet::get_indiceDegre() const
- {
-     return m_indiceDegre;
- }
+float  Sommet::get_indiceDegre() const
+{
+    return m_indiceDegre;
+}
 
 float Sommet::get_indiceDegreNorm() const
 {
@@ -74,6 +78,7 @@ void Sommet::ajoutArete(Arete* newArete)
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;
 }
+
 void Sommet::enleveA(Arete* arete)
 {
     for(int i=0;i<m_nbArete;i++)
@@ -86,14 +91,7 @@ void Sommet::enleveA(Arete* arete)
         }
     }
 }
-/*
-void Sommet::enleveArete(Arete* arete){
-    supprimer arrete de m_tabAreteSo => supprimer element d'un vector
-    m_nbArete--;
-}
-*/
 
-// faire une fonction dans graphe qui lance celle la pour tout les sommets du graphe
 void Sommet::calculeIndiceCentraliteDegres(int ordre)
 {
     int n = ordre-1;
@@ -111,7 +109,7 @@ void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
     m_indiceVecteurPropre = indiceVecteurPropre;
 }
 
-void Sommet::get_indiceVecteurPropre() const
+float Sommet::get_indiceVecteurPropre() const
 {
     return m_indiceVecteurPropre;
 }
@@ -121,15 +119,15 @@ void Sommet::set_sommeIVPVoisins()
     m_sommeIVPVoisins = 0;
     for (auto a: m_tabAreteSo)
     {
-        m_sommeIVPVoisins += a->autreSommet(this)->get_indiceVecteurPropre();
+        m_sommeIVPVoisins += a->get_autreSommet(this)->get_indiceVecteurPropre();
     }
 }
-
 
 float Sommet::get_sommeIVPVoisins() const
 {
     return m_sommeIVPVoisins;
 }
+
 void Sommet::deployerDijkstra()
 {
     int longueurDeCheminTest;
@@ -148,4 +146,24 @@ void Sommet::deployerDijkstra()
 void Sommet::set_longueurDeChemin(int longueur)
 {
     m_longueurDeChemin = longueur;
+}
+
+void Sommet::set_indiceProximite(float indicePr) 
+{
+    m_indiceProximite = indicePr;
+}
+
+float Sommet::get_indiceProximite() const
+{
+    return m_indiceProximite;
+}
+
+void Sommet::set_indiceProximiteNorm(float indicePrNrm)
+{
+    m_indiceProximiteNorm = indicePrNrm;
+}
+
+float Sommet::get_indiceProximiteNorm() const
+{
+    return m_indiceProximiteNorm;
 }

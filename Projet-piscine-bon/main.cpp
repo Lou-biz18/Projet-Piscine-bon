@@ -8,7 +8,7 @@
 #include "Environnement.h"
 
 /// Phrases de sorties du programme
-std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite\n5 : Quitter";
+std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandée n'existe pas";
 
@@ -24,11 +24,12 @@ void demandeSuppressionAretes(){
 void demandeSuppA(Environnement * env)
 {
     int choixU;
-    std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaiter supprimer"<<std::endl;
-    std::cin >> choixU;
+    std::string choixUstr = "";
 
     while(1)
     {
+        std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaitez supprimer" << std::endl;
+        std::cin >> choixU;
         if(std::cin.fail())
         {
             std::cin.clear();// recup un flux pur
@@ -43,12 +44,19 @@ void demandeSuppA(Environnement * env)
         }
         else
         {
-            std::cout << "Tout s'est bien passé" <<std::endl;
-            env->get_grapheModif()->supprimerArete(choixU);
+            std::cout << "Tout c'est bien passé." << std::endl;
+            while(choixUstr.compare("non") != 0 || choixUstr.compare("oui") != 0 )
+            {
+                std::cout << "Voulez-vous en supprimer d'autres? (oui/non)" << std::endl;
+                std::cin >> choixUstr;
+            }
+            if(choixUstr.compare("non") == 0)
+            {
+                break;
+            }
             Svgfile svg;
             env->get_grapheModif()->dessiner(svg);// a modif
         }
-
     }
 }
 
@@ -82,14 +90,13 @@ bool lancementDuService(int choix, Environnement* env)
         case 3:
             std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->commencerIndiceDeCentralite();
-            env->get_graphe()->commencerIndiceDeProximite();
             env->get_graphe()->commencerVecteurPropre();
+            env->get_graphe()->commencerIndiceDeProximite();
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
-            //nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
-            nomFichier = "testPond.txt"; // !! a enlever
-            if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
+            nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
+            if (nomFichier.compare("") != 0) // Si le fichier existe, alors on lance la suite
             {
                 env->get_graphe()->chargePonderation(nomFichier);//pas sure de le modif
                 env->get_graphe()->afficher();
@@ -98,16 +105,14 @@ bool lancementDuService(int choix, Environnement* env)
         case 1:
             std::cout << "Création du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "test.txt"; // !! a enlever
+            nomFichier = "graphe_cycle4_topo.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
                 env->get_graphe()->afficher();
                 Svgfile svg;
                 //Graphe graphe;
-
-                env->get_graphe()->dessiner(svg);//dessine le graphe
-
+                env->get_graphe()->dessiner(svg); //dessine le graphe
             }
             break;
     }
@@ -142,7 +147,6 @@ bool menu(Environnement* env)
     }
     return lancementDuService(choixUtilisateur, env);
 }
-
 
 int main() {
     bool quitter = false; // bool pour tester si l'utilisateur veut quitter

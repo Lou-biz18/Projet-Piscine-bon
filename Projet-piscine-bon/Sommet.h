@@ -27,17 +27,21 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceDegreNorm() const;
         float get_indiceDegre() const;
         int get_longueurDeChemin() const;
+        float get_indiceProximite() const;
+        float get_indiceProximiteNorm() const;
+        float get_sommeIVPVoisins() const;
+        float get_indiceVecteurPropre()const;
+        float get_indiceDegre();
+        float get_indiceDegreNorm();
 
+        void set_indiceProximite(float indicePr);
+        void set_indiceProximiteNorm(float indicePrNrm);
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
         void calculeIndiceCentraliteDegres(int m_ordre);
-        float get_indiceDegre();
-        float get_indiceDegreNorm();
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);
-        void get_indiceVecteurPropre()const;
         void set_sommeIVPVoisins();
-        float get_sommeIVPVoisins() const;
 
         void enleveA(Arete* arete);
         void deployerDijkstra();
@@ -54,6 +58,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float m_indiceVecteurPropre;
         float m_sommeIVPVoisins;
         int m_longueurDeChemin;
+        float m_indiceProximite;
+        float m_indiceProximiteNorm;
 
         std::string m_nom;
         std::pair<double,double> m_coords;
