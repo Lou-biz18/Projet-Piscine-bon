@@ -33,6 +33,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceVecteurPropre()const;
         float get_indiceDegre();
         float get_indiceDegreNorm();
+        std::vector<Arete*> get_tabArete() const;
 
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
@@ -46,6 +47,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
+        bool get_connexite();
+        bool set_connexite(bool conn);
 
 
 
@@ -60,6 +63,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         int m_longueurDeChemin;
         float m_indiceProximite;
         float m_indiceProximiteNorm;
+        bool m_connexite;
 
         std::string m_nom;
         std::pair<double,double> m_coords;

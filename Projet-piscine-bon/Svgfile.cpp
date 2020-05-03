@@ -111,3 +111,8 @@ std::string Svgfile::get_filename()
 {
     return m_filename;
 }
+
+void Svgfile::close()
+{
+    m_ostrm.close();
+}

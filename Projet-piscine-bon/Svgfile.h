@@ -17,6 +17,7 @@ class Svgfile
         void addFleche(double x1, double y1, double x2, double y2, std::string color);
         void addId(double x, double y, std::string text, std::string color);
         std::string get_filename();
+        void close();
 
         static std::string makeRGB(int r, int g, int b);//couleur separ�e pour degrad�s
 

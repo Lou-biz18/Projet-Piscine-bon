@@ -13,14 +13,15 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_couleurA = "black";
 }
 
-Arete::Arete(const Arete &areteACopier)
+Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
 {
     m_idArete = areteACopier.get_idArete();
     m_poids = areteACopier.get_poids();
-    m_sommets.first = areteACopier.get_s1();
-    m_sommets.second = areteACopier.get_s2();
+    m_sommets.first = sommet1;
+    m_sommets.second = sommet2;
     m_sommets.first->ajoutArete(this);
     m_sommets.second->ajoutArete(this);
+    m_couleurA = "black";
 }
 
 Arete::~Arete()
@@ -73,12 +74,12 @@ void Arete::afficher()
 
 Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
 {
-        if (premierSommet == m_sommets.first)
-        {
-            return m_sommets.second;
-        }
-        else
-        {
-            return m_sommets.first;
-        }
+    if (premierSommet == m_sommets.first)
+    {
+        return m_sommets.second;
+    }
+    else
+    {
+        return m_sommets.first;
+    }
 }

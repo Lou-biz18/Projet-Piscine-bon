@@ -10,6 +10,7 @@
 #include "Sommet.h"
 #include "Arete.h"
 #include "utile.h"
+#include "Svgfile.h"
 
 ///CONSTRUCTEUR
 ///
@@ -37,7 +38,16 @@ Graphe::Graphe(const Graphe &grapheACopier)
     std::vector<Arete*> tabAreteACopier = grapheACopier.get_tabArete();
     for(int i = 0; i < m_taille; i++)
     {
-        Arete* newArete = new Arete(*(tabAreteACopier[i]));
+        Sommet* sommet1;
+        Sommet* sommet2;
+        for(auto s: m_tabSommet)
+        {
+            if (s->get_idSommet() == tabAreteACopier[i]->get_idS1())
+                sommet1 = s;
+            else if (s->get_idSommet() == tabAreteACopier[i]->get_idS2())
+                sommet2 = s;
+        }
+        Arete* newArete = new Arete(*(tabAreteACopier[i]), sommet1, sommet2);
         m_tabArete[i] = newArete;
     }
 }
@@ -127,8 +137,6 @@ void Graphe::chargeGraphe(std::string nomFichier)
             }
             m_orient = std::stoi(tabLigne[0]);// stoi pour transformer le string to int
             m_ordre = std::stoi(tabLigne[1]);
-            std::vector<Sommet*> tmp(m_ordre);// taille m_ordre pour tabSommet
-            m_tabSommet = tmp;
             for(int i = 2; i <= 1 + m_ordre; i++)//ajoute les sommets dans tabSommet
             {
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
@@ -198,8 +206,17 @@ void Graphe::ajoutArete(std::string ligne)
     int index = std::stoi(recupLigneSplit[0]);//on transforme une string en int grace a stoi (string to int)
     int indexSom1 = std::stoi(recupLigneSplit[1]);
     int indexSom2 = std::stoi(recupLigneSplit[2]);
+    Sommet* sommet1;
+    Sommet* sommet2;
+    for(auto s: m_tabSommet)
+    {
+        if (s->get_idSommet() == indexSom1)
+            sommet1 = s;
+        else if (s->get_idSommet() == indexSom2)
+            sommet2 = s;
+    }
 
-    Arete* newArete = new Arete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
+    Arete* newArete = new Arete(index, sommet1, sommet2);
     m_tabArete.push_back(newArete);//tableau de Arete* (pointeur sur aretes)
 }
 
@@ -213,7 +230,7 @@ void Graphe::ajoutSommet(std::string ligne)
     int coord_y = std::stoi(recupLigneSplit[3]);
 
     Sommet* newSommet = new Sommet(index, nom ,coord_x,coord_y);
-    m_tabSommet[index] = newSommet;//car tab de som
+    m_tabSommet.push_back(newSommet);//car tab de som
 }
 void Graphe::ajouterPonderation(std::string lignePond)
 {
@@ -221,12 +238,20 @@ void Graphe::ajouterPonderation(std::string lignePond)
     int index = std::stoi(recupLigneSplit[0]);
     int poids = std::stoi(recupLigneSplit[1]);
 
-    m_tabArete[index]->set_poids(poids);
+    for(auto a: m_tabArete)
+    {
+        if (a->get_idArete() == index)
+        {
+            a->set_poids(poids);
+            break;
+        }
+    }
 }
 
 ///DESSIN
-void Graphe::dessiner(Svgfile&svgout)
+void Graphe::dessiner(std::string fileName)
 {
+    Svgfile svgout(fileName);
     for(int i=0;i<m_taille;i++)
     {
         Arete* a = m_tabArete[i];
@@ -331,5 +356,36 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
     for(auto s : m_tabSommet)
     {
         std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl;
+    }
+}
+
+bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
+{
+    sommetActuel->afficher();
+    std::cout << std::endl;
+    if (sommetActuel->get_connexite()) //true si sommet deja visite
+        return false;
+    sommetActuel->set_connexite(true);
+    for(auto a: sommetActuel->get_tabArete())
+    {
+        test_connexite(a->get_autreSommet(sommetActuel));
+    }
+    if (sommetActuel != m_tabSommet[0])
+        return true;
+    for (auto s: m_tabSommet)
+    {
+        if (s->get_connexite() == false) //si il n'a pas ete visite
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void Graphe::reinitialiseConnexite()
+{
+    for(auto s: m_tabSommet)
+    {
+        s->set_connexite(false);
     }
 }

@@ -43,19 +43,15 @@ void demandeSuppA(Environnement * env)
             std::cin >> choixU;
         }
         else
-        {
             std::cout << "Tout c'est bien passé." << std::endl;
-            while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
-            {
-                std::cout << "Voulez-vous en supprimer d'autres? (oui/non)" << std::endl;
-                std::cin >> choixUstr;
-            }
-            if(choixUstr.compare("non") == 0)
-            {
-                break;
-            }
-            Svgfile svg;
-            env->get_grapheModif()->dessiner(svg);// a modif
+        while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
+        {
+            std::cout << "Voulez-vous continuer? (oui/non)" << std::endl;
+            std::cin >> choixUstr;
+        }
+        if(choixUstr.compare("non") == 0)
+        {
+            break;
         }
     }
 }
@@ -79,10 +75,17 @@ bool lancementDuService(int choix, Environnement* env)
         case 4:
             std::cout << "Etude de vulnerabilite" << std::endl;
             env->creationGrapheAModifer();//ca marche pas sa mereé
+            env->get_grapheModif()->afficher();
             demandeSuppA(env);
+            if (env->get_grapheModif()->test_connexite(env->get_grapheModif()->get_tabSommet()[0]) == false)
+                std::cout << "Le graphe n'est plus connexe." << std::endl;
+                env->get_grapheModif()->commencerIndiceDeProximite();
+            else
+                std::cout << "Le graphe est toujours connexe." << std::endl;
             env->get_grapheModif()->commencerIndiceDeCentralite();
             env->get_grapheModif()->commencerVecteurPropre();
-            env->get_grapheModif()->commencerIndiceDeProximite();
+            env->get_grapheModif()->reinitialiseConnexite();
+            env->get_grapheModif()->dessiner("outputVulnerability.svg"); //dessine le graphe
             /*demandeSuppressionAretes();FAIT
             relancer les methodes de calcul d'indices FAIT
              sauvegarder/afficher les indices dans un fichier different de celui du graph normal
@@ -107,14 +110,17 @@ bool lancementDuService(int choix, Environnement* env)
         case 1:
             std::cout << "Création du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "graphe_cycle4_topo.txt"; // !! a enlever
+            nomFichier = "graphe_cycle5_topo.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
                 env->get_graphe()->afficher();
-                Svgfile svg;
-                //Graphe graphe;
-                env->get_graphe()->dessiner(svg); //dessine le graphe
+                if (env->get_graphe()->test_connexite(env->get_graphe()->get_tabSommet()[0]) == false)
+                    std::cout << "Le graphe n'est pas connexe." << std::endl;
+                else
+                    std::cout << "Le graphe est connexe." << std::endl;
+                env->get_graphe()->reinitialiseConnexite();
+                env->get_graphe()->dessiner("output.svg"); //dessine le graphe
             }
             break;
     }

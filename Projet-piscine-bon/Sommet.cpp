@@ -3,6 +3,7 @@
 
 Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur de arete
 {
+    m_connexite = false;
     m_idSommet = idSommet;
     m_nom = nom;
     m_coords.first = x;
@@ -13,6 +14,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
 
 Sommet::Sommet(const Sommet &sommetACopier)
 {
+    m_connexite = false;
     m_idSommet = sommetACopier.get_idSommet();
     m_nbArete = 0;
     m_nom = sommetACopier.get_nom();
@@ -22,6 +24,7 @@ Sommet::Sommet(const Sommet &sommetACopier)
 
 Sommet::~Sommet()
 {
+    std::cout<< "dtor sommet";
     //dtor
 }
 
@@ -69,7 +72,9 @@ void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
               <<":x= "<<m_coords.first
-              <<";y= "<<m_coords.second;
+              <<";y= "<<m_coords.second
+              <<":m_nbArete= "<< m_nbArete
+              <<":m_connexite= "<<m_connexite;
 
 }
 
@@ -166,4 +171,19 @@ void Sommet::set_indiceProximiteNorm(float indicePrNrm)
 float Sommet::get_indiceProximiteNorm() const
 {
     return m_indiceProximiteNorm;
+}
+
+bool Sommet::set_connexite(bool conn)
+{
+    m_connexite = conn;
+}
+
+bool Sommet::get_connexite()
+{
+    return m_connexite;
+}
+
+std::vector<Arete*> Sommet::get_tabArete() const
+{
+    return m_tabAreteSo;
 }
