@@ -35,6 +35,7 @@ class Graphe
         bool supprimerArete(int areteChoisie);
         void calcCouleurG();
         void commencerVecteurPropre();
+        void lancerLesIndices(std::string nomFichier);
 
     private:
         int m_ordre;

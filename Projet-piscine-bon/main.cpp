@@ -7,6 +7,7 @@
 #include "utile.h"
 #include "Environnement.h"
 
+
 /// Phrases de sorties du programme
 std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
@@ -86,10 +87,9 @@ bool lancementDuService(int choix, Environnement* env)
 
             break;
         case 3:
-            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl; // calcule des indices
-            env->get_graphe()->commencerIndiceDeCentralite();
-            env->get_graphe()->commencerVecteurPropre();
-            env->get_graphe()->commencerIndiceDeProximite();
+            system("cls");
+            std::cout << "Calcul des indices de centralite des sommets : " << std::endl; // calcule des indices
+            env->get_graphe()->lancerLesIndices(nomFichierSauv);
             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
