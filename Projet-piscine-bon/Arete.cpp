@@ -13,14 +13,15 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_couleurA = "black";
 }
 
-Arete::Arete(const Arete &areteACopier)  // copie
+Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
 {
     m_idArete = areteACopier.get_idArete();
     m_poids = areteACopier.get_poids();
-    m_sommets.first = areteACopier.get_s1();
-    m_sommets.second = areteACopier.get_s2();
+    m_sommets.first = sommet1;
+    m_sommets.second = sommet2;
     m_sommets.first->ajoutArete(this);
     m_sommets.second->ajoutArete(this);
+    m_couleurA = "black";
 }
 
 Arete::~Arete() // destructeur
@@ -46,7 +47,17 @@ int Arete::get_idS2() const // deuxieme extremité
     return m_sommets.second->get_idSommet();
 }
 
-
+Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
+{
+    if (premierSommet == m_sommets.first)
+    {
+        return m_sommets.second;
+    }
+    else
+    {
+        return m_sommets.first;
+    }
+}
 // donne l'extremité de l'arete voulu
 
 Sommet* Arete::get_s1() const // le premier sommet
@@ -58,21 +69,6 @@ Sommet* Arete::get_s2() const //le deuxieme sommet
     return m_sommets.second;
 }
 
-
-Sommet* Arete::get_autreSommet (Sommet* premierSommet) const//donne l'autre sommet qui constitue l'aret
-{
-        if (premierSommet == m_sommets.first)
-        {
-            return m_sommets.second;
-        }
-        else
-        {
-            return m_sommets.first;
-        }
-}
-
-
-
 int Arete::get_poids() const // donne le poid des aretes
 {
     return m_poids;
@@ -82,8 +78,6 @@ std::string Arete::get_couleurA() const // donne la couleur
 {
     return m_couleurA;
 }
-
-
 
 ///SET
 void Arete::set_poids(int poids)
@@ -98,4 +92,3 @@ void Arete::afficher()
               <<"-"<<m_sommets.second->get_nom()
               <<" poids:"<<m_poids;
 }
-

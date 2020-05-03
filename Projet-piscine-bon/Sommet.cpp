@@ -3,6 +3,7 @@
 
 Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur de arete
 {
+    m_connexite = false;
     m_idSommet = idSommet;
     m_nom = nom;
     m_coords.first = x;
@@ -13,6 +14,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
 
 Sommet::Sommet(const Sommet &sommetACopier)// copier du sommet
 {
+    m_connexite = false;
     m_idSommet = sommetACopier.get_idSommet();
     m_nbArete = 0;
     m_nom = sommetACopier.get_nom();
@@ -22,11 +24,11 @@ Sommet::Sommet(const Sommet &sommetACopier)// copier du sommet
 
 Sommet::~Sommet()  // destructeur
 {
-
+    //dtor
 }
 
 
-            /// GET
+/// GET
 
 int Sommet::get_idSommet() const // donne l'id du sommet
 {
@@ -88,6 +90,15 @@ float Sommet::get_indiceProximiteNorm() const // donne l'indice proximité norma
     return m_indiceProximiteNorm;
 }
 
+bool Sommet::get_connexite()
+{
+    return m_connexite;
+}
+
+std::vector<Arete*> Sommet::get_tabArete() const
+{
+    return m_tabAreteSo;
+}
 
 
                 /// SET
@@ -118,7 +129,19 @@ void Sommet::set_indiceProximite(float indicePr)
     m_indiceProximite = indicePr;
 }
 
+void Sommet::set_couleurIDN(std::string couleurIDN)
+{
+    m_couleurIDN = couleurIDN;
 
+}
+void Sommet::set_couleurIVP(std::string couleurIVP)
+{
+    m_couleurIVP = couleurIVP;
+}
+bool Sommet::set_connexite(bool conn)
+{
+    m_connexite = conn;
+}
 
 void Sommet::set_indiceProximiteNorm(float indicePrNrm)
 {
@@ -126,17 +149,16 @@ void Sommet::set_indiceProximiteNorm(float indicePrNrm)
 }
 
 
-
-
                 /// METHODE
-
 
 
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
               <<":x= "<<m_coords.first
-              <<";y= "<<m_coords.second;
+              <<";y= "<<m_coords.second
+              <<":m_nbArete= "<< m_nbArete
+              <<":m_connexite= "<<m_connexite;
 
 }
 
@@ -145,7 +167,10 @@ void Sommet::ajoutArete(Arete* newArete)  // permet d'ajouter une arete
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;
 }
-
+void Sommet::set_couleurIPN(std::string couleurIPN)
+{
+    m_couleurIPN = couleurIPN;
+}
 void Sommet::enleveA(Arete* arete) // enleve une arete
 {
     for(int i=0;i<m_nbArete;i++)
@@ -182,8 +207,3 @@ void Sommet::deployerDijkstra()   // algo dijkstra
         }
     }
 }
-
-
-
-
-

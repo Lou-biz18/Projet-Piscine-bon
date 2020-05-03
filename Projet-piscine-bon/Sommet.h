@@ -24,7 +24,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         double get_coordx() const;//pour dessiner
         double get_coordy() const;
         std::string get_couleurS() const;
-        // get pour les différents indices
+        // get pour les diffï¿½rents indices
         float get_indiceDegreNorm() const;
         float get_indiceDegre() const;
         int get_longueurDeChemin() const;
@@ -32,20 +32,31 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceProximiteNorm() const;
         float get_sommeIVPVoisins() const;
         float get_indiceVecteurPropre()const;
+        std::vector<Arete*> get_tabArete() const;
 
-        // les différents set
+
+        // les diffï¿½rents set
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);
         void set_sommeIVPVoisins();
-        // les méthodes
+        void set_calculICouleur(float couleurI);
+        void set_couleurIDN(std::string couleurIDN);
+        void set_couleurIVP(std::string couleurIVP);
+        void set_couleurIPN(std::string couleurIPN);
+
+        // les mï¿½thodes
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
+
         void calculeIndiceCentraliteDegres(int m_ordre);
+        std::string calcCouleurSommet();
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
+        bool get_connexite();
+        bool set_connexite(bool conn);
 
 
 
@@ -60,11 +71,19 @@ class Sommet//dans chaque somme ya un tableaux darretes
         int m_longueurDeChemin;
         float m_indiceProximite;
         float m_indiceProximiteNorm;
+        bool m_connexite;
+
+
 
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
         std::string m_couleurS;
+
+        std::string m_couleurIDN;
+        std::string m_couleurIVP;
+        std::string m_couleurIPN;
+
 
 
 
