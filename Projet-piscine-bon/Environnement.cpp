@@ -29,7 +29,7 @@ Graphe* Environnement::get_grapheModif(){
 
 
 
-void Environnement::comparaisonIndiceSommet ()
+void Environnement::comparaisonIndiceSommet ()// vulnaribilité comparaison d'indice
 {
     std::vector<Sommet*> tabSommetModifie = m_grapheModifie->get_tabSommet();
     std::vector<Sommet*> tabSommet = m_graphe->get_tabSommet();
