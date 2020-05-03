@@ -17,23 +17,23 @@
 <text x="250" y="250" fill="black" text-anchor="middle" >6</text>
 <line x1="600" y1="300" x2="500" y2="200" stroke="rgb(255,200,200)" />
 <text x="550" y="250" fill="black" text-anchor="middle" >7</text>
-<circle cx="200" cy="100" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="200" cy="100" r="20" fill="black" />
 <text x="200" y="100" fill="pink" text-anchor="middle" >A</text>
-<circle cx="600" cy="100" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="600" cy="100" r="20" fill="black" />
 <text x="600" y="100" fill="pink" text-anchor="middle" >B</text>
-<circle cx="100" cy="200" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="100" cy="200" r="20" fill="black" />
 <text x="100" y="200" fill="pink" text-anchor="middle" >C</text>
-<circle cx="300" cy="200" r="20" fill="rgb(255,0,0)rgb(0,255,0)" />
+<circle cx="300" cy="200" r="20" fill="black" />
 <text x="300" y="200" fill="pink" text-anchor="middle" >D</text>
-<circle cx="400" cy="200" r="20" fill="rgb(127.5,0,0)rgb(0,127.5,0)" />
+<circle cx="400" cy="200" r="20" fill="black" />
 <text x="400" y="200" fill="pink" text-anchor="middle" >E</text>
-<circle cx="500" cy="200" r="20" fill="rgb(255,0,0)rgb(0,255,0)" />
+<circle cx="500" cy="200" r="20" fill="black" />
 <text x="500" y="200" fill="pink" text-anchor="middle" >F</text>
-<circle cx="700" cy="200" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="700" cy="200" r="20" fill="black" />
 <text x="700" y="200" fill="pink" text-anchor="middle" >G</text>
-<circle cx="200" cy="300" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="200" cy="300" r="20" fill="black" />
 <text x="200" y="300" fill="pink" text-anchor="middle" >H</text>
-<circle cx="600" cy="300" r="20" fill="rgb(63.75,0,0)rgb(0,63.75,0)" />
+<circle cx="600" cy="300" r="20" fill="black" />
 <text x="600" y="300" fill="pink" text-anchor="middle" >I</text>
 
 
