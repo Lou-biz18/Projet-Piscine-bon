@@ -409,13 +409,13 @@ bool Graphe::supprimerArete(int areteChoisie)
     }
     return false;
 }
-
+// permet de lancer le caclul du vecteur propre dans le main
 void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par lambda
 {
     float lambda = 0;
-    float lambda_avant = 0;
+    float lambda_avant = 0; // pour calculer le delta lambda
     for (auto s: m_tabSommet)
-        s->set_indiceVecteurPropre(1);
+        s->set_indiceVecteurPropre(1); // on initilialise à 1
     do
     {
         for (auto s : m_tabSommet)
@@ -426,49 +426,55 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
 
         for (auto s : m_tabSommet)
         {
-            lambda += s->get_sommeIVPVoisins() * s->get_sommeIVPVoisins(); //
+            lambda += s->get_sommeIVPVoisins() * s->get_sommeIVPVoisins(); // on calcule le lambda
         }
-        lambda = std::sqrt(lambda);
+        lambda = std::sqrt(lambda); // on calcule la racine
 
         for(auto s : m_tabSommet)
-            s->set_indiceVecteurPropre(s->get_sommeIVPVoisins()/ lambda);
+            s->set_indiceVecteurPropre(s->get_sommeIVPVoisins()/ lambda); //on obtient le nouvel indice pour recommencer la branche
 
-    } while(std::abs(lambda_avant - lambda) > 0.01);
+    } while(std::abs(lambda_avant - lambda) > 0.01); // on regarde la variation ( delta ) du lambda tant qu elle ne varie paq trop
 
    }
 
 
-void Graphe::lancerLesIndices(std::string nomFichier)
+void Graphe::lancerLesIndices(std::string nomFichier) // permet de lancer l'affichage simultané de tous les indices dans le main pour chaque sommet et de sauvegarder dans un fichier
 {
     HANDLE console;
-    console = GetStdHandle(STD_OUTPUT_HANDLE);
+    console = GetStdHandle(STD_OUTPUT_HANDLE); // couleur
 
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
+
+    // on lance les methodes
     commencerIndiceDeProximite();
     commencerVecteurPropre();
     commencerIndiceDeCentralite();
+    // données pour la sauvegarde des indices dans un fichier
     std::string indiceSauv;
     std::ostringstream oss; //flux
 
+
+    // boucle pour etudier tout les sommets
     for(auto s : m_tabSommet)
     {
-        SetConsoleTextAttribute(console, 15);
-        std::cout << "Sommet " <<s->get_nom() << ": "<< std::endl;
+        SetConsoleTextAttribute(console, 15);// couleurs
+
+        std::cout << "Sommet " <<s->get_nom() << ": "<< std::endl; // affiche le nom du sommet
         std::cout<<""<<std::endl;
-        SetConsoleTextAttribute(console, 13);
-        std::cout<< "Indice vecteur Propre non-normalise "<< s->get_sommeIVPVoisins () <<std::endl;
-        SetConsoleTextAttribute(console, 10);
-        std::cout <<"Indice Vecteur Propre normalise "<< s->get_indiceVecteurPropre() << std::endl;
-        SetConsoleTextAttribute(console, 11);
-        std::cout << "Indice de proximite non-normalise"  << ": " << s->get_indiceProximite() <<std::endl;
-        SetConsoleTextAttribute(console, 1);
-        std::cout<< "Indice de proximite Normalise " << s->get_indiceProximiteNorm() << std::endl;
-        SetConsoleTextAttribute(console, 14);
-        std::cout << "Indice de centralite non-normalise: " << s->get_indiceDegre() << std::endl;
-        SetConsoleTextAttribute(console, 12);
-        std::cout << "Indice de centralie normalise : " << s->get_indiceDegreNorm() << std::endl;
-        SetConsoleTextAttribute(console, 15);
+        SetConsoleTextAttribute(console, 13);// couleur
+        std::cout<< "Indice vecteur Propre non-normalise "<< s->get_sommeIVPVoisins () <<std::endl;  // indice vecteur propre non-normalise
+        SetConsoleTextAttribute(console, 10);// couleur
+        std::cout <<"Indice Vecteur Propre normalise "<< s->get_indiceVecteurPropre() << std::endl; // indice vecteur  propre normalise
+        SetConsoleTextAttribute(console, 11); // couleur
+        std::cout << "Indice de proximite non-normalise"  << ": " << s->get_indiceProximite() <<std::endl // indice de proximite non normalise
+        SetConsoleTextAttribute(console, 1); // couleur
+        std::cout<< "Indice de proximite Normalise " << s->get_indiceProximiteNorm() << std::endl;// indice de proximite normalise
+        SetConsoleTextAttribute(console, 14);// couleur
+        std::cout << "Indice de centralite non-normalise: " << s->get_indiceDegre() << std::endl;// indice de centralite non normalise
+        SetConsoleTextAttribute(console, 12); //couleur
+        std::cout << "Indice de centralite normalise : " << s->get_indiceDegreNorm() << std::endl; // indice de centralite normalise
+        SetConsoleTextAttribute(console, 15); //couleur
 
         std::cout<<""<<std::endl;
         std::cout<<""<<std::endl;

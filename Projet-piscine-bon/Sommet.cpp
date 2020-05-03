@@ -28,7 +28,7 @@ Sommet::~Sommet()  // destructeur
 }
 
 
-/// GET
+        /// GET
 
 int Sommet::get_idSommet() const // donne l'id du sommet
 {
@@ -121,7 +121,7 @@ void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
 }
 
 
-void Sommet::set_sommeIVPVoisins()  // on fait la somme des indices des voisins et on met ans m_sommeIVOVoisins
+void Sommet::set_sommeIVPVoisins()  // on fait la somme des indices des voisins et on met dans m_sommeIVOVoisins
 {
     m_sommeIVPVoisins = 0;
     for (auto a: m_tabAreteSo)
@@ -130,7 +130,7 @@ void Sommet::set_sommeIVPVoisins()  // on fait la somme des indices des voisins 
     }
 }
 
-void Sommet::set_longueurDeChemin(int longueur)
+void Sommet::set_longueurDeChemin(int longueur) //pour la pro
 {
     m_longueurDeChemin = longueur;
 }
@@ -140,12 +140,12 @@ void Sommet::set_indiceProximite(float indicePr)
     m_indiceProximite = indicePr;
 }
 
-void Sommet::set_couleurIDN(std::string couleurIDN)
+void Sommet::set_couleurIDN(std::string couleurIDN) // couleur
 {
     m_couleurIDN = couleurIDN;
 
 }
-void Sommet::set_couleurIVP(std::string couleurIVP)
+void Sommet::set_couleurIVP(std::string couleurIVP) //couleur
 {
     m_couleurIVP = couleurIVP;
 }
@@ -154,7 +154,7 @@ bool Sommet::set_connexite(bool conn)
     m_connexite = conn;
 }
 
-void Sommet::set_indiceProximiteNorm(float indicePrNrm)
+void Sommet::set_indiceProximiteNorm(float indicePrNrm)  // proximité normalisé
 {
     m_indiceProximiteNorm = indicePrNrm;
 }

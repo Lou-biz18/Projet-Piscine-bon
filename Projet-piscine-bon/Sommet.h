@@ -24,6 +24,7 @@ class Sommet//dans chaque somme il y a un tableaux d'aretes
         double get_coordx() const;//pour dessiner
         double get_coordy() const;
         std::string get_couleurS() const;
+
         // get pour les diff�rents indices
         float get_indiceDegreNorm() const;
         float get_indiceDegre() const;
