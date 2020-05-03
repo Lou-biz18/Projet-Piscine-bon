@@ -140,7 +140,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
             {
                 ajoutArete(tabLigne[i]);
             }
-            std::cout<< "Graphe terminé"<< std::endl;
+            std::cout<< "Graphe termine"<< std::endl;
         }
 
     }
@@ -174,7 +174,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
             if(taille!=m_taille)
             {
-                 std::cout<<"Erreur : La taille est différente. Fichier non chargé"<<std::endl;
+                 std::cout<<"Erreur : La taille est différente. Fichier non charge"<<std::endl;
                  return;
             }
             for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
@@ -296,7 +296,7 @@ bool Graphe::supprimerArete(int areteChoisie)
             delete(arete);// destruction finale de l'objet arete i
             std::cout<<"L'arete ";
             m_tabArete[i]->afficher();
-            std::cout<<" a bien été suprimée"<<std::endl;
+            std::cout<<" a bien ete suprimee"<<std::endl;
             return true;
         }
     }
@@ -366,3 +366,4 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 
 
 }
+

@@ -84,13 +84,14 @@ bool lancementDuService(int choix, Environnement* env)
             env->get_grapheModif()->commencerIndiceDeCentralite();
             env->get_grapheModif()->commencerVecteurPropre();
             env->get_grapheModif()->commencerIndiceDeProximite();
+            env->comparaisonIndiceSommet ();
 
             break;
         case 3:
             system("cls");
             std::cout << "Calcul des indices de centralite des sommets : " << std::endl; // calcule des indices
             env->get_graphe()->lancerLesIndices(nomFichierSauv);
-            break;
+             break;
         case 2:
             std::cout << "Ajout d'une ponderation" << std::endl;
             nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
