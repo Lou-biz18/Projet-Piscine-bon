@@ -37,6 +37,7 @@ class Graphe
         void commencerVecteurPropre();
         bool test_connexite(Sommet* sommetActuel);
         void reinitialiseConnexite();
+        void lancerLesIndices(std::string nomFichier);
 
     private:
         int m_ordre;

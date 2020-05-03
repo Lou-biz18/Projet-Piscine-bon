@@ -294,7 +294,7 @@ void Graphe::commencerIndiceDeProximite()
         }
         sDebut->set_indiceProximite(1 / sommeLongueurPCC);
         sDebut->set_indiceProximiteNorm( (m_ordre - 1) / sommeLongueurPCC);
-        std::cout << "indices de proximite sommet " << sDebut->get_nom() << ": " << sDebut->get_indiceProximite() << " " << sDebut->get_indiceProximiteNorm() << std::endl;
+
     }
 }
 
@@ -353,12 +353,41 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
 
     } while(std::abs(lambda_avant - lambda) > 0.01);
 
+   }
+
+
+void Graphe::lancerLesIndices(std::string nomFichier)
+{
+
+    std::cout<<""<<std::endl;
+    std::cout<<""<<std::endl;
+    commencerIndiceDeProximite();
+    commencerVecteurPropre();
+    commencerIndiceDeCentralite();
+    std::string indiceSauv;
+    std::ostringstream oss; //flux
+
     for(auto s : m_tabSommet)
     {
-        std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl; // d'après la méthode du sujet le vecteur normalisé est insensible à la taille du reseaux
-        std::cout<< "Indice vecteur Propre non-normalise "<<s->get_nom() << ":" << s->get_sommeIVPVoisins () <<std::endl; //le nonnormalisé doit donc ne pas e^tre divisé par lambda
+        std::cout << "Sommet " <<s->get_nom() << ": "<< std::endl;
+        std::cout<<""<<std::endl;
+        std::cout<< "Indice vecteur Propre non-normalise "<< s->get_sommeIVPVoisins () <<std::endl;
+        std::cout <<"Indice Vecteur Propre normalise "<< s->get_indiceVecteurPropre() << std::endl;
+        std::cout << "Indice de proximite non-normalise"  << ": " << s->get_indiceProximite() <<std::endl;
+        std::cout<< "Indice de proximite Normalise " << s->get_indiceProximiteNorm() << std::endl;
+        std::cout << "Indice de centralite non-normalise: " << s->get_indiceDegre() << std::endl;
+        std::cout << "Indice de centralie normalise : " << s->get_indiceDegreNorm() << std::endl;
+
+        std::cout<<""<<std::endl;
+        std::cout<<""<<std::endl;
+
+        // sauvegarde
+       oss<< s->get_nom() <<" "<< s->get_sommeIVPVoisins()<< " " << s->get_indiceVecteurPropre()<< s->get_indiceProximite()<<" "<<s->get_indiceProximiteNorm()<<" "<<s->get_indiceDegre()<<" "<<s->get_indiceDegreNorm()<<std::endl;
+
     }
-}
+
+    indiceSauv = oss.str();
+    sauvegardeDansFichier(nomFichier, indiceSauv);
 
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {

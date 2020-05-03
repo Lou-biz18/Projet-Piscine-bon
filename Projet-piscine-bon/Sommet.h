@@ -34,6 +34,8 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceVecteurPropre()const;
         std::vector<Arete*> get_tabArete() const;
 
+
+        // les diff�rents set
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);

@@ -8,7 +8,6 @@
 #include "utile.h"
 #include "Environnement.h"
 
-using namespace std;
 
 /// Phrases de sorties du programme
 
@@ -104,9 +103,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 3:
             SetConsoleTextAttribute(console, 11);
             std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
-            env->get_graphe()->commencerIndiceDeCentralite();
-            env->get_graphe()->commencerVecteurPropre();
-            env->get_graphe()->commencerIndiceDeProximite();
+            env->get_graphe()->lancerLesIndices(nomFichierSauv);
             break;
         case 2:
             SetConsoleTextAttribute(console, 10);
