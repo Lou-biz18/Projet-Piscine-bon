@@ -65,6 +65,55 @@ int Sommet::get_longueurDeChemin() const
     return m_longueurDeChemin;
 }
 
+void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
+{
+    m_indiceVecteurPropre = indiceVecteurPropre;
+}
+
+float Sommet::get_indiceVecteurPropre() const
+{
+    return m_indiceVecteurPropre;
+}
+
+void Sommet::set_sommeIVPVoisins()
+{
+    m_sommeIVPVoisins = 0;
+    for (auto a: m_tabAreteSo)
+    {
+        m_sommeIVPVoisins += a->get_autreSommet(this)->get_indiceVecteurPropre();
+    }
+}
+
+float Sommet::get_sommeIVPVoisins() const
+{
+    return m_sommeIVPVoisins;
+}
+
+void Sommet::set_longueurDeChemin(int longueur)
+{
+    m_longueurDeChemin = longueur;
+}
+
+void Sommet::set_indiceProximite(float indicePr)
+{
+    m_indiceProximite = indicePr;
+}
+
+float Sommet::get_indiceProximite() const
+{
+    return m_indiceProximite;
+}
+
+void Sommet::set_indiceProximiteNorm(float indicePrNrm)
+{
+    m_indiceProximiteNorm = indicePrNrm;
+}
+
+float Sommet::get_indiceProximiteNorm() const
+{
+    return m_indiceProximiteNorm;
+}
+
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
@@ -102,32 +151,6 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
     std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
-
-
-void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
-{
-    m_indiceVecteurPropre = indiceVecteurPropre;
-}
-
-float Sommet::get_indiceVecteurPropre() const
-{
-    return m_indiceVecteurPropre;
-}
-
-void Sommet::set_sommeIVPVoisins()
-{
-    m_sommeIVPVoisins = 0;
-    for (auto a: m_tabAreteSo)
-    {
-        m_sommeIVPVoisins += a->get_autreSommet(this)->get_indiceVecteurPropre();
-    }
-}
-
-float Sommet::get_sommeIVPVoisins() const
-{
-    return m_sommeIVPVoisins;
-}
-
 void Sommet::deployerDijkstra()
 {
     int longueurDeCheminTest;
@@ -143,27 +166,38 @@ void Sommet::deployerDijkstra()
     }
 }
 
-void Sommet::set_longueurDeChemin(int longueur)
+void Sommet::set_couleurIDN(std::string couleurIDN)
 {
-    m_longueurDeChemin = longueur;
-}
+    m_couleurIDN = couleurIDN;
 
-void Sommet::set_indiceProximite(float indicePr) 
-{
-    m_indiceProximite = indicePr;
 }
+void Sommet::set_couleurIVP(std::string couleurIVP)
+{
+    m_couleurIVP = couleurIVP;
 
-float Sommet::get_indiceProximite() const
-{
-    return m_indiceProximite;
 }
+void Sommet::set_couleurIPN(std::string couleurIPN)
+{
+    m_couleurIPN = couleurIPN;
 
-void Sommet::set_indiceProximiteNorm(float indicePrNrm)
-{
-    m_indiceProximiteNorm = indicePrNrm;
 }
+/*
+std::string Sommet::calcCouleurSommet()
+{
+    std::string couleurIC;
+    std::string couleurIVP;
+    std::string couleurIP;
+// calcul couleur du sommet pour l'indice de centralité degré (prend le normalisé c'est plus simple)
 
-float Sommet::get_indiceProximiteNorm() const
-{
-    return m_indiceProximiteNorm;
+    //appel de la methode de calcul des sommets
+    if(m_indiceDegre < m_indiceDegre+1)
+    {
+        couleurIC = "rgb(255,255,255)"
+    }
+    color inice de C
+    color indice de P
+    color indice vectP
+// calcul couleur du sommet pour l'indice de VP
+// ...........                     ______....._____          _de  Proximité
 }
+*/

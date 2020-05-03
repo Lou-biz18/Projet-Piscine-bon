@@ -297,7 +297,7 @@ bool Graphe::supprimerArete(int areteChoisie)
             delete(arete);// destruction finale de l'objet arete i
             std::cout<<"l'arete";
             m_tabArete[i]->afficher();
-            std::cout<<" a bien été suprimée"<<std::endl;
+            std::cout<<" a bien été suprimee"<<std::endl;
             return true;
         }
     }
@@ -333,4 +333,65 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
     {
         std::cout << "IVP: " << s->get_indiceVecteurPropre() << std::endl;
     }
+}
+
+void Graphe::calcCouleurG()
+{
+// calcul couleur du sommet pour l'indice de centralité degré (prend le normalisé c'est plus simple)
+    float iDNMax =0;
+    float iVPMax = 0;
+    float proxMax = 0;
+    float calcIDN;
+    float calcIVP;
+    float calcIPN;
+
+    for(auto s: m_tabSommet) //on choppe le min et le max
+    {
+        if(s->get_indiceDegreNorm()> iDNMax)
+        {
+            iDNMax = s->get_indiceDegreNorm();
+        }
+        if(s->get_indiceVecteurPropre()> iVPMax)
+        {
+            iVPMax = s->get_indiceVecteurPropre();
+        }
+        if(s->get_indiceProximiteNorm()> proxMax)
+        {
+            proxMax = s->get_indiceProximiteNorm();
+        }
+
+    }
+    for(auto s: m_tabSommet)
+    {
+        calcIDN = (s->get_indiceDegreNorm() *255)/iDNMax;
+        calcIVP = (s->get_indiceVecteurPropre() *255)/iVPMax;
+        calcIPN = (s->get_indiceProximiteNorm() *255)/proxMax;
+
+        std::ostringstream oss;
+        std::string couleurIDN;
+        oss<<"rgb("<<calcIDN<<",0,0)";
+        couleurIDN = oss.str();
+
+        s->set_couleurIDN(couleurIDN);
+        oss.clear();
+
+        std::string couleurIVP;
+        oss<<"rgb(0,"<<calcIVP<<",0)";
+        couleurIVP = oss.str();
+
+        s->set_couleurIVP(couleurIVP);
+        oss.clear();
+
+        std::string couleurIPN;
+        oss<<"rgb(0,0,"<<calcIPN<<")";
+        couleurIPN = oss.str();
+
+        s->set_couleurIPN(couleurIPN);
+        oss.clear();
+    }
+
+    // pour chaque sommet
+        // calculIVP = //la tu fé calcul
+        // s->set_ivpcolor("rgb(calculIVP,0,calcuIVPl))
+        // pareil avec degre et prox
 }

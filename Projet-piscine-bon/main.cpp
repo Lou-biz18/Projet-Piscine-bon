@@ -10,7 +10,7 @@
 /// Phrases de sorties du programme
 std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
-std::string mauvaiseOption = "L'option demandée n'existe pas";
+std::string mauvaiseOption = "L'option demandee n'existe pas";
 
 /*
 void demandeSuppressionAretes(){
@@ -44,7 +44,7 @@ void demandeSuppA(Environnement * env)
         }
         else
         {
-            std::cout << "Tout c'est bien passé." << std::endl;
+            std::cout << "Tout c'est bien passe." << std::endl;
             while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
             {
                 std::cout << "Voulez-vous en supprimer d'autres? (oui/non)" << std::endl;
@@ -105,7 +105,7 @@ bool lancementDuService(int choix, Environnement* env)
             }
             break;
         case 1:
-            std::cout << "Création du graphe..." << std::endl;
+            std::cout << "Creation du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             nomFichier = "graphe_cycle4_topo.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite

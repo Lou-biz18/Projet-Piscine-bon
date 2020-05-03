@@ -32,17 +32,23 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_sommeIVPVoisins() const;
         float get_indiceVecteurPropre()const;
         float get_indiceDegre();
-        float get_indiceDegreNorm();
 
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
-        void ajoutArete(Arete* newArete);
-        void dessiner(Svgfile&svgout, double x, double y);
-        void afficherTextId(Svgfile&svgout, double x, double y);
-        void calculeIndiceCentraliteDegres(int m_ordre);
         void set_indiceVecteurPropre(float m_indiceVecteurPropre);
         void set_sommeIVPVoisins();
+        void set_calculICouleur(float couleurI);
+        void set_couleurIDN(std::string couleurIDN);
+        void set_couleurIVP(std::string couleurIVP);
+        void set_couleurIPN(std::string couleurIPN);
 
+        void dessiner(Svgfile&svgout, double x, double y);
+        void afficherTextId(Svgfile&svgout, double x, double y);
+
+        void calculeIndiceCentraliteDegres(int m_ordre);
+        std::string calcCouleurSommet();
+
+        void ajoutArete(Arete* newArete);
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
@@ -61,10 +67,17 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float m_indiceProximite;
         float m_indiceProximiteNorm;
 
+
+
         std::string m_nom;
         std::pair<double,double> m_coords;
         std::vector<Arete*> m_tabAreteSo;//il possede des aretes
         std::string m_couleurS;
+
+        std::string m_couleurIDN;
+        std::string m_couleurIVP;
+        std::string m_couleurIPN;
+
 
 
 
