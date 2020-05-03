@@ -77,7 +77,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
         }
         i++;
     }
-    return(sommetArrivee->get_longueurDeChemin());
+    return(sommetArrivee->get_longueurDeChemin() - 1);
 }
 
 void entete(){
