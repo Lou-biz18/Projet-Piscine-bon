@@ -297,10 +297,9 @@ void Graphe::dessinerGICDN(std::string fileName)
         std::string indiceC;
         oss<<s->get_indiceDegreNorm();
         indiceC = oss.str();
+
         svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIDN());
-        std::cout <<"|"<<s->get_couleurIDN()<<"|"<<std::endl;
-        svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
-        svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");//parametre ok
+        svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");
     }
     std::cout << " Dessin du graphe avec centralite de degre apparente "<<std::endl;
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
@@ -349,7 +348,7 @@ void Graphe::dessinerGIPN(std::string fileName)
     for(int i=0;i<m_ordre;i++)
     {
         Sommet* s = m_tabSommet[i];
-        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, "pink");//seule ligne changée
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIPN());//seule ligne changée
         std::cout <<s->get_couleurIDN()<<std::endl;
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
@@ -542,6 +541,7 @@ void Graphe::calcCouleurG()
         couleurIDN = oss.str();
 
         s->set_couleurIDN(couleurIDN);
+        oss.str("");
         oss.clear();
 
         std::string couleurIVP;
@@ -549,6 +549,7 @@ void Graphe::calcCouleurG()
         couleurIVP = oss.str();
 
         s->set_couleurIVP(couleurIVP);
+        oss.str("");
         oss.clear();
 
         std::string couleurIPN;
@@ -556,6 +557,7 @@ void Graphe::calcCouleurG()
         couleurIPN = oss.str();
 
         s->set_couleurIPN(couleurIPN);
+        oss.str("");
         oss.clear();
     }
 }

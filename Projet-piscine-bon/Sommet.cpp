@@ -167,9 +167,7 @@ void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
     std::cout <<"Sommet --> "<<m_idSommet
               <<":x= "<<m_coords.first
-              <<";y= "<<m_coords.second
-              <<":m_nbArete= "<< m_nbArete
-              <<":m_connexite= "<<m_connexite;
+              <<";y= "<<m_coords.second;
 
 }
 

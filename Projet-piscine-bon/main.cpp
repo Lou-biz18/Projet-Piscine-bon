@@ -109,9 +109,9 @@ bool lancementDuService(int choix, Environnement* env)
             env->get_graphe()->lancerLesIndices(nomFichierSauv);
             indiceCalculey = true;
             env->get_graphe()->calcCouleurG();
-            env->get_graphe()->dessinerGICDN("fichierD.svg");//OK
-            env->get_graphe()->dessinerGIVPN("fichierVP.svg");//caca
-            env->get_graphe()->dessinerGIPN("fichierP.svg");//caca
+            env->get_graphe()->dessinerGICDN("fichierD.svg");
+            env->get_graphe()->dessinerGIVPN("fichierVP.svg");
+            env->get_graphe()->dessinerGIPN("fichierP.svg");
             break;
         case 2:
             SetConsoleTextAttribute(console, 10);
@@ -119,7 +119,7 @@ bool lancementDuService(int choix, Environnement* env)
             nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
             if (nomFichier.compare("") != 0) // Si le fichier existe, alors on lance la suite
             {
-                env->get_graphe()->chargePonderation(nomFichier);//pas sure de le modif
+                env->get_graphe()->chargePonderation(nomFichier);
                 env->get_graphe()->afficher();
             }
             break;
