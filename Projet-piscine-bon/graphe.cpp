@@ -3,6 +3,8 @@
 #include <sstream>
 #include <vector>
 #include <string>//pour to_string
+#include <tgmath.h>
+#include <math.h>
 
 #include "Graphe.h"
 #include "Sommet.h"
@@ -10,12 +12,13 @@
 #include "utile.h"
 
 ///CONSTRUCTEUR
+///
 Graphe::Graphe(std::string nomFichier)
 {
     chargeGraphe(nomFichier);
 }
 
-Graphe(const Graphe &grapheACopier)
+Graphe::Graphe(const Graphe &grapheACopier)
 {
     m_ordre = grapheACopier.get_ordre();
     m_orient = grapheACopier.get_orient();
@@ -23,19 +26,19 @@ Graphe(const Graphe &grapheACopier)
 
     std::vector<Sommet*> tmpS(m_ordre);// taille m_ordre pour tabSommet
     m_tabSommet = tmpS;
-    std::vector<Sommet*> tabSomACopier = graheACopier.get_tabSommet() // A CODER getTabSommet
-    for(int i = 0; i <= m_ordre; i++)
+    std::vector<Sommet*> tabSomACopier = grapheACopier.get_tabSommet();
+    for(int i = 0; i < m_ordre; i++)
     {
-        Sommet newSommet = *(tabSomACopier[i]); // Sommet newSomme = *monSommet
-        m_tabSommet[i] = &newSommet;
+        Sommet* newSommet = new Sommet(*(tabSomACopier[i])); // Sommet newSomme = *monSommet
+        m_tabSommet[i] = newSommet;
     }
     std::vector<Arete*> tmpA(m_taille);// taille m_ordre pour tabSommet
     m_tabArete = tmpA;
-    std::vector<Arete*> tabAreteACopier = graheACopier.get_tabArete() // A CODER getTabArete
-    for(int i = 0; i <= m_ordre; i++)
+    std::vector<Arete*> tabAreteACopier = grapheACopier.get_tabArete();
+    for(int i = 0; i < m_taille; i++)
     {
-        Arete newArete = *(tabAreteACopier[i]);
-        m_tabArete[i] = &newArete;
+        Arete* newArete = new Arete(*(tabAreteACopier[i]));
+        m_tabArete[i] = newArete;
     }
 }
 
@@ -76,18 +79,20 @@ void Graphe::afficherTabS()
 {
     for(auto elem: m_tabSommet){
         elem->afficher();
+        std::cout << std::endl;
     }
 }
 void Graphe::afficherTabA()
 {
     for(auto elem: m_tabArete){
         elem->afficher();
+        std::cout << std::endl;
     }
 }
 
 void Graphe::afficher()///afficher les donn�es d'un bloc pour debug
 {
-    std::cout<<std::endl<<"Graphe ";
+    std::cout<<"Graphe ";
     if(m_orient)
         std::cout<<"oriente"<<std::endl;
     else
@@ -129,12 +134,10 @@ void Graphe::chargeGraphe(std::string nomFichier)
                 ajoutSommet(tabLigne[i]);//cr�er le nombre d'arete (n-1)
             }
             m_taille = std::stoi(tabLigne[2+m_ordre]);// recup taille pour tabArete
-            std::vector<Arete*> temp(m_taille);
-            m_tabArete = temp;
+            //std::vector<Arete*> temp(m_taille);
+            //m_tabArete = temp;
             for(int i=3+m_ordre;i<=2+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
             {
-                std::cout<<"line = "<< tabLigne[i] <<std::endl;
-                std::cout << std::stoi(split(tabLigne[i], ' ')[1]) << std::endl;
                 ajoutArete(tabLigne[i]);
             }
             std::cout<< "Graphe terminé"<< std::endl;
@@ -171,7 +174,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
             if(taille!=m_taille)
             {
-                 std::cout<<"PB : tailles differentes"<<std::endl;
+                 std::cout<<"Erreur : La taille est différente. Fichier non chargé"<<std::endl;
                  return;
             }
             for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
@@ -196,14 +199,8 @@ void Graphe::ajoutArete(std::string ligne)
     int indexSom1 = std::stoi(recupLigneSplit[1]);
     int indexSom2 = std::stoi(recupLigneSplit[2]);
 
-    std::cout << index << " "<< indexSom1<< " "<< indexSom2 << " "<<std::endl;
-    m_tabSommet[indexSom1]->afficher();
-    m_tabSommet[indexSom2]->afficher();
     Arete* newArete = new Arete(index, m_tabSommet[indexSom1],m_tabSommet[indexSom2]);
-    //pour etre propre -> 3 variables pour recup bien les données ( lindex bien etc)
-    //m_tabArete[index] = newArete;
-
-    m_tabArete[index] = newArete;//tableau de Arete* (pointeur sur aretes)
+    m_tabArete.push_back(newArete);//tableau de Arete* (pointeur sur aretes)
 }
 
 void Graphe::ajoutSommet(std::string ligne)
@@ -245,30 +242,94 @@ void Graphe::dessiner(Svgfile&svgout)
     for(int i=0;i<m_ordre;i++)
     {
         Sommet* s = m_tabSommet[i];
-        svgout.addDisk(s->get_coordx() * 100,s->get_coordy() *100, 30, s->get_couleurS());
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurS());
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
-        std::cout<<"on arrive jusquici"<<std::endl;
     }
-    svgout.addDisk(1000,800,20,"blue");
+    std::cout << "Création du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
 {
-
     for (auto s : m_tabSommet)
     {
         s->calculeIndiceCentraliteDegres(m_ordre);
-
     }
-
 }
-/*
-void Graphe::calcCouleurG()
+
+void Graphe::commencerIndiceDeProximite()
 {
-    for(int i=0;i<nb_arete;i++)
+    float sommeLongueurPCC;
+    for (auto sDebut : m_tabSommet)
     {
-       // nb_arete[i].m_couleur = set_couleurA(couleurCac);//grosse merde
-       //pour chaque sommet de degre diff, on set la couelur calculée
+        sommeLongueurPCC = 0;
+        for (auto sFin: m_tabSommet)
+        {
+            if(sFin != sDebut)
+                sommeLongueurPCC += (float)dijkstra(sDebut, sFin, this);
+        }
+        sDebut->set_indiceProximite(1 / sommeLongueurPCC);
+        sDebut->set_indiceProximiteNorm( (m_ordre - 1) / sommeLongueurPCC);
+        std::cout << "indices de proximite sommet " << sDebut->get_nom() << ": " << sDebut->get_indiceProximite() << " " << sDebut->get_indiceProximiteNorm() << std::endl;
     }
 }
-*/
+
+bool Graphe::supprimerArete(int areteChoisie)
+{
+    Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp
+    for(int i=0; i<m_taille;i++)// ! mettre des i
+    {
+        if(m_tabArete[i]->get_idArete() == areteChoisie)
+        {
+            arete = m_tabArete[i];//on attribue à arete cette refereence i precise
+            std::cout<<"existe"<<std::endl;
+
+            m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
+
+            m_taille = m_taille - 1 ;//mise a jour de la taille du tableau
+
+            //m_tabArete[i]->get_s1();
+            Sommet* s1 = m_tabArete[i]->get_s1();
+            Sommet* s2 = m_tabArete[i]->get_s2();
+            s1->enleveA(m_tabArete[i]);//on efface les ref de Arete dans sommet
+            s2->enleveA(m_tabArete[i]);//car tabAreteSo dans Sommet
+
+            delete(arete);// destruction finale de l'objet arete i
+            std::cout<<"L'arete ";
+            m_tabArete[i]->afficher();
+            std::cout<<" a bien été suprimée"<<std::endl;
+            return true;
+        }
+    }
+    return false;
+}
+
+void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par lambda
+{
+    float lambda = 0;
+    float lambda_avant = 0;
+    for (auto s: m_tabSommet)
+        s->set_indiceVecteurPropre(1);
+    do
+    {
+        for (auto s : m_tabSommet)
+            s->set_sommeIVPVoisins();// somme des indcides des voisins
+
+        lambda_avant = lambda;
+        lambda= 0;
+
+        for (auto s : m_tabSommet)
+        {
+            lambda += s->get_sommeIVPVoisins() * s->get_sommeIVPVoisins(); //
+        }
+        lambda = std::sqrt(lambda);
+
+        for(auto s : m_tabSommet)
+            s->set_indiceVecteurPropre(s->get_sommeIVPVoisins()/ lambda);
+
+    } while(std::abs(lambda_avant - lambda) > 0.01);
+
+    for(auto s : m_tabSommet)
+    {
+        std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl;
+    }
+}

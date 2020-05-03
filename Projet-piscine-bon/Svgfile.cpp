@@ -10,12 +10,11 @@ const std::string svgHeader =
 const std::string svgEnding = "\n\n</svg>\n";
 std::set<std::string> Svgfile::s_openfiles;
 
-bool Svgfile::s_verbose = true;
+bool Svgfile::s_verbose = false;
 
 Svgfile::Svgfile(std::string _filename, int _width, int _height) :
-    m_filename{_filename}, m_width{_width}, m_height{_height}
+    m_filename(_filename), m_width(_width), m_height(_height)
 {
-
     if (s_verbose)
         std::cout << "Opening SVG output file : "
                   << m_filename << std::endl;
@@ -100,10 +99,15 @@ void Svgfile::addFleche(double x1, double y1, double x2, double y2, std::string 
             << attrib("stroke-width", "7px")
             << "/>\n";
 }
-///couleur pour degradés
+///couleur pour degradï¿½s
 std::string Svgfile::makeRGB(int r, int g, int b)
 {
     std::ostringstream oss;
     oss << "rgb(" << r << "," << g << "," << b << ")";
     return oss.str();
+}
+
+std::string Svgfile::get_filename()
+{
+    return m_filename;
 }
