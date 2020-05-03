@@ -10,7 +10,7 @@
 
 class Arete;
 
-class Sommet//dans chaque somme ya un tableaux darretes
+class Sommet//dans chaque somme il y a un tableaux d'aretes
 {
     public:
         Sommet();//constructeur
@@ -90,8 +90,6 @@ class Sommet//dans chaque somme ya un tableaux darretes
 
 
 
-        ///svg
-        //std::string m_couleur;
-        //float m_rayon;
+
 };
 #endif

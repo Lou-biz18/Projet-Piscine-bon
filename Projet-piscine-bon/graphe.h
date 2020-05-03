@@ -12,7 +12,7 @@
 class Graphe
 {
     public:
-        Graphe(std::string nomFichier);//prototyper le constructeur
+        Graphe(std::string nomFichier);//e constructeur
         Graphe(const Graphe &grapheACopier);// constructeur de copie
         ~Graphe(); // destructeur
 

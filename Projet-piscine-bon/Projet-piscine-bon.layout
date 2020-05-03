@@ -14,7 +14,7 @@
 	</File>
 	<File name="utile.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3609" topLine="71" />
+			<Cursor1 position="3609" topLine="100" />
 		</Cursor>
 	</File>
 	<File name="utile.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -49,7 +49,7 @@
 	</File>
 	<File name="Arete.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1787" topLine="0" />
+			<Cursor1 position="674" topLine="29" />
 		</Cursor>
 	</File>
 	<File name="graphe.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

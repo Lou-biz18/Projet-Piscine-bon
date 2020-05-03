@@ -15,9 +15,9 @@ class Sommet;
 class Arete
 {
    public:
-        Arete(int idArete, Sommet*s1, Sommet*s2);
+        Arete(int idArete, Sommet*s1, Sommet*s2); //constructeur
         Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2); // constrtucteur de copie
-        ~Arete();
+        ~Arete(); // destructeur
 
         void afficher();
         void set_poids(int poids);
@@ -34,7 +34,7 @@ class Arete
     private:
         int m_idArete;
         int m_poids;
-        std::pair<Sommet*,Sommet*> m_sommets;// extremites de laretes
+        std::pair<Sommet*,Sommet*> m_sommets;// les extremites de l'aretes
         std::string m_couleurA;
 
 };

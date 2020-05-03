@@ -30,7 +30,7 @@ Graphe* Environnement::get_grapheModif(){
 
 
 
-void Environnement::comparaisonIndiceSommet ()
+void Environnement::comparaisonIndiceSommet ()// vulnaribilité comparaison d'indice
 {
     HANDLE console;
     console = GetStdHandle(STD_OUTPUT_HANDLE);

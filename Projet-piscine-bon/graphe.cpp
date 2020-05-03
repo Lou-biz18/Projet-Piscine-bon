@@ -307,6 +307,7 @@ void Graphe::dessinerGICDN(std::string fileName)
 }
 void Graphe::dessinerGIVPN(std::string fileName)
 {
+
     Svgfile svgout(fileName);
     for(int i=0;i<m_taille;i++)
     {
@@ -317,7 +318,7 @@ void Graphe::dessinerGIVPN(std::string fileName)
         double y2 = a->get_s2()->get_coordy();
 
         svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
-        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());
         // on ecrit l'idArete au milieu de l'arete
     }
     for(int i=0;i<m_ordre;i++)
@@ -343,8 +344,7 @@ void Graphe::dessinerGIPN(std::string fileName)
         double y2 = a->get_s2()->get_coordy();
 
         svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)");
-        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
-        // on ecrit l'idArete au milieu de l'arete
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());
     }
     for(int i=0;i<m_ordre;i++)
     {
@@ -384,13 +384,13 @@ void Graphe::commencerIndiceDeProximite()
 
 bool Graphe::supprimerArete(int areteChoisie)
 {
-    Arete* arete;//besoin d'un d'un pointeur/ d'une addresse sur arrete pour le supp
-    for(int i=0; i<m_taille;i++)// ! mettre des i
+    Arete* arete;
+    for(int i=0; i<m_taille;i++)
     {
         if(m_tabArete[i]->get_idArete() == areteChoisie)
         {
-            arete = m_tabArete[i];//on attribue à arete cette refereence i precise
-            std::cout<<"existe"<<std::endl;
+            arete = m_tabArete[i];//on attribue à arete cette reference i precise
+
 
             m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
 
@@ -419,7 +419,7 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
     do
     {
         for (auto s : m_tabSommet)
-            s->set_sommeIVPVoisins();// somme des indcides des voisins
+            s->set_sommeIVPVoisins();// somme des indices des des voisins
 
         lambda_avant = lambda;
         lambda= 0;
@@ -473,7 +473,8 @@ void Graphe::lancerLesIndices(std::string nomFichier)
         std::cout<<""<<std::endl;
         std::cout<<""<<std::endl;
 
-        // sauvegarde
+        // sauvegarde des indices dans le fichier
+
        oss<< s->get_nom() <<" "<< s->get_sommeIVPVoisins()<< " " << s->get_indiceVecteurPropre()<< s->get_indiceProximite()<<" "<<s->get_indiceProximiteNorm()<<" "<<s->get_indiceDegre()<<" "<<s->get_indiceDegreNorm()<<std::endl;
 
     }
@@ -485,7 +486,7 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {
     sommetActuel->afficher();
-    std::cout << std::endl;
+
     if (sommetActuel->get_connexite()) //true si sommet deja visite
         return false;
     sommetActuel->set_connexite(true);
@@ -523,7 +524,7 @@ void Graphe::calcCouleurG()
     float calcIVP;
     float calcIPN;
 
-    for(auto s: m_tabSommet) //on choppe le min et le max
+    for(auto s: m_tabSommet) //on obtient le min et le max
     {
         if(s->get_indiceDegreNorm()> iDNMax)
         {

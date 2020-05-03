@@ -1,7 +1,7 @@
 #include "Sommet.h"
 #include "Arete.h"
 
-Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur de arete
+Sommet::Sommet(int idSommet, std::string nom, double x, double y)//du sommet
 {
     m_connexite = false;
     m_idSommet = idSommet;
@@ -24,7 +24,7 @@ Sommet::Sommet(const Sommet &sommetACopier)// copier du sommet
 
 Sommet::~Sommet()  // destructeur
 {
-    //dtor
+
 }
 
 
