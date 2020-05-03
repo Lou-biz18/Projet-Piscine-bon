@@ -272,8 +272,7 @@ void Graphe::dessiner(std::string fileName)
     }
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
-///valeurs de centralité affichées à coté des ommets, système de couleurs permettant de discrimer les sommets
-///en fonction de leur importance mesurée par ces indices …
+///valeurs de centralité affichées à coté des Sommets
 
 void Graphe::dessinerGICDN(std::string fileName)
 {
