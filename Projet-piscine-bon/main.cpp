@@ -125,7 +125,7 @@ bool lancementDuService(int choix, Environnement* env)
             break;
         case 1:
             SetConsoleTextAttribute(console, 13);
-            std::cout << "Création du graphe..." << std::endl;
+            std::cout << "Creation du graphe..." << std::endl;
             nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
