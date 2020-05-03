@@ -63,9 +63,9 @@ bool lancementDuService(int choix, Environnement* env)
     console = GetStdHandle(STD_OUTPUT_HANDLE);
     std::string nomFichier;
     std::string nomFichierSauv = "sauv.txt";
-    std::string nomFichierSvg;///HELP JOJOOOOOOOO
+    std::string nomFichierSvg;
     std::string ligneSauv;
-    
+
     if (choix != 1 && choix != 5 && grapheChargey != true)
     {
         std::cout << "Il faut d'abord charger un graphe..." << std::endl;
@@ -161,9 +161,7 @@ bool menu(Environnement* env)
     SetConsoleTextAttribute(console, 1);
     std::cout << "4: Faire des tests de vulnerabilite en supprimant des aretes" << std::endl;
     SetConsoleTextAttribute(console, 14);
-    std::cout << "5 : Que souhaitez vous ecrire dans le fichier sauv.txt ? " << std::endl;
-    SetConsoleTextAttribute(console, 12);
-    std::cout << "6 : Quitter" << std::endl;
+    std::cout << "5 : Quitter" << std::endl;
     SetConsoleTextAttribute(console, 15);
     std::cin >> choixUtilisateur;
     system("cls");
