@@ -300,13 +300,14 @@ void Graphe::dessinerGICDN(std::string fileName)
         svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIDN());
         std::cout <<"|"<<s->get_couleurIDN()<<"|"<<std::endl;
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
-        svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");//parametre ok
+        svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");
     }
     std::cout << " Dessin du graphe avec centralite de degre apparente "<<std::endl;
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 void Graphe::dessinerGIVPN(std::string fileName)
 {
+
     Svgfile svgout(fileName);
     for(int i=0;i<m_taille;i++)
     {
@@ -317,7 +318,7 @@ void Graphe::dessinerGIVPN(std::string fileName)
         double y2 = a->get_s2()->get_coordy();
 
         svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
-        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
+        svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());
         // on ecrit l'idArete au milieu de l'arete
     }
     for(int i=0;i<m_ordre;i++)
@@ -389,7 +390,7 @@ bool Graphe::supprimerArete(int areteChoisie)
         if(m_tabArete[i]->get_idArete() == areteChoisie)
         {
             arete = m_tabArete[i];//on attribue à arete cette reference i precise
-            std::cout<<"existe"<<std::endl;
+
 
             m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
 
@@ -475,7 +476,7 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {
     sommetActuel->afficher();
-    std::cout << std::endl;
+
     if (sommetActuel->get_connexite()) //true si sommet deja visite
         return false;
     sommetActuel->set_connexite(true);
