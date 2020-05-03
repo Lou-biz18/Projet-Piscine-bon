@@ -13,7 +13,7 @@ std::vector<std::string> split(const std::string &ligne, char delimiteur)
         recup.push_back(temp);
     }
 
-    return recup; // retourne un tableau du tableau de base coupé
+    return recup; // retourne un tableau de chaque elem de la string pour recup les char
 }
 
 std::string demandeNomFichier()
@@ -80,7 +80,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
     }
     return(sommetArrivee->get_longueurDeChemin() - 1);
 }
-//entete de notre menu
+//entete de notre menu grace à HANDLE sous windows
 void entete(){
     using namespace std;
     HANDLE console;   // Souce : youtube.com/watch?v=zujRdlaCef4

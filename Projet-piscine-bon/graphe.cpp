@@ -273,7 +273,6 @@ void Graphe::dessiner(std::string fileName)
     }
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
-///valeurs de centralité affichées à coté des Sommets
 
 void Graphe::dessinerGICDN(std::string fileName)
 {
@@ -288,7 +287,7 @@ void Graphe::dessinerGICDN(std::string fileName)
 
         svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
         svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
-        // on ecrit l'idArete au milieu de l'arete
+
     }
     for(int i=0;i<m_ordre;i++)
     {
@@ -298,11 +297,12 @@ void Graphe::dessinerGICDN(std::string fileName)
         oss<<s->get_indiceDegreNorm();
         indiceC = oss.str();
 
-        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIDN());
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIDN());//sommet degrade
         svgout.addId(s->get_coordx() *105, s->get_coordy() *105,indiceC,"purple");
+        //valeurs de centralité affichées à coté des Sommets
     }
     std::cout << " Dessin du graphe avec centralite de degre apparente "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminee" << std::endl;
 }
 void Graphe::dessinerGIVPN(std::string fileName)
 {
@@ -328,7 +328,7 @@ void Graphe::dessinerGIVPN(std::string fileName)
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
     std::cout << " Dessin du graphe avec vecteurs propres apparents normalises "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminee" << std::endl;
 }
 
 void Graphe::dessinerGIPN(std::string fileName)
@@ -348,12 +348,12 @@ void Graphe::dessinerGIPN(std::string fileName)
     for(int i=0;i<m_ordre;i++)
     {
         Sommet* s = m_tabSommet[i];
-        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIPN());//seule ligne changée
+        svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurIPN());//sommet degradé
         std::cout <<s->get_couleurIDN()<<std::endl;
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
     std::cout << " Dessin du graphe avec indices de proximite normalises "<<std::endl;
-    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") terminee" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
@@ -425,7 +425,7 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
 
         for (auto s : m_tabSommet)
         {
-            lambda += s->get_sommeIVPVoisins() * s->get_sommeIVPVoisins(); //
+            lambda += s->get_sommeIVPVoisins() * s->get_sommeIVPVoisins();
         }
         lambda = std::sqrt(lambda);
 
@@ -541,10 +541,12 @@ void Graphe::calcCouleurG()
     }
     for(auto s: m_tabSommet)
     {
+        //calcul des couleurs des indices
         calcIDN = (s->get_indiceDegreNorm() *255)/iDNMax;
         calcIVP = (s->get_indiceVecteurPropre() *255)/iVPMax;
         calcIPN = (s->get_indiceProximiteNorm() *255)/proxMax;
 
+        //recup des valeurs calc et mis dans une string pour chaque type d'affichage de comparaison d'indices
         std::ostringstream oss;
         std::string couleurIDN;
         std::cout << calcIDN<< std::endl;
@@ -553,7 +555,7 @@ void Graphe::calcCouleurG()
 
         s->set_couleurIDN(couleurIDN);
         oss.str("");
-        oss.clear();
+        oss.clear();//on vide le flux pour pouvoir le remplir a nouveau
 
         std::string couleurIVP;
         oss<<"rgb(0,"<<calcIVP<<",0)";
