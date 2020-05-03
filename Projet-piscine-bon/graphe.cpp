@@ -5,6 +5,7 @@
 #include <string>//pour to_string
 #include <tgmath.h>
 #include <math.h>
+#include <windows.h>
 
 #include "Graphe.h"
 #include "Sommet.h"
@@ -441,6 +442,8 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
 
 void Graphe::lancerLesIndices(std::string nomFichier)
 {
+    HANDLE console;
+    console = GetStdHandle(STD_OUTPUT_HANDLE);
 
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
@@ -452,14 +455,22 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 
     for(auto s : m_tabSommet)
     {
+        SetConsoleTextAttribute(console, 15);
         std::cout << "Sommet " <<s->get_nom() << ": "<< std::endl;
         std::cout<<""<<std::endl;
+        SetConsoleTextAttribute(console, 13);
         std::cout<< "Indice vecteur Propre non-normalise "<< s->get_sommeIVPVoisins () <<std::endl;
+        SetConsoleTextAttribute(console, 10);
         std::cout <<"Indice Vecteur Propre normalise "<< s->get_indiceVecteurPropre() << std::endl;
+        SetConsoleTextAttribute(console, 11);
         std::cout << "Indice de proximite non-normalise"  << ": " << s->get_indiceProximite() <<std::endl;
+        SetConsoleTextAttribute(console, 1);
         std::cout<< "Indice de proximite Normalise " << s->get_indiceProximiteNorm() << std::endl;
+        SetConsoleTextAttribute(console, 14);
         std::cout << "Indice de centralite non-normalise: " << s->get_indiceDegre() << std::endl;
+        SetConsoleTextAttribute(console, 12);
         std::cout << "Indice de centralie normalise : " << s->get_indiceDegreNorm() << std::endl;
+        SetConsoleTextAttribute(console, 15);
 
         std::cout<<""<<std::endl;
         std::cout<<""<<std::endl;
