@@ -54,17 +54,20 @@
 	"Sommet.h"
 	"Arete.h"
 
-1588532215 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
+1588539197 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\main.cpp
 	<iostream>
 	<limits>
 	<fstream>
 	<sstream>
 	<cstdlib>
+	<windows.h>
 	"utile.h"
 	"Environnement.h"
 
-1588524394 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\utile.cpp
+1588539133 source:c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\utile.cpp
 	"utile.h"
+	<iostream>
+	<windows.h>
 
 1588524394 c:\users\bizet\onedrive\documents\github\projet-piscine-bon\projet-piscine-bon\environnement.h
 	<iostream>
