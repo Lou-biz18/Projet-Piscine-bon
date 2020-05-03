@@ -136,8 +136,6 @@ void Graphe::chargeGraphe(std::string nomFichier)
             //m_tabArete = temp;
             for(int i=3+m_ordre;i<=2+m_ordre+m_taille;i++)//ajoute les arretes dans tabArete
             {
-                std::cout<<"line = "<< tabLigne[i] <<std::endl;
-                std::cout << std::stoi(split(tabLigne[i], ' ')[1]) << std::endl;
                 ajoutArete(tabLigne[i]);
             }
             std::cout<< "Graphe terminé"<< std::endl;

@@ -45,7 +45,7 @@ void demandeSuppA(Environnement * env)
         else
         {
             std::cout << "Tout c'est bien passé." << std::endl;
-            while(choixUstr.compare("non") != 0 || choixUstr.compare("oui") != 0 )
+            while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
             {
                 std::cout << "Voulez-vous en supprimer d'autres? (oui/non)" << std::endl;
                 std::cin >> choixUstr;
@@ -79,16 +79,18 @@ bool lancementDuService(int choix, Environnement* env)
         case 4:
             std::cout << "Etude de vulnerabilite" << std::endl;
             env->creationGrapheAModifer();//ca marche pas sa mereé
-            std::cout <<"est ce que creationGraphe AModifier crash mon pgm ?"<<std::endl;
             demandeSuppA(env);
+            env->get_grapheModif()->commencerIndiceDeCentralite();
+            env->get_grapheModif()->commencerVecteurPropre();
+            env->get_grapheModif()->commencerIndiceDeProximite();
             /*demandeSuppressionAretes();FAIT
-            relancer les methodes de calcul d'indices
+            relancer les methodes de calcul d'indices FAIT
              sauvegarder/afficher les indices dans un fichier different de celui du graph normal
              comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
             */
             break;
         case 3:
-            std::cout << "calcule des indices de degre normalise et non-normalise" << std::endl;
+            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->commencerIndiceDeCentralite();
             env->get_graphe()->commencerVecteurPropre();
             env->get_graphe()->commencerIndiceDeProximite();
