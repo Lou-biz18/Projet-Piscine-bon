@@ -67,10 +67,11 @@ bool lancementDuService(int choix, Environnement* env)
     
     if (choix != 1 && choix != 5 && grapheChargey != true)
     {
-        std::cout << "Il faut d'abord charger un graphe..." << std::cout;
+        std::cout << "Il faut d'abord charger un graphe..." << std::endl;
         lancementDuService(1, env);
-    } else if (choix == 4 && indiceCalculey != true) {
-        std::cout << "Il faut d'abord calculer les indices de centralite..." << std::cout;
+    }
+    if (choix == 4 && indiceCalculey != true) {
+        std::cout << "Il faut d'abord calculer les indices de centralite..." << std::endl;
         lancementDuService(3, env);
     }
     switch(choix)
@@ -126,7 +127,7 @@ bool lancementDuService(int choix, Environnement* env)
                 else
                     std::cout << "Le graphe est connexe." << std::endl;
                 env->get_graphe()->reinitialiseConnexite();
-                env->get_graphe()->dessiner("output.svg"); //dessine le graphe
+                env->get_graphe()->dessiner("outputNormal.svg"); //dessine le graphe
                 grapheChargey = true;
             }
             break;
