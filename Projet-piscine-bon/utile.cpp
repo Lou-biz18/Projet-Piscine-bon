@@ -56,7 +56,7 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv) //
     }
 
 }
-
+// renvoie la taille du plus court chemin. On utilise un parcours en largeur 
 int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
 {
     std::vector<Sommet*> tabSommet = graphe->get_tabSommet();
@@ -65,15 +65,15 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
     for(auto s: tabSommet)
     {
         s->set_longueurDeChemin(0);
-    }
+    }  // on set une longueur de 0 sur tous les sommets
     sommetDepart->set_longueurDeChemin(1);
-    while(sommetArrivee->get_longueurDeChemin() == 0)
+    while(sommetArrivee->get_longueurDeChemin() == 0) // tant que le point d'arrivee n; est pas atteint
     {
-        for(auto s: tabSommet)
+        for(auto s: tabSommet)  // pour chaque sommet
         {
-            if (s->get_longueurDeChemin() == i)
+            if (s->get_longueurDeChemin() == i) // si notre index est le mem que la longueur du sommet 
             {
-                s->deployerDijkstra();
+                s->deployerDijkstra(); // on deploie sur les sommets voisins
             }
         }
         i++;
