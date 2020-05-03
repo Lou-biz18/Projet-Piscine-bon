@@ -85,7 +85,7 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
 
 void entete(){
     using namespace std;
-    HANDLE console;
+    HANDLE console;   // Souce : youtube.com/watch?v=zujRdlaCef4
     console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, 1);
 
