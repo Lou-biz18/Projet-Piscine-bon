@@ -388,7 +388,7 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 
     indiceSauv = oss.str();
     sauvegardeDansFichier(nomFichier, indiceSauv);
-
+}
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {
     sommetActuel->afficher();

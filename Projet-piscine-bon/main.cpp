@@ -15,15 +15,8 @@ std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero cor
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandee n'existe pas";
 
-
-/*
-void demandeSuppressionAretes(){
-    // boucle de demande suppression arette(s) (par index et quitter fait sortir de cette fonction)
-        env->get_graphemodifie()->supprimerArrete(arretechoisie)
-        Svgfile svg;
-        env->get_graphemodifie()->dessiner(svg);
-}
-*/
+bool grapheChargey = false;
+bool indiceCalculey = false;
 ///CHOIX SUPP ARETE
 void demandeSuppA(Environnement * env)
 {
@@ -71,18 +64,21 @@ bool lancementDuService(int choix, Environnement* env)
     std::string nomFichier;
     std::string nomFichierSauv = "sauv.txt";
     std::string ligneSauv;
+    
+    if (choix != 1 && choix != 5 && grapheChargey != true)
+    {
+        std::cout << "Il faut d'abord charger un graphe..." << std::cout;
+        lancementDuService(1, env);
+    } else if (choix == 4 && indiceCalculey != true) {
+        std::cout << "Il faut d'abord calculer les indices de centralite..." << std::cout;
+        lancementDuService(3, env);
+    }
     switch(choix)
     {
-        case 6:
+        case 5:
             SetConsoleTextAttribute(console, 12);
             std::cout << "Quitter" << std::endl;
             return true;
-        case 5:
-            SetConsoleTextAttribute(console, 14);
-            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
-            std::cin>> ligneSauv;
-            sauvegardeDansFichier(nomFichierSauv,ligneSauv);
-            break;
         case 4:
             SetConsoleTextAttribute(console, 1);
             std::cout << "Etude de vulnerabilite" << std::endl;
@@ -104,8 +100,10 @@ bool lancementDuService(int choix, Environnement* env)
             SetConsoleTextAttribute(console, 11);
             std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
             env->get_graphe()->lancerLesIndices(nomFichierSauv);
+            indiceCalculey = true;
             break;
         case 2:
+            env->get_graphe();
             SetConsoleTextAttribute(console, 10);
             std::cout << "Ajout d'une ponderation" << std::endl;
             nomFichier = demandeNomFichier(); // on creer le fichier avec des arete ponde
@@ -118,8 +116,7 @@ bool lancementDuService(int choix, Environnement* env)
         case 1:
             SetConsoleTextAttribute(console, 14);
             std::cout << "Création du graphe..." << std::endl;
-            //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "graphe_cycle5_topo.txt"; // !! a enlever
+            nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
@@ -130,6 +127,7 @@ bool lancementDuService(int choix, Environnement* env)
                     std::cout << "Le graphe est connexe." << std::endl;
                 env->get_graphe()->reinitialiseConnexite();
                 env->get_graphe()->dessiner("output.svg"); //dessine le graphe
+                grapheChargey = true;
             }
             break;
     }
