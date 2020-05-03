@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 
+
 std::vector<std::string> split(const std::string &ligne, char delimiteur)
 {
     std::vector<std::string> recup;
@@ -57,6 +58,7 @@ bool sauvegardeDansFichier(std::string nomFichierSauv, std::string ligneSauv)
 
 void entete(){
     using namespace std;
+    using namepsace wincolor;
     std::string rouge = "\033[31m";
     std::string vert = "\033[32m";
     std::string jaune = "\033[33m";
@@ -67,6 +69,7 @@ void entete(){
     std::string normal = "\033[0m";
 
     std::cout << bleu;
+    withcolor scoped(red);
     std::cout <<"     ________  __                                      __              "<<endl;
     std::cout <<"    |        \\|  \\                                    |  \\             "<<endl;
     std::cout <<"     \\$$$$$$$$| $$____    ______    ______    ______   \\$$  ______     "<<endl;
