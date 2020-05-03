@@ -5,15 +5,15 @@
 Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
 {
     m_idArete = idArete;
-    m_sommets.first = s1;
+    m_sommets.first = s1;//extremites de l'arete
     m_sommets.second = s2;
     m_poids = 1;//Arete de poids 1 par default pour graphe non orienté
     s1->ajoutArete(this);
     s2->ajoutArete(this);
-    m_couleurA = "black";
+    m_couleurA = "black";//couleur par default
 }
 
-Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
+Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)//copie de l'objet arete
 {
     m_idArete = areteACopier.get_idArete();
     m_poids = areteACopier.get_poids();

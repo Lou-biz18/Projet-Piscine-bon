@@ -224,12 +224,13 @@ void Graphe::ajoutSommet(std::string ligne)
 {
     std::vector<std::string> recupLigneSplit = split(ligne, ' ');
     //4 var pour les 4 attributs du constructeurs
+    //stoi convertie des string en int
     int index = std::stoi(recupLigneSplit[0]);
     std::string nom = recupLigneSplit[1];
     int coord_x = std::stoi(recupLigneSplit[2]);
     int coord_y = std::stoi(recupLigneSplit[3]);
 
-    Sommet* newSommet = new Sommet(index, nom ,coord_x,coord_y);
+    Sommet* newSommet = new Sommet(index, nom ,coord_x,coord_y);//alloc
     m_tabSommet.push_back(newSommet);//car tab de som
 }
 void Graphe::ajouterPonderation(std::string lignePond)
@@ -238,7 +239,7 @@ void Graphe::ajouterPonderation(std::string lignePond)
     int index = std::stoi(recupLigneSplit[0]);
     int poids = std::stoi(recupLigneSplit[1]);
 
-    for(auto a: m_tabArete)
+    for(auto a: m_tabArete)//parcours du tableau d'arete
     {
         if (a->get_idArete() == index)
         {
@@ -249,6 +250,7 @@ void Graphe::ajouterPonderation(std::string lignePond)
 }
 
 ///DESSIN
+//fct de dessin du graphe de base
 void Graphe::dessiner(std::string fileName)
 {
     Svgfile svgout(fileName);
@@ -272,8 +274,8 @@ void Graphe::dessiner(std::string fileName)
     }
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
-///valeurs de centralité affichées à coté des ommets, système de couleurs permettant de discrimer les sommets
-///en fonction de leur importance mesurée par ces indices …
+
+
 
 void Graphe::dessinerGICDN(std::string fileName)
 {
@@ -288,7 +290,7 @@ void Graphe::dessinerGICDN(std::string fileName)
 
         svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
         svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
-        // on ecrit l'idArete au milieu de l'arete
+        // ///valeurs de centralité de degré affichées dans le sommet
     }
     for(int i=0;i<m_ordre;i++)
     {

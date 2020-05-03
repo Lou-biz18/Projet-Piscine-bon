@@ -1,6 +1,8 @@
 #include "Environnement.h"
 #include "Sommet.h"
 
+///Permet de gerer les classes = notre objet à objets
+
 ///CONSTRUCTEUR
 Environnement::Environnement(){
     //ctor

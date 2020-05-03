@@ -5,6 +5,10 @@
 #include <fstream>
 #include <set>
 
+
+///tiré du projet de S3 (code de Laure Audouy, Thomas Poulain et Lou Bizet)
+
+
 const std::string defcol = "black";
 
 class Svgfile
