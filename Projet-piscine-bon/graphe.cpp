@@ -79,18 +79,20 @@ void Graphe::afficherTabS()
 {
     for(auto elem: m_tabSommet){
         elem->afficher();
+        std::cout << std::endl;
     }
 }
 void Graphe::afficherTabA()
 {
     for(auto elem: m_tabArete){
         elem->afficher();
+        std::cout << std::endl;
     }
 }
 
 void Graphe::afficher()///afficher les donn�es d'un bloc pour debug
 {
-    std::cout<<std::endl<<"Graphe ";
+    std::cout<<"Graphe ";
     if(m_orient)
         std::cout<<"oriente"<<std::endl;
     else
@@ -172,7 +174,7 @@ void Graphe::chargePonderation(std::string fichierPonderation)
             taille = std::stoi(tabLigne[0]);// recup taille pour tabArete
             if(taille!=m_taille)
             {
-                 std::cout<<"PB : tailles differentes"<<std::endl;
+                 std::cout<<"Erreur : La taille est différente. Fichier non chargé"<<std::endl;
                  return;
             }
             for(int i=1;i<=m_taille;i++)//ajoute les arretes dans tabArete
@@ -242,9 +244,8 @@ void Graphe::dessiner(Svgfile&svgout)
         Sommet* s = m_tabSommet[i];
         svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurS());
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
-        std::cout<<"on arrive jusquici"<<std::endl;
     }
-    svgout.addDisk(1000,800,20,"blue");
+    std::cout << "Création du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
@@ -280,8 +281,6 @@ bool Graphe::supprimerArete(int areteChoisie)
         if(m_tabArete[i]->get_idArete() == areteChoisie)
         {
             arete = m_tabArete[i];//on attribue à arete cette refereence i precise
-            std::cout <<"l'arete ";
-            m_tabArete[i]->afficher();
             std::cout<<"existe"<<std::endl;
 
             m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
@@ -295,7 +294,7 @@ bool Graphe::supprimerArete(int areteChoisie)
             s2->enleveA(m_tabArete[i]);//car tabAreteSo dans Sommet
 
             delete(arete);// destruction finale de l'objet arete i
-            std::cout<<"l'arete";
+            std::cout<<"L'arete ";
             m_tabArete[i]->afficher();
             std::cout<<" a bien été suprimée"<<std::endl;
             return true;
@@ -327,10 +326,10 @@ void Graphe::commencerVecteurPropre()  // non normalisé divisé non divisé par
         for(auto s : m_tabSommet)
             s->set_indiceVecteurPropre(s->get_sommeIVPVoisins()/ lambda);
 
-        //std::cout << "Delta Lambda: " << lambda_avant - lambda << std::endl;
     } while(std::abs(lambda_avant - lambda) > 0.01);
+
     for(auto s : m_tabSommet)
     {
-        std::cout << "IVP: " << s->get_indiceVecteurPropre() << std::endl;
+        std::cout << "Indice Vecteur Propre sommet "<< s->get_nom() << ": " << s->get_indiceVecteurPropre() << std::endl;
     }
 }

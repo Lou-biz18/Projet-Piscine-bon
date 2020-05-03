@@ -10,7 +10,7 @@ const std::string svgHeader =
 const std::string svgEnding = "\n\n</svg>\n";
 std::set<std::string> Svgfile::s_openfiles;
 
-bool Svgfile::s_verbose = true;
+bool Svgfile::s_verbose = false;
 
 Svgfile::Svgfile(std::string _filename, int _width, int _height) :
     m_filename(_filename), m_width(_width), m_height(_height)
@@ -105,4 +105,9 @@ std::string Svgfile::makeRGB(int r, int g, int b)
     std::ostringstream oss;
     oss << "rgb(" << r << "," << g << "," << b << ")";
     return oss.str();
+}
+
+std::string Svgfile::get_filename()
+{
+    return m_filename;
 }

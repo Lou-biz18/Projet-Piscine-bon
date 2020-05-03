@@ -68,7 +68,7 @@ void Arete::afficher()
     std::cout <<"Arrete --> "<<m_idArete
               <<": "<<m_sommets.first->get_nom()
               <<"-"<<m_sommets.second->get_nom()
-              <<" poids:"<<m_poids<<std::endl;
+              <<" poids:"<<m_poids;
 }
 
 Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
