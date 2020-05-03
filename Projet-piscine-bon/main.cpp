@@ -11,7 +11,7 @@
 
 /// Phrases de sorties du programme
 
-std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
+//std::string demandeMenu = "Bonjour! que voulez-vous faire? (Entrez le numero correspondant) \n1: Charger un graphe\n2: Choisir un fichier de ponderations\n3: Calculer/Afficher/Sauvegarder les differents indices de centralite\n4: Faire des tests de vulnerabilite en supprimant des aretes\n5 : Quitter";
 std::string mauvaiseEntree = "Veuillez entrer un nombre entier.";
 std::string mauvaiseOption = "L'option demandee n'existe pas";
 
@@ -124,7 +124,7 @@ bool lancementDuService(int choix, Environnement* env)
             }
             break;
         case 1:
-            SetConsoleTextAttribute(console, 14);
+            SetConsoleTextAttribute(console, 13);
             std::cout << "Création du graphe..." << std::endl;
             nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
@@ -150,8 +150,21 @@ bool menu(Environnement* env)
     HANDLE console;
     console = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(console, 15);
-    //system("cls");
-    std::cout << std::endl << demandeMenu << std::endl;
+
+    std::cout << "Bonjour! que voulez-vous faire? (Entrez le numero correspondant)" << std::endl;
+    SetConsoleTextAttribute(console, 13);
+    std::cout << "1: Charger un graphe" << std::endl;
+    SetConsoleTextAttribute(console, 10);
+    std::cout << "2: Choisir un fichier de ponderations" << std::endl;
+    SetConsoleTextAttribute(console, 11);
+    std::cout << "3: Calculer/Afficher/Sauvegarder les differents indices de centralite" << std::endl;
+    SetConsoleTextAttribute(console, 1);
+    std::cout << "4: Faire des tests de vulnerabilite en supprimant des aretes" << std::endl;
+    SetConsoleTextAttribute(console, 14);
+    std::cout << "5 : Que souhaitez vous ecrire dans le fichier sauv.txt ? " << std::endl;
+    SetConsoleTextAttribute(console, 12);
+    std::cout << "6 : Quitter" << std::endl;
+    SetConsoleTextAttribute(console, 15);
     std::cin >> choixUtilisateur;
     system("cls");
 
