@@ -1,4 +1,7 @@
 #include "utile.h"
+#include <iostream>
+#include <windows.h>
+
 
 std::vector<std::string> split(const std::string &ligne, char delimiteur)
 {
@@ -82,16 +85,10 @@ int dijkstra(Sommet* sommetDepart, Sommet* sommetArrivee, Graphe* graphe)
 //entete de notre menu
 void entete(){
     using namespace std;
-    std::string rouge = "\033[31m";
-    std::string vert = "\033[32m";
-    std::string jaune = "\033[33m";
-    std::string bleu = "\033[34m";
-    std::string magenta = "\033[35m";
-    std::string cian = "\033[36m";
-    std::string blanc = "\033[37m";
-    std::string normal = "\033[0m";
+    HANDLE console;   // Souce : youtube.com/watch?v=zujRdlaCef4
+    console = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(console, 1);
 
-    std::cout << bleu;
     std::cout <<"     ________  __                                      __              "<<endl;
     std::cout <<"    |        \\|  \\                                    |  \\             "<<endl;
     std::cout <<"     \\$$$$$$$$| $$____    ______    ______    ______   \\$$  ______     "<<endl;
@@ -103,7 +100,7 @@ void entete(){
     std::cout <<"        \\$$    \\$$   \\$$  \\$$$$$$$  \\$$$$$$  \\$$       \\$$  \\$$$$$$$   "<<endl;
     std::cout <<"                                                                  "<<endl;
 
-    std::cout << blanc;
+    SetConsoleTextAttribute(console, 15);
     std::cout <<"                             __                      "<<endl;
     std::cout <<"                            |  \\                     "<<endl;
     std::cout <<"                        ____| $$  ______    _______  "<<endl;
@@ -114,7 +111,7 @@ void entete(){
     std::cout <<"                       \\$$    $$ \\$$     \\|       $$ "<<endl;
     std::cout <<"                        \\$$$$$$$  \\$$$$$$$ \\$$$$$$$  "<<endl;
 
-    std::cout << rouge;
+    SetConsoleTextAttribute(console, 12);
     std::cout <<"     ______                                 __                           "<<endl;
     std::cout <<"    /      \\                               /  |                          "<<endl;
     std::cout <<"   /$$$$$$  |  ______    ______    ______  $$ |____    ______    _______ "<<endl;
@@ -128,5 +125,5 @@ void entete(){
     std::cout <<"                                 $$ |                                    "<<endl;
     std::cout <<"                                 $$/                                     "<<endl;
 
-    std::cout << normal;
+    SetConsoleTextAttribute(console, 15);
 }
