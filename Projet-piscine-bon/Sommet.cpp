@@ -11,7 +11,7 @@ Sommet::Sommet(int idSommet, std::string nom, double x, double y)//constructeur 
     m_couleurS = "black";//couleur par default
 }
 
-Sommet::Sommet(const Sommet &sommetACopier)
+Sommet::Sommet(const Sommet &sommetACopier)// copier du sommet
 {
     m_idSommet = sommetACopier.get_idSommet();
     m_nbArete = 0;
@@ -20,50 +20,117 @@ Sommet::Sommet(const Sommet &sommetACopier)
     m_coords.second = sommetACopier.get_coordy();
 }
 
-Sommet::~Sommet()
+Sommet::~Sommet()  // destructeur
 {
-    //dtor
+
 }
 
-int Sommet::get_idSommet() const
+
+            /// GET
+
+int Sommet::get_idSommet() const // donne l'id du sommet
 {
     return m_idSommet;
 }
 
-std::string Sommet::get_nom() const
+std::string Sommet::get_nom() const // donne le nom du sommet
 {
     return m_nom;
 }
 
-double Sommet::get_coordx() const
+double Sommet::get_coordx() const // la coordonnée en x
 {
     return m_coords.first;
 }
 
-double Sommet::get_coordy() const
+double Sommet::get_coordy() const // la coordonnée en y
 {
     return m_coords.second;
 }
 
-std::string Sommet::get_couleurS() const
+std::string Sommet::get_couleurS() const // donne la couleur
 {
     return m_couleurS;
 }
 
-float  Sommet::get_indiceDegre() const
+float  Sommet::get_indiceDegre() const // donne l'indice de degrés non normalisé
 {
     return m_indiceDegre;
 }
 
-float Sommet::get_indiceDegreNorm() const
+float Sommet::get_indiceDegreNorm() const // donne l'indice de degrés normalisé
 {
     return m_indiceDegreNorm;
 }
 
-int Sommet::get_longueurDeChemin() const
+int Sommet::get_longueurDeChemin() const // la longeur du chemin
 {
     return m_longueurDeChemin;
 }
+
+float Sommet::get_indiceVecteurPropre() const // donne l'indice de vecteur propre
+{
+    return m_indiceVecteurPropre;
+}
+
+float Sommet::get_sommeIVPVoisins() const  // donne la somme des indice des voisins
+{
+    return m_sommeIVPVoisins;
+}
+
+float Sommet::get_indiceProximite() const  // donne l'indice de proximité
+{
+    return m_indiceProximite;
+}
+
+float Sommet::get_indiceProximiteNorm() const // donne l'indice proximité normalisé
+{
+    return m_indiceProximiteNorm;
+}
+
+
+
+                /// SET
+
+
+void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
+{
+    m_indiceVecteurPropre = indiceVecteurPropre;
+}
+
+
+void Sommet::set_sommeIVPVoisins()  // on fait la somme des indices des voisins et on met ans m_sommeIVOVoisins
+{
+    m_sommeIVPVoisins = 0;
+    for (auto a: m_tabAreteSo)
+    {
+        m_sommeIVPVoisins += a->get_autreSommet(this)->get_indiceVecteurPropre();
+    }
+}
+
+void Sommet::set_longueurDeChemin(int longueur)
+{
+    m_longueurDeChemin = longueur;
+}
+
+void Sommet::set_indiceProximite(float indicePr)
+{
+    m_indiceProximite = indicePr;
+}
+
+
+
+void Sommet::set_indiceProximiteNorm(float indicePrNrm)
+{
+    m_indiceProximiteNorm = indicePrNrm;
+}
+
+
+
+
+                /// METHODE
+
+
 
 void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 {
@@ -73,13 +140,13 @@ void Sommet::afficher() const///afficher les donn�es d'un bloc pour debug
 
 }
 
-void Sommet::ajoutArete(Arete* newArete)
+void Sommet::ajoutArete(Arete* newArete)  // permet d'ajouter une arete
 {
     m_tabAreteSo.push_back(newArete);
     m_nbArete++;
 }
 
-void Sommet::enleveA(Arete* arete)
+void Sommet::enleveA(Arete* arete) // enleve une arete
 {
     for(int i=0;i<m_nbArete;i++)
     {
@@ -96,39 +163,14 @@ void Sommet::calculeIndiceCentraliteDegres(int ordre)
 {
     int n = ordre-1;
     // somme des aretes d'un sommet = cds
-    m_indiceDegre = m_nbArete;
-    m_indiceDegreNorm = m_indiceDegre/ n;
+    m_indiceDegre = m_nbArete; // l'indice correspond au nombres d'arete
+    m_indiceDegreNorm = m_indiceDegre/ n;  //on divise par l'ordre -1
     std::cout << "indice : " << m_indiceDegre << std::endl;
     std::cout << "indice normalise : " << m_indiceDegreNorm << std::endl;
 
 }
 
-
-void Sommet::set_indiceVecteurPropre(float indiceVecteurPropre)
-{
-    m_indiceVecteurPropre = indiceVecteurPropre;
-}
-
-float Sommet::get_indiceVecteurPropre() const
-{
-    return m_indiceVecteurPropre;
-}
-
-void Sommet::set_sommeIVPVoisins()
-{
-    m_sommeIVPVoisins = 0;
-    for (auto a: m_tabAreteSo)
-    {
-        m_sommeIVPVoisins += a->get_autreSommet(this)->get_indiceVecteurPropre();
-    }
-}
-
-float Sommet::get_sommeIVPVoisins() const
-{
-    return m_sommeIVPVoisins;
-}
-
-void Sommet::deployerDijkstra()
+void Sommet::deployerDijkstra()   // algo dijkstra
 {
     int longueurDeCheminTest;
     int longueurDeCheminSommetSuivant;
@@ -143,27 +185,7 @@ void Sommet::deployerDijkstra()
     }
 }
 
-void Sommet::set_longueurDeChemin(int longueur)
-{
-    m_longueurDeChemin = longueur;
-}
 
-void Sommet::set_indiceProximite(float indicePr) 
-{
-    m_indiceProximite = indicePr;
-}
 
-float Sommet::get_indiceProximite() const
-{
-    return m_indiceProximite;
-}
 
-void Sommet::set_indiceProximiteNorm(float indicePrNrm)
-{
-    m_indiceProximiteNorm = indicePrNrm;
-}
 
-float Sommet::get_indiceProximiteNorm() const
-{
-    return m_indiceProximiteNorm;
-}

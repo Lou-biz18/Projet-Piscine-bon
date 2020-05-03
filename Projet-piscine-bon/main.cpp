@@ -28,7 +28,7 @@ void demandeSuppA(Environnement * env)
 
     while(1)
     {
-        std::cout<<"Veuillez donner l'identifiant de l'arête que vous souhaitez supprimer" << std::endl;
+        std::cout<<"Veuillez donner l'identifiant de l'arete que vous souhaitez supprimer" << std::endl;
         std::cin >> choixU;
         if(std::cin.fail())
         {
@@ -44,7 +44,7 @@ void demandeSuppA(Environnement * env)
         }
         else
         {
-            std::cout << "Tout c'est bien passé." << std::endl;
+            std::cout << "Tout c'est bien passe." << std::endl;
             while(choixUstr.compare("non") != 0 && choixUstr.compare("oui") != 0 )
             {
                 std::cout << "Voulez-vous en supprimer d'autres? (oui/non)" << std::endl;
@@ -69,28 +69,24 @@ bool lancementDuService(int choix, Environnement* env)
     switch(choix)
     {
         case 6:
-            std::cout << "Quitter" << std::endl;
+            std::cout << "Quitter" << std::endl; // quitter le programme
             return true;
         case 5:
-            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl;
+            std::cout <<"que souhaitez vous ecrire dans le fichier sauv.txt ? " <<std::endl; // Sauvegarde
             std::cin>> ligneSauv;
             sauvegardeDansFichier(nomFichierSauv,ligneSauv);
             break;
         case 4:
-            std::cout << "Etude de vulnerabilite" << std::endl;
-            env->creationGrapheAModifer();//ca marche pas sa mereé
+            std::cout << "Etude de vulnerabilite" << std::endl; // vulnérabilité
+            env->creationGrapheAModifer();//
             demandeSuppA(env);
             env->get_grapheModif()->commencerIndiceDeCentralite();
             env->get_grapheModif()->commencerVecteurPropre();
             env->get_grapheModif()->commencerIndiceDeProximite();
-            /*demandeSuppressionAretes();FAIT
-            relancer les methodes de calcul d'indices FAIT
-             sauvegarder/afficher les indices dans un fichier different de celui du graph normal
-             comparer les indices => afficher pour chaque sommet: indiceAvantSuppression => indiceApresSuppression
-            */
+
             break;
         case 3:
-            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl;
+            std::cout << "Calcul des indices de degre normalise et non-normalise" << std::endl; // calcule des indices
             env->get_graphe()->commencerIndiceDeCentralite();
             env->get_graphe()->commencerVecteurPropre();
             env->get_graphe()->commencerIndiceDeProximite();
@@ -105,7 +101,7 @@ bool lancementDuService(int choix, Environnement* env)
             }
             break;
         case 1:
-            std::cout << "Création du graphe..." << std::endl;
+            std::cout << "Creation du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
             nomFichier = "graphe_cycle4_topo.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite

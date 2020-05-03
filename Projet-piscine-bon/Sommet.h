@@ -16,7 +16,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         Sommet();//constructeur
         Sommet(const Sommet &sommetACopier);// constructeur de copie
         Sommet(int idSommet, std::string nom, double x, double y);
-        ~Sommet();
+        ~Sommet(); // destructeur
 
         void afficher() const;
         int get_idSommet() const;
@@ -24,6 +24,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         double get_coordx() const;//pour dessiner
         double get_coordy() const;
         std::string get_couleurS() const;
+        // get pour les différents indices
         float get_indiceDegreNorm() const;
         float get_indiceDegre() const;
         int get_longueurDeChemin() const;
@@ -33,16 +34,16 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceVecteurPropre()const;
         float get_indiceDegre();
         float get_indiceDegreNorm();
-
+        // les différents set
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
+        void set_indiceVecteurPropre(float m_indiceVecteurPropre);
+        void set_sommeIVPVoisins();
+        // les méthodes
         void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
         void calculeIndiceCentraliteDegres(int m_ordre);
-        void set_indiceVecteurPropre(float m_indiceVecteurPropre);
-        void set_sommeIVPVoisins();
-
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);

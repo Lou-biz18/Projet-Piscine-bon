@@ -14,7 +14,7 @@ class Graphe
     public:
         Graphe(std::string nomFichier);//prototyper le constructeur
         Graphe(const Graphe &grapheACopier);// constructeur de copie
-        ~Graphe();
+        ~Graphe(); // destructeur
 
         void chargeGraphe(std::string nomFichier);
         void chargePonderation(std::string fichierPonderation);
