@@ -14,7 +14,7 @@ class Graphe
     public:
         Graphe(std::string nomFichier);//prototyper le constructeur
         Graphe(const Graphe &grapheACopier);// constructeur de copie
-        ~Graphe();
+        ~Graphe(); // destructeur
 
         void chargeGraphe(std::string nomFichier);
         void chargePonderation(std::string fichierPonderation);
@@ -29,12 +29,14 @@ class Graphe
         int get_taille() const;
         std::vector<Arete*> get_tabArete() const;
         std::vector<Sommet*> get_tabSommet() const;
-        void dessiner(Svgfile&svgout);
+        void dessiner(std::string fileName);
         void commencerIndiceDeCentralite();
         void commencerIndiceDeProximite();
         bool supprimerArete(int areteChoisie);
         void calcCouleurG();
         void commencerVecteurPropre();
+        bool test_connexite(Sommet* sommetActuel);
+        void reinitialiseConnexite();
 
     private:
         int m_ordre;

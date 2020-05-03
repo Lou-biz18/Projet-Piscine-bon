@@ -16,7 +16,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         Sommet();//constructeur
         Sommet(const Sommet &sommetACopier);// constructeur de copie
         Sommet(int idSommet, std::string nom, double x, double y);
-        ~Sommet();
+        ~Sommet(); // destructeur
 
         void afficher() const;
         int get_idSommet() const;
@@ -24,6 +24,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         double get_coordx() const;//pour dessiner
         double get_coordy() const;
         std::string get_couleurS() const;
+        // get pour les diff�rents indices
         float get_indiceDegreNorm() const;
         float get_indiceDegre() const;
         int get_longueurDeChemin() const;
@@ -31,7 +32,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         float get_indiceProximiteNorm() const;
         float get_sommeIVPVoisins() const;
         float get_indiceVecteurPropre()const;
-        float get_indiceDegre();
+        std::vector<Arete*> get_tabArete() const;
 
         void set_indiceProximite(float indicePr);
         void set_indiceProximiteNorm(float indicePrNrm);
@@ -42,16 +43,18 @@ class Sommet//dans chaque somme ya un tableaux darretes
         void set_couleurIVP(std::string couleurIVP);
         void set_couleurIPN(std::string couleurIPN);
 
+        // les m�thodes
+        void ajoutArete(Arete* newArete);
         void dessiner(Svgfile&svgout, double x, double y);
         void afficherTextId(Svgfile&svgout, double x, double y);
 
         void calculeIndiceCentraliteDegres(int m_ordre);
         std::string calcCouleurSommet();
-
-        void ajoutArete(Arete* newArete);
         void enleveA(Arete* arete);
         void deployerDijkstra();
         void set_longueurDeChemin(int longueur);
+        bool get_connexite();
+        bool set_connexite(bool conn);
 
 
 
@@ -66,6 +69,7 @@ class Sommet//dans chaque somme ya un tableaux darretes
         int m_longueurDeChemin;
         float m_indiceProximite;
         float m_indiceProximiteNorm;
+        bool m_connexite;
 
 
 

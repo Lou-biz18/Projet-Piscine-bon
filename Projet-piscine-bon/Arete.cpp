@@ -13,50 +13,72 @@ Arete::Arete(int idArete, Sommet*s1, Sommet*s2)//constructeur de arete
     m_couleurA = "black";
 }
 
-Arete::Arete(const Arete &areteACopier)
+Arete::Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2)
 {
     m_idArete = areteACopier.get_idArete();
     m_poids = areteACopier.get_poids();
-    m_sommets.first = areteACopier.get_s1();
-    m_sommets.second = areteACopier.get_s2();
+    m_sommets.first = sommet1;
+    m_sommets.second = sommet2;
     m_sommets.first->ajoutArete(this);
     m_sommets.second->ajoutArete(this);
+    m_couleurA = "black";
 }
 
-Arete::~Arete()
+Arete::~Arete() // destructeur
 {
-    //dtor
+
 }
 ///GET
-int Arete::get_idArete()const
+
+int Arete::get_idArete()const // id de l'arret
 {
     return m_idArete;
 }
-//chope la premiere extremit� de l'arete
-int Arete::get_idS1() const
+
+
+// donne les coordonnées des extremités de l'arret
+
+int Arete::get_idS1() const// premiere extrimité
 {
     return m_sommets.first->get_idSommet();
 }
-int Arete::get_idS2() const
+int Arete::get_idS2() const // deuxieme extremité
 {
     return m_sommets.second->get_idSommet();
 }
-Sommet* Arete::get_s1() const
+
+Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
+{
+    if (premierSommet == m_sommets.first)
+    {
+        return m_sommets.second;
+    }
+    else
+    {
+        return m_sommets.first;
+    }
+}
+// donne l'extremité de l'arete voulu
+
+Sommet* Arete::get_s1() const // le premier sommet
 {
     return m_sommets.first;
 }
-Sommet* Arete::get_s2() const
+Sommet* Arete::get_s2() const //le deuxieme sommet
 {
     return m_sommets.second;
 }
-int Arete::get_poids() const
+
+int Arete::get_poids() const // donne le poid des aretes
 {
     return m_poids;
 }
-std::string Arete::get_couleurA() const
+
+std::string Arete::get_couleurA() const // donne la couleur
 {
     return m_couleurA;
 }
+
 ///SET
 void Arete::set_poids(int poids)
 {
@@ -68,17 +90,5 @@ void Arete::afficher()
     std::cout <<"Arrete --> "<<m_idArete
               <<": "<<m_sommets.first->get_nom()
               <<"-"<<m_sommets.second->get_nom()
-              <<" poids:"<<m_poids<<std::endl;
-}
-
-Sommet* Arete::get_autreSommet (Sommet* premierSommet) const
-{
-        if (premierSommet == m_sommets.first)
-        {
-            return m_sommets.second;
-        }
-        else
-        {
-            return m_sommets.first;
-        }
+              <<" poids:"<<m_poids;
 }
