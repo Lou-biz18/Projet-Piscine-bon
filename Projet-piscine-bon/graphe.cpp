@@ -127,7 +127,7 @@ void Graphe::chargeGraphe(std::string nomFichier)
             std::cout<<"Erreur ouverture du fichier"<<std::endl;
             exit(EXIT_FAILURE);
         }
-        else//le fichier s'est bien charg� et peut etre lu
+        else//le fichier s'est bien charge et peut etre lu
         {
             std::cout<<"Chargement fichier: OK"<<std::endl;
             std::string tmpStr;
@@ -270,7 +270,7 @@ void Graphe::dessiner(std::string fileName)
         svgout.addDisk(s->get_coordx() *100,s->get_coordy() *100, 20, s->get_couleurS());
         svgout.addId(s->get_coordx() *100, s->get_coordy() *100,s->get_nom(),"pink");
     }
-    std::cout << "Création du graphe au format svg (" << svgout.get_filename() << ") terminé" << std::endl;
+    std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
 
 void Graphe::commencerIndiceDeCentralite()
@@ -388,6 +388,7 @@ void Graphe::lancerLesIndices(std::string nomFichier)
 
     indiceSauv = oss.str();
     sauvegardeDansFichier(nomFichier, indiceSauv);
+}
 
 bool Graphe::test_connexite(Sommet* sommetActuel) //valeur par defaut lorsqu'on lance le test
 {
