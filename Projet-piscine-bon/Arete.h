@@ -1,4 +1,4 @@
-/// aide TP�5 de Mme Dridi
+/// aide TP5 de Mme Dridi
 #ifndef ARETE_H
 #define ARETE_H
 
@@ -12,13 +12,15 @@
 
 
 class Sommet;
+// On construit la class Arete
 class Arete
 {
    public:
         Arete(int idArete, Sommet*s1, Sommet*s2); //constructeur
-        Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2); // constrtucteur de copie
+        Arete(const Arete &areteACopier, Sommet* sommet1, Sommet* sommet2); // constructeur de copie
         ~Arete(); // destructeur
 
+        // Methodes
         void afficher();
         void set_poids(int poids);
         int get_idArete() const;
@@ -30,11 +32,11 @@ class Arete
         std::string get_couleurA() const;
         Sommet* get_autreSommet (Sommet* premierSommet)const;
 
-
+    // Attributs
     private:
         int m_idArete;
         int m_poids;
-        std::pair<Sommet*,Sommet*> m_sommets;// les extremites de l'aretes
+        std::pair<Sommet*,Sommet*> m_sommets;// les extremites de l'arete
         std::string m_couleurA;
 
 };
