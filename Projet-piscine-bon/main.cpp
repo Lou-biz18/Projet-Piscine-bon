@@ -127,7 +127,7 @@ bool lancementDuService(int choix, Environnement* env)
             SetConsoleTextAttribute(console, 14);
             std::cout << "Création du graphe..." << std::endl;
             //nomFichier = demandeNomFichier();//si je fais quitter --> retourne string vide
-            nomFichier = "graphe_cycle5_topo.txt"; // !! a enlever
+            nomFichier = "rerC.txt"; // !! a enlever
             if (nomFichier.compare("")!= 0) // Si le fichier existe, alors on lance la suite
             {
                 env->createGraphe(nomFichier);
