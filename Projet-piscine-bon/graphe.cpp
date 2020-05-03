@@ -330,6 +330,7 @@ void Graphe::dessinerGIVPN(std::string fileName)
     std::cout << " Dessin du graphe avec vecteurs propres apparents normalises "<<std::endl;
     std::cout << "Creation du graphe au format svg (" << svgout.get_filename() << ") termine" << std::endl;
 }
+
 void Graphe::dessinerGIPN(std::string fileName)
 {
     Svgfile svgout(fileName);
@@ -341,7 +342,7 @@ void Graphe::dessinerGIPN(std::string fileName)
         double y1 = a->get_s1()->get_coordy();
         double y2 = a->get_s2()->get_coordy();
 
-        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)"/*a->get_color()*/);
+        svgout.addLine(x1 *100, y1 *100,x2 *100, y2*100, "rgb(255,200,200)");
         svgout.addId(((x1 + x2 )/2)*100, ((y1 + y2 )/2) *100,std::to_string(a->get_idArete()),a->get_couleurA());//attention int converti en string par to_string
         // on ecrit l'idArete au milieu de l'arete
     }
@@ -394,8 +395,6 @@ bool Graphe::supprimerArete(int areteChoisie)
             m_tabArete.erase(m_tabArete.begin()+i);//efface les ref de arete car tableau d'adresse d'aretes
 
             m_taille = m_taille - 1 ;//mise a jour de la taille du tableau
-
-            //m_tabArete[i]->get_s1();
             Sommet* s1 = m_tabArete[i]->get_s1();
             Sommet* s2 = m_tabArete[i]->get_s2();
             s1->enleveA(m_tabArete[i]);//on efface les ref de Arete dans sommet
