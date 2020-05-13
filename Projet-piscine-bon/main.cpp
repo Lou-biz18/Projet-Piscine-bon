@@ -8,6 +8,7 @@
 #include "utile.h"
 #include "Environnement.h"
 
+//Montrer un commit
 
 /// Phrases de sorties du programme
 
@@ -65,7 +66,7 @@ bool lancementDuService(int choix, Environnement* env)
     std::string nomFichierSauv = "sauv.txt";
     std::string nomFichierSvg;///HELP JOJOOOOOOOO
     std::string ligneSauv;
-    
+
     if (choix != 1 && choix != 5 && grapheChargey != true)
     {
         std::cout << "Il faut d'abord charger un graphe..." << std::endl;
